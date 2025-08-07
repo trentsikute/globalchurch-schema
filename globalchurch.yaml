@@ -20,6 +20,7 @@ types:
     pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
 
 prefixes:
+  linkml: https://w3id.org/linkml/
   gc: https://global.church/schema/
   schema: http://schema.org/
 default_prefix: gc
@@ -28,6 +29,7 @@ default_range: string
 classes:
   User:
     description: "A registered platform user."
+    mappings: [schema:Person]
     slots:
       - user_id
       - given_name
@@ -42,6 +44,9 @@ classes:
     
   Church:
     description: "A distinct church congregation."
+    mappings:
+      - schema:Church            # The physical worship place
+      - schema:Organization      # The entity that runs it
     slots:
       - church_id
       - gers_id
@@ -66,7 +71,7 @@ classes:
     slots:
       - church_id
       - service_times
-      - statement_of_faith
+      - church_beliefs_url
       - trinitarian_beliefs
       - belief_type
       - scraped_email
@@ -75,6 +80,7 @@ classes:
       - service_languages
       - scraped_address
       - programs_offered
+      - church_summary
 
   Overture:
     description: "Original place record as supplied by Overture Maps."
@@ -88,6 +94,7 @@ classes:
 slots:
   user_id:
     identifier: true
+    exact_mappings: [schema:identifier]
     range: uuid
     description: "Primary key for User (also referenced by other tables)."
 
@@ -108,6 +115,7 @@ slots:
     description: "Phone number (international format recommended)."
 
   skills:
+    exact_mappings: [schema:skills] 
     description: "Comma-separated list of user skills."
 
   primary_church:
@@ -119,6 +127,7 @@ slots:
     description: "Optional FK → Church.church_id (secondary church)."
 
   interests:
+    exact_mappings: [schema:interest]
     description: "Free-text interests or ministry areas."
 
   faith_journey:
@@ -142,29 +151,37 @@ slots:
 
   latitude:
     range: float
+    exact_mappings: [schema:latitude]
     description: "Geographic latitude (decimal degrees)."
 
   longitude:
     range: float
+    exact_mappings: [schema:longitude]
     description: "Geographic longitude (decimal degrees)."
 
   address:
     range: string
+    exact_mappings: [schema:address]
     description: "Physical street address."
 
   locality:
+    exact_mappings: [schema:addressLocality]
     description: "City or locality of the church."
 
   region:
+    exact_mappings: [schema:addressRegion]
     description: "State, province, or region."
 
   postal_code:
+    exact_mappings: [schema:postalCode]
     description: "Postal / ZIP code."
 
   country:
+    exact_mappings: [schema:addressCountry]
     description: "ISO-3166 country code."
 
   website:
+    exact_mappings: [schema:url]
     range: uri
     description: "Full website URL."
 
@@ -176,15 +193,19 @@ slots:
     description: "Concatenated text blob used for full-text search."
 
   openingHours:
+    exact_mappings: [schema:openingHours, schema:openingHoursSpecification]
     description: "Opening hours information."
 
   keywords:
+    exact_mappings: [schema:keywords]
     description: "Comma-separated keywords or tags."
 
   alternateName:
+    exact_mappings: [schema:alternateName]
     description: "Alternate or colloquial church name."
 
   description:
+    exact_mappings: [schema:description]
     description: "Long-form description of the church."
 
   social_media:
@@ -212,8 +233,9 @@ slots:
   service_times:
     description: "Service times (free text)."
 
-  statement_of_faith:
-    description: "URL or text of the statement of faith."
+  church_beliefs_url:
+    range: uri
+    description: "URL of the statement of faith or similar statement of beliefs."
 
   trinitarian_beliefs:
     range: boolean
@@ -223,24 +245,33 @@ slots:
     description: "Denomination / church type category."
 
   scraped_email:
+    exact_mappings: [schema:email]
     description: "Email address extracted from site."
 
   instagram_url:
+    exact_mappings: [schema:sameAs]
     range: uri
     description: "Instagram profile URL."
 
   youtube_url:
+    exact_mappings: [schema:sameAs]
     range: uri
     description: "YouTube channel URL."
 
   service_languages:
+    exact_mappings: [schema:inLanguage]
     description: "Languages in which services are offered."
 
   scraped_address:
+    exact_mappings: [schema:address]
     description: "Postal address extracted from site."
 
   programs_offered:
+    exact_mappings: [schema:service]
     description: "List of programs or ministries offered."
+
+  church_summary:
+    description: "Concise summary of the church, including key attributes and offerings."
 
   # --- Overture slots ---
   version:
