@@ -1,0 +1,28 @@
+name: Lint LinkML Schema
+
+on:
+  pull_request:
+    paths:
+      - 'globalchurch.yaml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'globalchurch.yaml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install LinkML
+        run: |
+          python -m pip install --upgrade pip
+          pip install linkml
+      - name: Lint schema
+        run: |
+          linkml lint globalchurch.yaml
