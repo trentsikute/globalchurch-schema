@@ -1,0 +1,337 @@
+{
+    "$defs": {
+        "Church": {
+            "additionalProperties": false,
+            "description": "A distinct church congregation.",
+            "properties": {
+                "address": {
+                    "description": "Physical street address.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "church_id": {
+                    "description": "Primary key for Church; referenced by related tables.",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gers_id": {
+                    "description": "ID from the Government/Ecclesiastical Registry System (if available).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "latitude": {
+                    "description": "Geographic latitude (decimal degrees).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "longitude": {
+                    "description": "Geographic longitude (decimal degrees).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Official church name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pipeline_status": {
+                    "description": "Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "church_id"
+            ],
+            "title": "Church",
+            "type": "object"
+        },
+        "ChurchWebsite": {
+            "additionalProperties": false,
+            "description": "Raw scrape artifacts captured from the church root URL.",
+            "properties": {
+                "candidates_text_and_links": {
+                    "description": "Text and associated links for candidate pages.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "church_id": {
+                    "description": "Primary key for Church; referenced by related tables.",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": "string"
+                },
+                "root_candidates": {
+                    "description": "Candidate URLs extracted from the root page.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "root_scrape_buttons": {
+                    "description": "Button texts captured on root page.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "root_scrape_check": {
+                    "description": "Checksum or status flag of the scrape.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "root_scrape_text": {
+                    "description": "Visible text scraped from the root page.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "church_id"
+            ],
+            "title": "ChurchWebsite",
+            "type": "object"
+        },
+        "EnrichedData": {
+            "additionalProperties": false,
+            "description": "AI-enriched attributes extracted from the church website and socials.",
+            "properties": {
+                "belief_type": {
+                    "description": "Denomination / church type category.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "church_id": {
+                    "description": "Primary key for Church; referenced by related tables.",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": "string"
+                },
+                "instagram_url": {
+                    "description": "Instagram profile URL.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "programs_offered": {
+                    "description": "List of programs or ministries offered.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "scraped_address": {
+                    "description": "Postal address extracted from site.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "scraped_email": {
+                    "description": "Email address extracted from site.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "service_languages": {
+                    "description": "Languages in which services are offered.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "service_times": {
+                    "description": "Service times (free text).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "statement_of_faith": {
+                    "description": "URL or text of the statement of faith.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "trinitarian_beliefs": {
+                    "description": "True if church affirms classical Trinitarian doctrine.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "youtube_url": {
+                    "description": "YouTube channel URL.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "church_id"
+            ],
+            "title": "EnrichedData",
+            "type": "object"
+        },
+        "Overture": {
+            "additionalProperties": false,
+            "description": "Original place record as supplied by Overture Maps.",
+            "properties": {
+                "confidence": {
+                    "description": "Confidence score (0\u20131).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gers_id": {
+                    "description": "ID from the Government/Ecclesiastical Registry System (if available).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "Source label of the Overture record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_release": {
+                    "description": "Overture release tag (e.g., 2024-05-15).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "Overture version number.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Overture",
+            "type": "object"
+        },
+        "User": {
+            "additionalProperties": false,
+            "description": "A registered platform user.",
+            "properties": {
+                "alternate_church": {
+                    "description": "Optional FK \u2192 Church.church_id (secondary church).",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "email": {
+                    "description": "Main contact email.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "faith_journey": {
+                    "description": "Narrative text describing the user\u2019s faith journey.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "family_name": {
+                    "description": "Last name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "given_name": {
+                    "description": "First name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "interests": {
+                    "description": "Free-text interests or ministry areas.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primary_church": {
+                    "description": "FK \u2192 Church.church_id (the user\u2019s primary church).",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "skills": {
+                    "description": "Comma-separated list of user skills.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "telephone": {
+                    "description": "Phone number (international format recommended).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "user_id": {
+                    "description": "Primary key for User (also referenced by other tables).",
+                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "user_id"
+            ],
+            "title": "User",
+            "type": "object"
+        }
+    },
+    "$id": "https://global.church/schema",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "GlobalChurch",
+    "type": "object",
+    "version": null
+}
+
