@@ -84,6 +84,7 @@ URI: [gc:Church](https://global.church/schema/Church)
 | ---  | ---  |
 | self | gc:Church |
 | native | gc:Church |
+| undefined | schema:Church, schema:Organization |
 
 
 
@@ -101,6 +102,9 @@ URI: [gc:Church](https://global.church/schema/Church)
 name: Church
 description: A distinct church congregation.
 from_schema: https://global.church/schema
+mappings:
+- schema:Church
+- schema:Organization
 slots:
 - church_id
 - gers_id
@@ -120,6 +124,9 @@ slots:
 name: Church
 description: A distinct church congregation.
 from_schema: https://global.church/schema
+mappings:
+- schema:Church
+- schema:Organization
 attributes:
   church_id:
     name: church_id
@@ -131,6 +138,8 @@ attributes:
     owner: Church
     domain_of:
     - Church
+    - ChurchWebsite
+    - EnrichedData
     range: uuid
     required: true
   gers_id:
@@ -142,6 +151,7 @@ attributes:
     owner: Church
     domain_of:
     - Church
+    - Overture
     range: string
   name:
     name: name
@@ -169,6 +179,8 @@ attributes:
     name: latitude
     description: Geographic latitude (decimal degrees).
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:latitude
     rank: 1000
     alias: latitude
     owner: Church
@@ -179,6 +191,8 @@ attributes:
     name: longitude
     description: Geographic longitude (decimal degrees).
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:longitude
     rank: 1000
     alias: longitude
     owner: Church
@@ -189,6 +203,8 @@ attributes:
     name: address
     description: Physical street address.
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:address
     rank: 1000
     alias: address
     owner: Church

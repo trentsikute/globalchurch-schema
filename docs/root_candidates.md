@@ -1,16 +1,16 @@
 
 
-# Slot: gers_id 
+# Slot: root_candidates 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Candidate URLs extracted from the root page._
 
 
 
 
 
-URI: [gc:gers_id](https://global.church/schema/gers_id)
-Alias: gers_id
+URI: [gc:root_candidates](https://global.church/schema/root_candidates)
+Alias: root_candidates
 
 <!-- no inheritance hierarchy -->
 
@@ -22,8 +22,7 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
 
 
 
@@ -56,8 +55,8 @@ Alias: gers_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:gers_id |
-| native | gc:gers_id |
+| self | gc:root_candidates |
+| native | gc:root_candidates |
 
 
 
@@ -66,14 +65,13 @@ Alias: gers_id
 
 <details>
 ```yaml
-name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+name: root_candidates
+description: Candidate URLs extracted from the root page.
 from_schema: https://global.church/schema
 rank: 1000
-alias: gers_id
+alias: root_candidates
 domain_of:
-- Church
-- Overture
+- ChurchWebsite
 range: string
 
 ```

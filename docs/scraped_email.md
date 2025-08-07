@@ -1,16 +1,16 @@
 
 
-# Slot: gers_id 
+# Slot: scraped_email 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Email address extracted from site._
 
 
 
 
 
-URI: [gc:gers_id](https://global.church/schema/gers_id)
-Alias: gers_id
+URI: [gc:scraped_email](https://global.church/schema/scraped_email)
+Alias: scraped_email
 
 <!-- no inheritance hierarchy -->
 
@@ -22,8 +22,7 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 
 
 
@@ -56,8 +55,9 @@ Alias: gers_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:gers_id |
-| native | gc:gers_id |
+| self | gc:scraped_email |
+| native | gc:scraped_email |
+| exact | schema:email |
 
 
 
@@ -66,14 +66,15 @@ Alias: gers_id
 
 <details>
 ```yaml
-name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+name: scraped_email
+description: Email address extracted from site.
 from_schema: https://global.church/schema
+exact_mappings:
+- schema:email
 rank: 1000
-alias: gers_id
+alias: scraped_email
 domain_of:
-- Church
-- Overture
+- EnrichedData
 range: string
 
 ```

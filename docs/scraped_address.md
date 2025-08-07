@@ -1,16 +1,16 @@
 
 
-# Slot: skills 
+# Slot: scraped_address 
 
 
-_Comma-separated list of user skills._
+_Postal address extracted from site._
 
 
 
 
 
-URI: [gc:skills](https://global.church/schema/skills)
-Alias: skills
+URI: [gc:scraped_address](https://global.church/schema/scraped_address)
+Alias: scraped_address
 
 <!-- no inheritance hierarchy -->
 
@@ -22,7 +22,7 @@ Alias: skills
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [User](User.md) | A registered platform user |  no  |
+| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 
 
 
@@ -55,9 +55,9 @@ Alias: skills
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:skills |
-| native | gc:skills |
-| exact | schema:skills |
+| self | gc:scraped_address |
+| native | gc:scraped_address |
+| exact | schema:address |
 
 
 
@@ -66,15 +66,15 @@ Alias: skills
 
 <details>
 ```yaml
-name: skills
-description: Comma-separated list of user skills.
+name: scraped_address
+description: Postal address extracted from site.
 from_schema: https://global.church/schema
 exact_mappings:
-- schema:skills
+- schema:address
 rank: 1000
-alias: skills
+alias: scraped_address
 domain_of:
-- User
+- EnrichedData
 range: string
 
 ```

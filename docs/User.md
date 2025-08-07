@@ -93,6 +93,7 @@ URI: [gc:User](https://global.church/schema/User)
 | ---  | ---  |
 | self | gc:User |
 | native | gc:User |
+| undefined | schema:Person |
 
 
 
@@ -110,6 +111,8 @@ URI: [gc:User](https://global.church/schema/User)
 name: User
 description: A registered platform user.
 from_schema: https://global.church/schema
+mappings:
+- schema:Person
 slots:
 - user_id
 - given_name
@@ -132,11 +135,15 @@ slots:
 name: User
 description: A registered platform user.
 from_schema: https://global.church/schema
+mappings:
+- schema:Person
 attributes:
   user_id:
     name: user_id
     description: Primary key for User (also referenced by other tables).
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:identifier
     rank: 1000
     identifier: true
     alias: user_id
@@ -196,6 +203,8 @@ attributes:
     name: skills
     description: Comma-separated list of user skills.
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:skills
     rank: 1000
     alias: skills
     owner: User
@@ -226,6 +235,8 @@ attributes:
     name: interests
     description: Free-text interests or ministry areas.
     from_schema: https://global.church/schema
+    exact_mappings:
+    - schema:interest
     rank: 1000
     alias: interests
     owner: User

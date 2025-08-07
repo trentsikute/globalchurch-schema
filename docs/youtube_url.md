@@ -1,16 +1,16 @@
 
 
-# Slot: latitude 
+# Slot: youtube_url 
 
 
-_Geographic latitude (decimal degrees)._
+_YouTube channel URL._
 
 
 
 
 
-URI: [gc:latitude](https://global.church/schema/latitude)
-Alias: latitude
+URI: [gc:youtube_url](https://global.church/schema/youtube_url)
+Alias: youtube_url
 
 <!-- no inheritance hierarchy -->
 
@@ -22,7 +22,7 @@ Alias: latitude
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 
 
 
@@ -31,7 +31,7 @@ Alias: latitude
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [Uri](Uri.md)
 
 
 
@@ -55,9 +55,9 @@ Alias: latitude
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:latitude |
-| native | gc:latitude |
-| exact | schema:latitude |
+| self | gc:youtube_url |
+| native | gc:youtube_url |
+| exact | schema:sameAs |
 
 
 
@@ -66,16 +66,16 @@ Alias: latitude
 
 <details>
 ```yaml
-name: latitude
-description: Geographic latitude (decimal degrees).
+name: youtube_url
+description: YouTube channel URL.
 from_schema: https://global.church/schema
 exact_mappings:
-- schema:latitude
+- schema:sameAs
 rank: 1000
-alias: latitude
+alias: youtube_url
 domain_of:
-- Church
-range: float
+- EnrichedData
+range: uri
 
 ```
 </details>

@@ -57,6 +57,7 @@ Alias: address
 | ---  | ---  |
 | self | gc:address |
 | native | gc:address |
+| exact | schema:address |
 
 
 
@@ -68,6 +69,8 @@ Alias: address
 name: address
 description: Physical street address.
 from_schema: https://global.church/schema
+exact_mappings:
+- schema:address
 rank: 1000
 alias: address
 domain_of:

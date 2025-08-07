@@ -59,6 +59,7 @@ Alias: user_id
 | ---  | ---  |
 | self | gc:user_id |
 | native | gc:user_id |
+| exact | schema:identifier |
 
 
 
@@ -70,6 +71,8 @@ Alias: user_id
 name: user_id
 description: Primary key for User (also referenced by other tables).
 from_schema: https://global.church/schema
+exact_mappings:
+- schema:identifier
 rank: 1000
 identifier: true
 alias: user_id

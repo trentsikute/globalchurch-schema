@@ -57,6 +57,7 @@ Alias: longitude
 | ---  | ---  |
 | self | gc:longitude |
 | native | gc:longitude |
+| exact | schema:longitude |
 
 
 
@@ -68,6 +69,8 @@ Alias: longitude
 name: longitude
 description: Geographic longitude (decimal degrees).
 from_schema: https://global.church/schema
+exact_mappings:
+- schema:longitude
 rank: 1000
 alias: longitude
 domain_of:

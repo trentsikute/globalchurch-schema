@@ -57,6 +57,7 @@ Alias: interests
 | ---  | ---  |
 | self | gc:interests |
 | native | gc:interests |
+| exact | schema:interest |
 
 
 
@@ -68,6 +69,8 @@ Alias: interests
 name: interests
 description: Free-text interests or ministry areas.
 from_schema: https://global.church/schema
+exact_mappings:
+- schema:interest
 rank: 1000
 alias: interests
 domain_of:

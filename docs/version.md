@@ -1,16 +1,16 @@
 
 
-# Slot: gers_id 
+# Slot: version 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Overture version number._
 
 
 
 
 
-URI: [gc:gers_id](https://global.church/schema/gers_id)
-Alias: gers_id
+URI: [gc:version](https://global.church/schema/version)
+Alias: version
 
 <!-- no inheritance hierarchy -->
 
@@ -23,7 +23,6 @@ Alias: gers_id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
 
 
 
@@ -32,7 +31,7 @@ Alias: gers_id
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [Integer](Integer.md)
 
 
 
@@ -56,8 +55,8 @@ Alias: gers_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:gers_id |
-| native | gc:gers_id |
+| self | gc:version |
+| native | gc:version |
 
 
 
@@ -66,15 +65,14 @@ Alias: gers_id
 
 <details>
 ```yaml
-name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+name: version
+description: Overture version number.
 from_schema: https://global.church/schema
 rank: 1000
-alias: gers_id
+alias: version
 domain_of:
-- Church
 - Overture
-range: string
+range: integer
 
 ```
 </details>

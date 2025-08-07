@@ -1,16 +1,16 @@
 
 
-# Slot: gers_id 
+# Slot: belief_type 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Denomination / church type category._
 
 
 
 
 
-URI: [gc:gers_id](https://global.church/schema/gers_id)
-Alias: gers_id
+URI: [gc:belief_type](https://global.church/schema/belief_type)
+Alias: belief_type
 
 <!-- no inheritance hierarchy -->
 
@@ -22,8 +22,7 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 
 
 
@@ -56,8 +55,8 @@ Alias: gers_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:gers_id |
-| native | gc:gers_id |
+| self | gc:belief_type |
+| native | gc:belief_type |
 
 
 
@@ -66,14 +65,13 @@ Alias: gers_id
 
 <details>
 ```yaml
-name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+name: belief_type
+description: Denomination / church type category.
 from_schema: https://global.church/schema
 rank: 1000
-alias: gers_id
+alias: belief_type
 domain_of:
-- Church
-- Overture
+- EnrichedData
 range: string
 
 ```

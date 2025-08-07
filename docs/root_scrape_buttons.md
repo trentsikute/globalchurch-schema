@@ -1,16 +1,16 @@
 
 
-# Slot: gers_id 
+# Slot: root_scrape_buttons 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Button texts captured on root page._
 
 
 
 
 
-URI: [gc:gers_id](https://global.church/schema/gers_id)
-Alias: gers_id
+URI: [gc:root_scrape_buttons](https://global.church/schema/root_scrape_buttons)
+Alias: root_scrape_buttons
 
 <!-- no inheritance hierarchy -->
 
@@ -22,8 +22,7 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
 
 
 
@@ -56,8 +55,8 @@ Alias: gers_id
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:gers_id |
-| native | gc:gers_id |
+| self | gc:root_scrape_buttons |
+| native | gc:root_scrape_buttons |
 
 
 
@@ -66,14 +65,13 @@ Alias: gers_id
 
 <details>
 ```yaml
-name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+name: root_scrape_buttons
+description: Button texts captured on root page.
 from_schema: https://global.church/schema
 rank: 1000
-alias: gers_id
+alias: root_scrape_buttons
 domain_of:
-- Church
-- Overture
+- ChurchWebsite
 range: string
 
 ```
