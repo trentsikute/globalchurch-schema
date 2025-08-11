@@ -1,6 +1,13 @@
 # To generate the documentation, run:  linkml generate doc globalchurch.yaml --directory docs
+
+title: GlobalChurch
+description: LinkML schema docs for Global.Church
+
+# Use Just the Docs as a remote theme (supported by GitHub Pages)
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
 markdown: kramdown
 kramdown:
   toc_levels: 1..2
-
-theme: "just-the-docs"
