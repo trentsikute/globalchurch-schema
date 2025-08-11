@@ -1,7 +1,5 @@
 # GlobalChurch
 
-- See **[Subsets](Subsets.md)** for a full list of subset tags.
-
 
 
 URI: https://global.church/schema
@@ -82,7 +80,7 @@ Name: GlobalChurch
 
 | Enumeration | Description |
 | --- | --- |
-| [BeliefTypeEnum](BeliefTypeEnum.html) | Top-level Christian family grouping used by Global |
+| [BeliefTypeEnum](BeliefTypeEnum.md) | Top-level Christian family grouping used by Global |
 
 
 ## Types
@@ -115,12 +113,13 @@ Name: GlobalChurch
 
 
 ## Subsets
+
 | Subset | Description |
 | --- | --- |
-| church_core | Minimal fields needed to represent a church. |
-| enrichment | Usually derived by AI or post-processing. |
-| internal | Operational/internal fields for Global.Church. |
-| overture | Sourced from Overture Maps. |
-| pii | Potentially personally identifiable or sensitive. |
-| public | Fields available for public consumption. |
-| user_core | Minimal fields needed to represent a user. |
+| [ChurchCore](ChurchCore.md) | Minimal fields needed to represent a church |
+| [Enrichment](Enrichment.md) | Usually derived by AI or post-processing |
+| [Internal](Internal.md) | Operational/internal fields for Global |
+| [Overture](Overture.md) | Sourced from Overture Maps |
+| [Pii](Pii.md) | Potentially personally identifiable or sensitive |
+| [Public](Public.md) | Fields available for public consumption |
+| [UserCore](UserCore.md) | Minimal fields needed to represent a user |
