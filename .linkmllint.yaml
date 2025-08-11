@@ -1,0 +1,4 @@
+fail_level: error
+rules:
+  canonical_prefixes:
+    level: warning   # or "ignore" if you never want to see it
