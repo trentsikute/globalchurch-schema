@@ -33,7 +33,23 @@ Alias: root_candidates
 
 * Range: [String](String.md)
 
+* Multivalued: True
 
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| ["https://gracechurch.org/beliefs", "https://gracechurch.org/ministries"] |
+
+## Comments
+
+* Potential internal links to pages like “Beliefs”, “Ministries”, “Visit”, etc.
+Feed these into downstream enrichment for targeted scraping.
+Store fully qualified URLs when possible.
 
 
 ## Identifier and Mapping Information
@@ -67,6 +83,17 @@ Alias: root_candidates
 ```yaml
 name: root_candidates
 description: Candidate URLs extracted from the root page.
+comments:
+- 'Potential internal links to pages like “Beliefs”, “Ministries”, “Visit”, etc.
+
+  Feed these into downstream enrichment for targeted scraping.
+
+  Store fully qualified URLs when possible.
+
+  '
+examples:
+- value: '["https://gracechurch.org/beliefs", "https://gracechurch.org/ministries"]'
+  description: Two high-value candidate pages as a JSON array string.
 in_subset:
 - internal
 from_schema: https://global.church/schema
@@ -75,6 +102,7 @@ alias: root_candidates
 domain_of:
 - ChurchWebsite
 range: string
+multivalued: true
 
 ```
 </details>

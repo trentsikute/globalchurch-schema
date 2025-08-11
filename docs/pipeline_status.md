@@ -3,7 +3,7 @@
 # Slot: pipeline_status 
 
 
-_Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED)._
+_Current enrichment pipeline stage._
 
 
 
@@ -36,6 +36,23 @@ Alias: pipeline_status
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| RAW |
+| VALIDATED |
+
+## Comments
+
+* Suggested stages: RAW → CLEAN → ENRICHED → VALIDATED.
+RAW: ingested with minimal checks.
+CLEAN: deduplicated & normalized.
+ENRICHED: scraped/AI fields added.
+VALIDATED: human-reviewed.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +83,24 @@ Alias: pipeline_status
 <details>
 ```yaml
 name: pipeline_status
-description: Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED).
+description: Current enrichment pipeline stage.
+comments:
+- 'Suggested stages: RAW → CLEAN → ENRICHED → VALIDATED.
+
+  RAW: ingested with minimal checks.
+
+  CLEAN: deduplicated & normalized.
+
+  ENRICHED: scraped/AI fields added.
+
+  VALIDATED: human-reviewed.
+
+  '
+examples:
+- value: RAW
+  description: Fresh intake from a seed source.
+- value: VALIDATED
+  description: Reviewed and approved record.
 in_subset:
 - internal
 from_schema: https://global.church/schema

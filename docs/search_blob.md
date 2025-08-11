@@ -3,7 +3,7 @@
 # Slot: search_blob 
 
 
-_Concatenated text blob used for full-text search._
+_Concatenated text of searchable fields for indexing._
 
 
 
@@ -25,6 +25,20 @@ Alias: search_blob
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Grace Community Church 123 Main St Springfield CA 62704 US |
+
+## Comments
+
+* This slot is used internally to store a combined string of key fields
+(e.g., name, address, keywords) for full-text search indexing.
+Not intended for direct display or export.
 
 
 ## Identifier and Mapping Information
@@ -57,7 +71,18 @@ Alias: search_blob
 <details>
 ```yaml
 name: search_blob
-description: Concatenated text blob used for full-text search.
+description: Concatenated text of searchable fields for indexing.
+comments:
+- 'This slot is used internally to store a combined string of key fields
+
+  (e.g., name, address, keywords) for full-text search indexing.
+
+  Not intended for direct display or export.
+
+  '
+examples:
+- value: Grace Community Church 123 Main St Springfield CA 62704 US
+  description: Combined fields for search.
 in_subset:
 - internal
 from_schema: https://global.church/schema

@@ -88,7 +88,6 @@ URI: [UserCore](UserCore.md)
 
 
 
-        
 
 
 
@@ -110,10 +109,9 @@ URI: [UserCore](UserCore.md)
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
-| [email](email.md) | 0..1 <br/> [email](email.md) | Main contact email  |
-| [family_name](family_name.md) | 0..1 <br/> [String](String.md) | Last name  |
-| [given_name](given_name.md) | 0..1 <br/> [String](String.md) | First name  |
-| [user_id](user_id.md) | 1 <br/> [Uuid](Uuid.md) | Primary key for User (also referenced by other tables) **identifier** |
+| [email](email.md) | 0..1 <br/> [email](email.md) | Primary contact email for the user  |
+| [family_name](family_name.md) | 0..1 <br/> [String](String.md) | User’s last (family) name  |
+| [given_name](given_name.md) | 0..1 <br/> [String](String.md) | User’s first (given) name  |
 
 
 
@@ -122,9 +120,8 @@ URI: [UserCore](UserCore.md)
 
 | Slot | Description |
 | --- | --- |
-| [email](email.md) | Main contact email |
-| [family_name](family_name.md) | Last name |
-| [given_name](given_name.md) | First name |
-| [user_id](user_id.md) | Primary key for User (also referenced by other tables) |
+| [email](email.md) | Primary contact email for the user |
+| [family_name](family_name.md) | User’s last (family) name |
+| [given_name](given_name.md) | User’s first (given) name |
 
 

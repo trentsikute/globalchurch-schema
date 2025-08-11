@@ -33,7 +33,22 @@ Alias: service_languages
 
 * Range: [String](String.md)
 
+* Multivalued: True
 
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| ["English", "Spanish"] |
+
+## Comments
+
+* Use ISO 639 language names or tags where possible (e.g., “en”, “es” or “English”, “Spanish”).
+Include multiple entries for multilingual services/campuses.
 
 
 ## Identifier and Mapping Information
@@ -68,6 +83,16 @@ Alias: service_languages
 ```yaml
 name: service_languages
 description: Languages in which services are offered.
+comments:
+- 'Use ISO 639 language names or tags where possible (e.g., “en”, “es” or “English”,
+  “Spanish”).
+
+  Include multiple entries for multilingual services/campuses.
+
+  '
+examples:
+- value: '["English", "Spanish"]'
+  description: Bilingual services as a JSON array string.
 in_subset:
 - public
 - enrichment
@@ -79,6 +104,7 @@ alias: service_languages
 domain_of:
 - EnrichedData
 range: string
+multivalued: true
 
 ```
 </details>

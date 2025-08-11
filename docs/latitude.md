@@ -3,7 +3,7 @@
 # Slot: latitude 
 
 
-_Geographic latitude (decimal degrees)._
+_Latitude in decimal degrees._
 
 
 
@@ -33,7 +33,25 @@ Alias: latitude
 
 * Range: [Float](Float.md)
 
+* Minimum Value: -90
 
+* Maximum Value: 90
+
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| 34.0259 |
+| -33.8688 |
+
+## Comments
+
+* Use WGS84 decimal degrees. South is negative.
+Precision of 5–6 decimal places is typically sufficient (~1–10 meters).
 
 
 ## Identifier and Mapping Information
@@ -67,7 +85,18 @@ Alias: latitude
 <details>
 ```yaml
 name: latitude
-description: Geographic latitude (decimal degrees).
+description: Latitude in decimal degrees.
+comments:
+- 'Use WGS84 decimal degrees. South is negative.
+
+  Precision of 5–6 decimal places is typically sufficient (~1–10 meters).
+
+  '
+examples:
+- value: '34.0259'
+  description: Approximate latitude for Malibu, CA.
+- value: '-33.8688'
+  description: Southern hemisphere example (Sydney).
 in_subset:
 - church_core
 - public
@@ -79,6 +108,8 @@ alias: latitude
 domain_of:
 - Church
 range: float
+minimum_value: -90
+maximum_value: 90
 
 ```
 </details>

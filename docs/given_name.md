@@ -3,7 +3,7 @@
 # Slot: given_name 
 
 
-_First name._
+_User’s first (given) name._
 
 
 
@@ -34,6 +34,20 @@ Alias: given_name
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Ava |
+| Jean-Luc |
+
+## Comments
+
+* Use the person’s preferred first name. Do not include middle names or initials here.
+For organizations or teams, this slot should be left empty.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +81,19 @@ Alias: given_name
 <details>
 ```yaml
 name: given_name
-description: First name.
+description: User’s first (given) name.
+comments:
+- 'Use the person’s preferred first name. Do not include middle names or initials
+  here.
+
+  For organizations or teams, this slot should be left empty.
+
+  '
+examples:
+- value: Ava
+  description: Simple given name.
+- value: Jean-Luc
+  description: Hyphenated given name.
 in_subset:
 - user_core
 - pii

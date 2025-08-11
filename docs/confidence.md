@@ -3,7 +3,7 @@
 # Slot: confidence 
 
 
-_Confidence score (0–1)._
+_Confidence score (0–1) from Overture._
 
 
 
@@ -36,6 +36,19 @@ Alias: confidence
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| 0.92 |
+
+## Comments
+
+* A numeric score indicating confidence in the match or attribution.
+If absent upstream, leave empty rather than inventing a value.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,16 @@ Alias: confidence
 <details>
 ```yaml
 name: confidence
-description: Confidence score (0–1).
+description: Confidence score (0–1) from Overture.
+comments:
+- 'A numeric score indicating confidence in the match or attribution.
+
+  If absent upstream, leave empty rather than inventing a value.
+
+  '
+examples:
+- value: '0.92'
+  description: High-confidence attribution.
 in_subset:
 - overture
 from_schema: https://global.church/schema

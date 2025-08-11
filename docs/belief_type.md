@@ -3,11 +3,9 @@
 # Slot: belief_type 
 
 
-_Denomination / church type category.  _
+_Denomination / church type category._
 
-_This slot classifies a church into one of several top-level Christian family groupings_
-
-_as defined by the BeliefTypeEnum.  _
+_Classifies the church into a top-level Christian family as defined by BeliefTypeEnum._
 
 _Based on the Harvest Information Standards (HIS) Registry of Religions._
 
@@ -44,6 +42,20 @@ Alias: belief_type
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| protestant |
+| unknown |
+
+## Comments
+
+* Use the controlled values in BeliefTypeEnum. When unclear, set `unknown`.
+You may revise this after human review.
+
+
 ## Identifier and Mapping Information
 
 
@@ -74,9 +86,24 @@ Alias: belief_type
 <details>
 ```yaml
 name: belief_type
-description: "Denomination / church type category.  \nThis slot classifies a church\
-  \ into one of several top-level Christian family groupings\nas defined by the BeliefTypeEnum.\
-  \  \nBased on the Harvest Information Standards (HIS) Registry of Religions.\n"
+description: 'Denomination / church type category.
+
+  Classifies the church into a top-level Christian family as defined by BeliefTypeEnum.
+
+  Based on the Harvest Information Standards (HIS) Registry of Religions.
+
+  '
+comments:
+- 'Use the controlled values in BeliefTypeEnum. When unclear, set `unknown`.
+
+  You may revise this after human review.
+
+  '
+examples:
+- value: protestant
+  description: Derived from the site’s denomination statement.
+- value: unknown
+  description: Insufficient info to classify.
 in_subset:
 - public
 - enrichment

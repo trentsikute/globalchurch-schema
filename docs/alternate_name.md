@@ -3,7 +3,7 @@
 # Slot: alternate_name 
 
 
-_Alternate or colloquial church name._
+_Alternate, colloquial, or short name for the church._
 
 
 
@@ -25,6 +25,20 @@ Alias: alternate_name
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Grace Church |
+| GCC Malibu |
+
+## Comments
+
+* Use for commonly used nicknames, abbreviations, or campus-specific names.
+Leave blank if the church is only known by its official name.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +72,18 @@ Alias: alternate_name
 <details>
 ```yaml
 name: alternate_name
-description: Alternate or colloquial church name.
+description: Alternate, colloquial, or short name for the church.
+comments:
+- 'Use for commonly used nicknames, abbreviations, or campus-specific names.
+
+  Leave blank if the church is only known by its official name.
+
+  '
+examples:
+- value: Grace Church
+  description: Shortened version of official name.
+- value: GCC Malibu
+  description: Colloquial campus name.
 in_subset:
 - public
 from_schema: https://global.church/schema

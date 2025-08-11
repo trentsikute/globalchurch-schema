@@ -3,7 +3,7 @@
 # Slot: trinitarian_beliefs 
 
 
-_True if church affirms classical Trinitarian doctrine._
+_Whether the church affirms classical Trinitarian doctrine._
 
 
 
@@ -36,6 +36,20 @@ Alias: trinitarian_beliefs
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| true |
+| false |
+
+## Comments
+
+* Boolean derived from site language (e.g., statements referencing Father, Son, Holy Spirit).
+When unknown or ambiguous, leave unset rather than guessing.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +80,19 @@ Alias: trinitarian_beliefs
 <details>
 ```yaml
 name: trinitarian_beliefs
-description: True if church affirms classical Trinitarian doctrine.
+description: Whether the church affirms classical Trinitarian doctrine.
+comments:
+- 'Boolean derived from site language (e.g., statements referencing Father, Son, Holy
+  Spirit).
+
+  When unknown or ambiguous, leave unset rather than guessing.
+
+  '
+examples:
+- value: 'true'
+  description: Affirmed on the Beliefs page.
+- value: 'false'
+  description: Explicitly non-Trinitarian statement.
 in_subset:
 - public
 - enrichment

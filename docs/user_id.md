@@ -3,7 +3,7 @@
 # Slot: user_id 
 
 
-_Primary key for User (also referenced by other tables)._
+_Unique ID for a registered platform user._
 
 
 
@@ -38,6 +38,21 @@ Alias: user_id
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| 550e8400-e29b-41d4-a716-446655440000 |
+| 3fa85f64-5717-4562-b3fc-2c963f66afa6 |
+
+## Comments
+
+* This is the stable, system-issued identifier for a user.
+It is used as the primary key and as the target of foreign keys in related tables.
+Must be a valid UUID (v4 recommended). Never reuse or recycle a user_id.
+
+
 ## Identifier and Mapping Information
 
 
@@ -69,10 +84,20 @@ Alias: user_id
 <details>
 ```yaml
 name: user_id
-description: Primary key for User (also referenced by other tables).
-in_subset:
-- public
-- user_core
+description: Unique ID for a registered platform user.
+comments:
+- 'This is the stable, system-issued identifier for a user.
+
+  It is used as the primary key and as the target of foreign keys in related tables.
+
+  Must be a valid UUID (v4 recommended). Never reuse or recycle a user_id.
+
+  '
+examples:
+- value: 550e8400-e29b-41d4-a716-446655440000
+  description: Example UUID for a user record.
+- value: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+  description: Another valid UUID.
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:identifier

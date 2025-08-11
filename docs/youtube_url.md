@@ -36,6 +36,19 @@ Alias: youtube_url
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| https://www.youtube.com/@GraceChurch |
+
+## Comments
+
+* Prefer the canonical channel or handle URL (not individual video URLs).
+Normalize to https and include trailing slash when appropriate.
+
+
 ## Identifier and Mapping Information
 
 
@@ -68,6 +81,15 @@ Alias: youtube_url
 ```yaml
 name: youtube_url
 description: YouTube channel URL.
+comments:
+- 'Prefer the canonical channel or handle URL (not individual video URLs).
+
+  Normalize to https and include trailing slash when appropriate.
+
+  '
+examples:
+- value: https://www.youtube.com/@GraceChurch
+  description: Channel handle URL.
 in_subset:
 - public
 - enrichment

@@ -3,7 +3,7 @@
 # Slot: service_times 
 
 
-_Service times (free text)._
+_Service times for public gatherings._
 
 
 
@@ -36,6 +36,21 @@ Alias: service_times
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Sundays 9:00 & 11:00; Wednesdays 7:00 |
+| Sat 18:00 (Español), Sun 10:00 (English) |
+
+## Comments
+
+* Free text or structured patterns (e.g., “Sun 9:00 & 11:00; Wed 19:00”).
+If multiple campuses or languages differ, note this in `service_languages` and
+`programs_offered` where appropriate.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +81,20 @@ Alias: service_times
 <details>
 ```yaml
 name: service_times
-description: Service times (free text).
+description: Service times for public gatherings.
+comments:
+- 'Free text or structured patterns (e.g., “Sun 9:00 & 11:00; Wed 19:00”).
+
+  If multiple campuses or languages differ, note this in `service_languages` and
+
+  `programs_offered` where appropriate.
+
+  '
+examples:
+- value: Sundays 9:00 & 11:00; Wednesdays 7:00
+  description: Weekly cadence.
+- value: Sat 18:00 (Español), Sun 10:00 (English)
+  description: Bilingual schedule.
 in_subset:
 - public
 - enrichment

@@ -3,7 +3,7 @@
 # Slot: programs_offered 
 
 
-_List of programs or ministries offered._
+_Programs or ministries the church offers._
 
 
 
@@ -33,7 +33,22 @@ Alias: programs_offered
 
 * Range: [String](String.md)
 
+* Multivalued: True
 
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| ["Youth Ministry", "Food Pantry", "Alpha Course"] |
+
+## Comments
+
+* List distinct program names (e.g., “Youth”, “Alpha”, “Food Pantry”).
+Prefer stable, human-readable labels; avoid internal codes in public data.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +82,16 @@ Alias: programs_offered
 <details>
 ```yaml
 name: programs_offered
-description: List of programs or ministries offered.
+description: Programs or ministries the church offers.
+comments:
+- 'List distinct program names (e.g., “Youth”, “Alpha”, “Food Pantry”).
+
+  Prefer stable, human-readable labels; avoid internal codes in public data.
+
+  '
+examples:
+- value: '["Youth Ministry", "Food Pantry", "Alpha Course"]'
+  description: Three public-facing programs as a JSON array string.
 in_subset:
 - public
 - enrichment
@@ -79,6 +103,7 @@ alias: programs_offered
 domain_of:
 - EnrichedData
 range: string
+multivalued: true
 
 ```
 </details>

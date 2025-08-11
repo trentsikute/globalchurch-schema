@@ -3,7 +3,7 @@
 # Slot: primary_church 
 
 
-_FK → Church.church_id (the user’s primary church)._
+_FK to the user’s primary Church._
 
 
 
@@ -36,6 +36,19 @@ Alias: primary_church
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| a4b7b3a1-2c6e-4b0a-8c0a-2d6e5c9a2f11 |
+
+## Comments
+
+* Points to `Church.church_id`. Use when a user affiliates with a single congregation.
+If the user participates at multiple churches, consider also setting `alternate_church`.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,16 @@ Alias: primary_church
 <details>
 ```yaml
 name: primary_church
-description: FK → Church.church_id (the user’s primary church).
+description: FK to the user’s primary Church.
+comments:
+- 'Points to `Church.church_id`. Use when a user affiliates with a single congregation.
+
+  If the user participates at multiple churches, consider also setting `alternate_church`.
+
+  '
+examples:
+- value: a4b7b3a1-2c6e-4b0a-8c0a-2d6e5c9a2f11
+  description: UUID of the primary church.
 in_subset:
 - internal
 from_schema: https://global.church/schema

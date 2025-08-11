@@ -3,7 +3,7 @@
 # Slot: candidates_text_and_links 
 
 
-_Text and associated links for candidate pages._
+_Text snippets and associated links for candidate pages._
 
 
 
@@ -33,7 +33,23 @@ Alias: candidates_text_and_links
 
 * Range: [String](String.md)
 
+* Multivalued: True
 
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| ["{\"text\": \"Beliefs\", \"url\": \"https://gracechurch.org/beliefs\"}", "{\"text\": \"Plan a Visit\", \"url\": \"https://gracechurch.org/visit\"}"] |
+
+## Comments
+
+* Use a consistent representation (e.g., JSON strings) pairing anchor text with href.
+Example object shape: {"text": "Beliefs", "url": "https://…/beliefs"}.
+Helps prioritize which candidate links are most relevant.
 
 
 ## Identifier and Mapping Information
@@ -66,7 +82,19 @@ Alias: candidates_text_and_links
 <details>
 ```yaml
 name: candidates_text_and_links
-description: Text and associated links for candidate pages.
+description: Text snippets and associated links for candidate pages.
+comments:
+- 'Use a consistent representation (e.g., JSON strings) pairing anchor text with href.
+
+  Example object shape: {"text": "Beliefs", "url": "https://…/beliefs"}.
+
+  Helps prioritize which candidate links are most relevant.
+
+  '
+examples:
+- value: '["{\"text\": \"Beliefs\", \"url\": \"https://gracechurch.org/beliefs\"}",
+    "{\"text\": \"Plan a Visit\", \"url\": \"https://gracechurch.org/visit\"}"]'
+  description: Two text–link pairs serialized as a JSON array of JSON objects.
 in_subset:
 - internal
 from_schema: https://global.church/schema
@@ -75,6 +103,7 @@ alias: candidates_text_and_links
 domain_of:
 - ChurchWebsite
 range: string
+multivalued: true
 
 ```
 </details>

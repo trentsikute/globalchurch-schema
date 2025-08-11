@@ -112,7 +112,6 @@ URI: [Public](Public.md)
 
         
 
-        
 
 
         
@@ -138,34 +137,33 @@ URI: [Public](Public.md)
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
-| [address](address.md) | 0..1 <br/> [String](String.md) | Physical street address  |
-| [church_id](church_id.md) | 1 <br/> [Uuid](Uuid.md) | Primary key for Church; referenced by related tables **identifier** |
-| [gers_id](gers_id.md) | 0..1 <br/> [String](String.md) | ID from the Government/Ecclesiastical Registry System (if available)  |
-| [latitude](latitude.md) | 0..1 <br/> [Float](Float.md) | Geographic latitude (decimal degrees)  |
-| [longitude](longitude.md) | 0..1 <br/> [Float](Float.md) | Geographic longitude (decimal degrees)  |
-| [name](name.md) | 0..1 <br/> [String](String.md) | Official church name  |
+| [address](address.md) | 0..1 <br/> [String](String.md) | Physical street address of the church or user  |
+| [church_id](church_id.md) | 1 <br/> [Uuid](Uuid.md) | Global **identifier** |
+| [country](country.md) | 1 <br/> [IsoCountryCode](IsoCountryCode.md) | Country code in ISO 3166-1 alpha-2 format  |
+| [gers_id](gers_id.md) | 0..1 <br/> [String](String.md) | Government/Ecclesiastical Registry System identifier  |
+| [latitude](latitude.md) | 0..1 <br/> [Float](Float.md) | Latitude in decimal degrees  |
+| [locality](locality.md) | 0..1 <br/> [String](String.md) | City or locality where the church is located  |
+| [longitude](longitude.md) | 0..1 <br/> [Float](Float.md) | Longitude in decimal degrees  |
+| [name](name.md) | 1 <br/> [String](String.md) | Official church name  |
+| [postal_code](postal_code.md) | 0..1 <br/> [String](String.md) | Postal code or ZIP code for the address  |
+| [region](region.md) | 0..1 <br/> [String](String.md) | State, province, or administrative region  |
 
 ### Slots from [EnrichedData](EnrichedData.md) also in _public_
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
 | [belief_type](belief_type.md) | 0..1 <br/> [BeliefTypeEnum](BeliefTypeEnum.md) | Denomination / church type category  |
-| [church_beliefs_url](church_beliefs_url.md) | 0..1 <br/> [Uri](Uri.md) | URL of the statement of faith or similar statement of beliefs  |
-| [church_id](church_id.md) | 1 <br/> [Uuid](Uuid.md) | Primary key for Church; referenced by related tables **identifier** |
-| [church_summary](church_summary.md) | 0..1 <br/> [String](String.md) | Concise summary of the church, including key attributes and offerings  |
+| [church_beliefs_url](church_beliefs_url.md) | 0..1 <br/> [Uri](Uri.md) | URL for the church’s statement of beliefs/faith  |
+| [church_id](church_id.md) | 1 <br/> [Uuid](Uuid.md) | Global **identifier** |
+| [church_summary](church_summary.md) | 0..1 <br/> [String](String.md) | Concise public summary of the church  |
 | [instagram_url](instagram_url.md) | 0..1 <br/> [Uri](Uri.md) | Instagram profile URL  |
-| [programs_offered](programs_offered.md) | 0..1 <br/> [String](String.md) | List of programs or ministries offered  |
-| [scraped_address](scraped_address.md) | 0..1 <br/> [String](String.md) | Postal address extracted from site  |
-| [service_languages](service_languages.md) | 0..1 <br/> [String](String.md) | Languages in which services are offered  |
-| [service_times](service_times.md) | 0..1 <br/> [String](String.md) | Service times (free text)  |
-| [trinitarian_beliefs](trinitarian_beliefs.md) | 0..1 <br/> [Boolean](Boolean.md) | True if church affirms classical Trinitarian doctrine  |
+| [programs_offered](programs_offered.md) | * <br/> [String](String.md) | Programs or ministries the church offers  |
+| [scraped_address](scraped_address.md) | 0..1 <br/> [String](String.md) | Postal address extracted from the website  |
+| [service_languages](service_languages.md) | * <br/> [String](String.md) | Languages in which services are offered  |
+| [service_times](service_times.md) | 0..1 <br/> [String](String.md) | Service times for public gatherings  |
+| [trinitarian_beliefs](trinitarian_beliefs.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the church affirms classical Trinitarian doctrine  |
 | [youtube_url](youtube_url.md) | 0..1 <br/> [Uri](Uri.md) | YouTube channel URL  |
 
-### Slots from [User](User.md) also in _public_
-
-| Name | Cardinality and Range | Description |
-| ---  | ---  | --- |
-| [user_id](user_id.md) | 1 <br/> [Uuid](Uuid.md) | Primary key for User (also referenced by other tables) **identifier** |
 
 
 
@@ -174,33 +172,32 @@ URI: [Public](Public.md)
 
 | Slot | Description |
 | --- | --- |
-| [address](address.md) | Physical street address |
-| [alternate_name](alternate_name.md) | Alternate or colloquial church name |
+| [address](address.md) | Physical street address of the church or user |
+| [alternate_name](alternate_name.md) | Alternate, colloquial, or short name for the church |
 | [belief_type](belief_type.md) | Denomination / church type category |
-| [church_beliefs_url](church_beliefs_url.md) | URL of the statement of faith or similar statement of beliefs |
-| [church_id](church_id.md) | Primary key for Church; referenced by related tables |
-| [church_summary](church_summary.md) | Concise summary of the church, including key attributes and offerings |
-| [country](country.md) | ISO-3166 country code |
-| [description](description.md) | Long-form description of the church |
-| [gers_id](gers_id.md) | ID from the Government/Ecclesiastical Registry System (if available) |
+| [church_beliefs_url](church_beliefs_url.md) | URL for the church’s statement of beliefs/faith |
+| [church_id](church_id.md) | Global |
+| [church_summary](church_summary.md) | Concise public summary of the church |
+| [country](country.md) | Country code in ISO 3166-1 alpha-2 format |
+| [description](description.md) | Detailed narrative description of the church |
+| [gers_id](gers_id.md) | Government/Ecclesiastical Registry System identifier |
 | [instagram_url](instagram_url.md) | Instagram profile URL |
-| [keywords](keywords.md) | Comma-separated keywords or tags |
-| [latitude](latitude.md) | Geographic latitude (decimal degrees) |
-| [locality](locality.md) | City or locality of the church |
-| [longitude](longitude.md) | Geographic longitude (decimal degrees) |
+| [keywords](keywords.md) | Keywords or tags describing the church |
+| [latitude](latitude.md) | Latitude in decimal degrees |
+| [locality](locality.md) | City or locality where the church is located |
+| [longitude](longitude.md) | Longitude in decimal degrees |
 | [name](name.md) | Official church name |
-| [opening_hours](opening_hours.md) | Opening hours information |
-| [phone](phone.md) | Church phone number |
-| [postal_code](postal_code.md) | Postal / ZIP code |
-| [programs_offered](programs_offered.md) | List of programs or ministries offered |
-| [region](region.md) | State, province, or region |
-| [scraped_address](scraped_address.md) | Postal address extracted from site |
+| [opening_hours](opening_hours.md) | Church opening hours or service schedule |
+| [phone](phone.md) | Official phone number for the church |
+| [postal_code](postal_code.md) | Postal code or ZIP code for the address |
+| [programs_offered](programs_offered.md) | Programs or ministries the church offers |
+| [region](region.md) | State, province, or administrative region |
+| [scraped_address](scraped_address.md) | Postal address extracted from the website |
 | [service_languages](service_languages.md) | Languages in which services are offered |
-| [service_times](service_times.md) | Service times (free text) |
-| [social_media](social_media.md) | JSON or comma-separated social media handles |
-| [trinitarian_beliefs](trinitarian_beliefs.md) | True if church affirms classical Trinitarian doctrine |
-| [user_id](user_id.md) | Primary key for User (also referenced by other tables) |
-| [website](website.md) | Full website URL |
+| [service_times](service_times.md) | Service times for public gatherings |
+| [social_media](social_media.md) | List of social media handles or URLs associated with the church |
+| [trinitarian_beliefs](trinitarian_beliefs.md) | Whether the church affirms classical Trinitarian doctrine |
+| [website](website.md) | Full website URL for the church |
 | [youtube_url](youtube_url.md) | YouTube channel URL |
 
 

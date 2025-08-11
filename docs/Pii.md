@@ -105,10 +105,10 @@ URI: [Pii](Pii.md)
 
 | Slot | Description |
 | --- | --- |
-| [email](email.md) | Main contact email |
-| [family_name](family_name.md) | Last name |
-| [given_name](given_name.md) | First name |
-| [scraped_email](scraped_email.md) | Email address extracted from site |
-| [telephone](telephone.md) | Phone number (international format recommended) |
+| [email](email.md) | Primary contact email for the user |
+| [family_name](family_name.md) | User’s last (family) name |
+| [given_name](given_name.md) | User’s first (given) name |
+| [scraped_email](scraped_email.md) | Public email address extracted from the website |
+| [telephone](telephone.md) | User’s phone number (E |
 
 

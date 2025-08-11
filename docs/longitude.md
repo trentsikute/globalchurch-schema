@@ -3,7 +3,7 @@
 # Slot: longitude 
 
 
-_Geographic longitude (decimal degrees)._
+_Longitude in decimal degrees._
 
 
 
@@ -33,7 +33,25 @@ Alias: longitude
 
 * Range: [Float](Float.md)
 
+* Minimum Value: -180
 
+* Maximum Value: 180
+
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| -118.7798 |
+| 151.2093 |
+
+## Comments
+
+* Use WGS84 decimal degrees. West is negative.
+Keep latitude/longitude pairs from the same source to avoid mismatch.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +85,18 @@ Alias: longitude
 <details>
 ```yaml
 name: longitude
-description: Geographic longitude (decimal degrees).
+description: Longitude in decimal degrees.
+comments:
+- 'Use WGS84 decimal degrees. West is negative.
+
+  Keep latitude/longitude pairs from the same source to avoid mismatch.
+
+  '
+examples:
+- value: '-118.7798'
+  description: Approximate longitude for Malibu, CA.
+- value: '151.2093'
+  description: Eastern hemisphere example (Sydney).
 in_subset:
 - church_core
 - public
@@ -79,6 +108,8 @@ alias: longitude
 domain_of:
 - Church
 range: float
+minimum_value: -180
+maximum_value: 180
 
 ```
 </details>

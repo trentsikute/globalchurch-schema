@@ -3,7 +3,7 @@
 # Slot: website 
 
 
-_Full website URL._
+_Full website URL for the church._
 
 
 
@@ -25,6 +25,21 @@ Alias: website
 * Range: [Uri](Uri.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| https://gracechurch.org |
+| https://stpauls-sydney.org.au |
+
+## Comments
+
+* Provide the complete URL, including scheme (http/https).
+Use the main public-facing website for the church.
+Exclude social media links (see `instagram_url`, `youtube_url`).
 
 
 ## Identifier and Mapping Information
@@ -58,7 +73,20 @@ Alias: website
 <details>
 ```yaml
 name: website
-description: Full website URL.
+description: Full website URL for the church.
+comments:
+- 'Provide the complete URL, including scheme (http/https).
+
+  Use the main public-facing website for the church.
+
+  Exclude social media links (see `instagram_url`, `youtube_url`).
+
+  '
+examples:
+- value: https://gracechurch.org
+  description: Church homepage.
+- value: https://stpauls-sydney.org.au
+  description: Australian church website.
 in_subset:
 - public
 from_schema: https://global.church/schema

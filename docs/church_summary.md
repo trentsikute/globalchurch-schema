@@ -3,7 +3,7 @@
 # Slot: church_summary 
 
 
-_Concise summary of the church, including key attributes and offerings._
+_Concise public summary of the church._
 
 
 
@@ -36,6 +36,19 @@ Alias: church_summary
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Multi-generational church serving Malibu with Sunday services at 9 & 11am and active youth and outreach programs. |
+
+## Comments
+
+* 1–3 sentences describing the congregation, location, service style, and distinctives.
+Intended for profile cards or search results. Keep under ~300 characters.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,17 @@ Alias: church_summary
 <details>
 ```yaml
 name: church_summary
-description: Concise summary of the church, including key attributes and offerings.
+description: Concise public summary of the church.
+comments:
+- '1–3 sentences describing the congregation, location, service style, and distinctives.
+
+  Intended for profile cards or search results. Keep under ~300 characters.
+
+  '
+examples:
+- value: Multi-generational church serving Malibu with Sunday services at 9 & 11am
+    and active youth and outreach programs.
+  description: Short profile blurb.
 in_subset:
 - public
 - enrichment

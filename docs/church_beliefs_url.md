@@ -3,7 +3,7 @@
 # Slot: church_beliefs_url 
 
 
-_URL of the statement of faith or similar statement of beliefs._
+_URL for the church’s statement of beliefs/faith._
 
 
 
@@ -36,6 +36,19 @@ Alias: church_beliefs_url
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| https://gracechurch.org/beliefs |
+
+## Comments
+
+* Prefer the canonical “Beliefs” page for doctrinal summaries.
+If multiple pages exist, choose the most comprehensive source.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,16 @@ Alias: church_beliefs_url
 <details>
 ```yaml
 name: church_beliefs_url
-description: URL of the statement of faith or similar statement of beliefs.
+description: URL for the church’s statement of beliefs/faith.
+comments:
+- 'Prefer the canonical “Beliefs” page for doctrinal summaries.
+
+  If multiple pages exist, choose the most comprehensive source.
+
+  '
+examples:
+- value: https://gracechurch.org/beliefs
+  description: Canonical beliefs page.
 in_subset:
 - public
 - enrichment

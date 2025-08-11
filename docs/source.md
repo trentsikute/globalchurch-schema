@@ -3,7 +3,7 @@
 # Slot: source 
 
 
-_Source label of the Overture record._
+_Source label from Overture Maps._
 
 
 
@@ -36,6 +36,19 @@ Alias: source
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| overture_places |
+
+## Comments
+
+* The upstream source name (e.g., “overture_places”, “overture_poi”).
+Helps with lineage and debugging.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,16 @@ Alias: source
 <details>
 ```yaml
 name: source
-description: Source label of the Overture record.
+description: Source label from Overture Maps.
+comments:
+- 'The upstream source name (e.g., “overture_places”, “overture_poi”).
+
+  Helps with lineage and debugging.
+
+  '
+examples:
+- value: overture_places
+  description: Upstream dataset label.
 in_subset:
 - overture
 from_schema: https://global.church/schema

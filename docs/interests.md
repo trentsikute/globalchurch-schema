@@ -3,7 +3,7 @@
 # Slot: interests 
 
 
-_Free-text interests or ministry areas._
+_User’s interests or ministry areas._
 
 
 
@@ -34,6 +34,20 @@ Alias: interests
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| missions, photography, discipleship |
+| youth_ministry |
+
+## Comments
+
+* Free text or tags describing ministry passions (e.g., “missions”, “children”, “tech”).
+Prefer consistent tagging conventions to improve searchability.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +81,18 @@ Alias: interests
 <details>
 ```yaml
 name: interests
-description: Free-text interests or ministry areas.
+description: User’s interests or ministry areas.
+comments:
+- 'Free text or tags describing ministry passions (e.g., “missions”, “children”, “tech”).
+
+  Prefer consistent tagging conventions to improve searchability.
+
+  '
+examples:
+- value: missions, photography, discipleship
+  description: Comma-separated input that will be normalized.
+- value: youth_ministry
+  description: Single interest term.
 in_subset:
 - internal
 from_schema: https://global.church/schema

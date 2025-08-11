@@ -3,7 +3,7 @@
 # Slot: scraped_address 
 
 
-_Postal address extracted from site._
+_Postal address extracted from the website._
 
 
 
@@ -34,6 +34,19 @@ Alias: scraped_address
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| 456 Ocean Ave, Malibu, CA 90265 |
+
+## Comments
+
+* Use when the canonical `address` is not available or differs from the site.
+This value may be noisy and should be normalized or validated before publishing.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +80,16 @@ Alias: scraped_address
 <details>
 ```yaml
 name: scraped_address
-description: Postal address extracted from site.
+description: Postal address extracted from the website.
+comments:
+- 'Use when the canonical `address` is not available or differs from the site.
+
+  This value may be noisy and should be normalized or validated before publishing.
+
+  '
+examples:
+- value: 456 Ocean Ave, Malibu, CA 90265
+  description: Address parsed from the footer.
 in_subset:
 - public
 - enrichment

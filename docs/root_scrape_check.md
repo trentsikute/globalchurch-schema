@@ -3,7 +3,7 @@
 # Slot: root_scrape_check 
 
 
-_Checksum or status flag of the scrape._
+_Checksum or status flag indicating scrape state._
 
 
 
@@ -36,6 +36,20 @@ Alias: root_scrape_check
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| sha256:3b2d9f3a… |
+| timeout |
+
+## Comments
+
+* Use for lightweight integrity checks (e.g., a hash of the DOM or a status string
+like “ok”, “blocked”, “timeout”). Helps detect page changes between scrapes.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +80,18 @@ Alias: root_scrape_check
 <details>
 ```yaml
 name: root_scrape_check
-description: Checksum or status flag of the scrape.
+description: Checksum or status flag indicating scrape state.
+comments:
+- 'Use for lightweight integrity checks (e.g., a hash of the DOM or a status string
+
+  like “ok”, “blocked”, “timeout”). Helps detect page changes between scrapes.
+
+  '
+examples:
+- value: sha256:3b2d9f3a…
+  description: Digest of the normalized page content.
+- value: timeout
+  description: Network timeout recorded during scraping.
 in_subset:
 - internal
 from_schema: https://global.church/schema

@@ -3,7 +3,7 @@
 # Slot: opening_hours 
 
 
-_Opening hours information._
+_Church opening hours or service schedule._
 
 
 
@@ -25,6 +25,21 @@ Alias: opening_hours
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Sun 09:00-11:00, Wed 19:00-20:30 |
+| Mo-Fr 09:00-17:00 |
+
+## Comments
+
+* Use either free text or a structured format to describe when the church is open or services are held.
+For structured data, use the schema.org OpeningHours format (e.g., "Mo-Fr 09:00-17:00").
+May include special service times or holiday exceptions.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +73,21 @@ Alias: opening_hours
 <details>
 ```yaml
 name: opening_hours
-description: Opening hours information.
+description: Church opening hours or service schedule.
+comments:
+- 'Use either free text or a structured format to describe when the church is open
+  or services are held.
+
+  For structured data, use the schema.org OpeningHours format (e.g., "Mo-Fr 09:00-17:00").
+
+  May include special service times or holiday exceptions.
+
+  '
+examples:
+- value: Sun 09:00-11:00, Wed 19:00-20:30
+  description: Typical service times.
+- value: Mo-Fr 09:00-17:00
+  description: Weekday opening hours.
 in_subset:
 - public
 from_schema: https://global.church/schema

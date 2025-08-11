@@ -3,7 +3,7 @@
 # Slot: skills 
 
 
-_Comma-separated list of user skills._
+_List of user skills._
 
 
 
@@ -33,7 +33,22 @@ Alias: skills
 
 * Range: [String](String.md)
 
+* Multivalued: True
 
+
+
+
+
+## Examples
+
+| Value |
+| --- |
+| ["photography", "youth_ministry", "python"] |
+
+## Comments
+
+* Use a controlled list where possible (e.g., “photography”, “youth_ministry”, “python”).
+This slot is multivalued—store each skill as a separate list item.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +82,16 @@ Alias: skills
 <details>
 ```yaml
 name: skills
-description: Comma-separated list of user skills.
+description: List of user skills.
+comments:
+- 'Use a controlled list where possible (e.g., “photography”, “youth_ministry”, “python”).
+
+  This slot is multivalued—store each skill as a separate list item.
+
+  '
+examples:
+- value: '["photography", "youth_ministry", "python"]'
+  description: Three discrete skills as a JSON array string.
 in_subset:
 - internal
 from_schema: https://global.church/schema
@@ -78,6 +102,7 @@ alias: skills
 domain_of:
 - User
 range: string
+multivalued: true
 
 ```
 </details>

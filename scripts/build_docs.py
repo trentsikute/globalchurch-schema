@@ -5,6 +5,7 @@
 #!/usr/bin/env python3
 import re
 import subprocess
+import argparse
 from pathlib import Path
 import sys
 
@@ -103,6 +104,21 @@ def replace_subsets_section(index_text: str, table_md: str) -> str:
 
     return head + '\n'.join(new_section_body) + tail
 
+def fix_enum_links(index_text: str, to_html: bool) -> str:
+    """
+    Convert enum links between .md <-> .html depending on target.
+    - For local preview in VS Code: keep .md (to_html=False)
+    - For GitHub Pages: use .html (to_html=True)
+    """
+    if to_html:
+        # BeliefTypeEnum.md -> BeliefTypeEnum.html
+        pattern = re.compile(r"\]\(([A-Z][A-Za-z0-9]*Enum)\.md\)")
+        return pattern.sub(r"](\1.html)", index_text)
+    else:
+        # BeliefTypeEnum.html -> BeliefTypeEnum.md (if previously rewritten)
+        pattern = re.compile(r"\]\(([A-Z][A-Za-z0-9]*Enum)\.html\)")
+        return pattern.sub(r"](\1.md)", index_text)
+
 def build_table(rows):
     if not rows:
         return "| Subset | Description |\n| --- | --- |\n| _None defined_ | |\n\n"
@@ -142,6 +158,10 @@ def ensure_index_link_to_subsets():
     INDEX_MD.write_text('\n'.join(lines), encoding='utf-8')
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pages", action="store_true",
+                    help="Generate index links for GitHub Pages (.html) instead of local .md")
+    args = ap.parse_args()
     if not SCHEMA.exists():
         print(f"Schema not found: {SCHEMA}")
         sys.exit(1)
@@ -160,6 +180,7 @@ def main():
     print("• Updating Subsets section in docs/index.md…")
     original = INDEX_MD.read_text(encoding="utf-8")
     updated = replace_subsets_section(original, table_md)
+    updated = fix_enum_links(updated, to_html=args.pages)
 
     if updated != original:
         INDEX_MD.write_text(updated, encoding="utf-8")

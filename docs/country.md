@@ -3,7 +3,7 @@
 # Slot: country 
 
 
-_ISO-3166 country code._
+_Country code in ISO 3166-1 alpha-2 format._
 
 
 
@@ -18,13 +18,37 @@ Alias: country
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
+
+
+
 
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [IsoCountryCode](IsoCountryCode.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| US |
+| NG |
+
+## Comments
+
+* Use the two-letter ISO 3166-1 alpha-2 code (e.g., US, GB, AU).
+This field is required for all church records.
+Do not use full country names or three-letter codes.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +82,20 @@ Alias: country
 <details>
 ```yaml
 name: country
-description: ISO-3166 country code.
+description: Country code in ISO 3166-1 alpha-2 format.
+comments:
+- 'Use the two-letter ISO 3166-1 alpha-2 code (e.g., US, GB, AU).
+
+  This field is required for all church records.
+
+  Do not use full country names or three-letter codes.
+
+  '
+examples:
+- value: US
+  description: United States.
+- value: NG
+  description: Nigeria.
 in_subset:
 - church_core
 - public
@@ -67,7 +104,9 @@ exact_mappings:
 - schema:addressCountry
 rank: 1000
 alias: country
-range: string
+domain_of:
+- Church
+range: iso_country_code
 
 ```
 </details>

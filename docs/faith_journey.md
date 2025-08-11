@@ -3,7 +3,7 @@
 # Slot: faith_journey 
 
 
-_Narrative text describing the user’s faith journey._
+_Narrative of the user’s faith journey._
 
 
 
@@ -36,6 +36,20 @@ Alias: faith_journey
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Came to faith in 2016; baptized in 2017; serving in college ministry. |
+| Exploring faith; interested in Alpha course. |
+
+## Comments
+
+* Long-form text. May include testimony, baptism date, or ministry milestones.
+Avoid storing sensitive counseling notes in this field.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +80,18 @@ Alias: faith_journey
 <details>
 ```yaml
 name: faith_journey
-description: Narrative text describing the user’s faith journey.
+description: Narrative of the user’s faith journey.
+comments:
+- 'Long-form text. May include testimony, baptism date, or ministry milestones.
+
+  Avoid storing sensitive counseling notes in this field.
+
+  '
+examples:
+- value: Came to faith in 2016; baptized in 2017; serving in college ministry.
+  description: Concise narrative.
+- value: Exploring faith; interested in Alpha course.
+  description: Short current-state note.
 in_subset:
 - internal
 from_schema: https://global.church/schema

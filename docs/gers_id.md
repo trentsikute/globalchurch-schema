@@ -3,7 +3,7 @@
 # Slot: gers_id 
 
 
-_ID from the Government/Ecclesiastical Registry System (if available)._
+_Government/Ecclesiastical Registry System identifier._
 
 
 
@@ -22,8 +22,8 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
 | [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
 
 
 
@@ -35,6 +35,19 @@ Alias: gers_id
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| GERS-CA-00012345 |
+
+## Comments
+
+* External registry identifier used for cross-referencing with official listings.
+May not exist for all churches.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +80,16 @@ Alias: gers_id
 <details>
 ```yaml
 name: gers_id
-description: ID from the Government/Ecclesiastical Registry System (if available).
+description: Government/Ecclesiastical Registry System identifier.
+comments:
+- 'External registry identifier used for cross-referencing with official listings.
+
+  May not exist for all churches.
+
+  '
+examples:
+- value: GERS-CA-00012345
+  description: Sample registry ID.
 in_subset:
 - overture
 - public

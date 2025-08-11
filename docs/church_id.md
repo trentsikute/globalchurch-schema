@@ -3,7 +3,7 @@
 # Slot: church_id 
 
 
-_Primary key for Church; referenced by related tables. Issued by Global.Church._
+_Global.Church-issued ID for a church._
 
 
 
@@ -22,9 +22,9 @@ Alias: church_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
-| [Church](Church.md) | A distinct church congregation |  no  |
 | [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
 
 
 
@@ -38,6 +38,19 @@ Alias: church_id
 * Required: True
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| 9e1c2a7d-4c33-4b8b-9d7a-1a2b3c4d5e6f |
+
+## Comments
+
+* Primary key for the Church entity. Stable and non-reassignable.
+Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
 
 
 ## Identifier and Mapping Information
@@ -70,7 +83,16 @@ Alias: church_id
 <details>
 ```yaml
 name: church_id
-description: Primary key for Church; referenced by related tables. Issued by Global.Church.
+description: Global.Church-issued ID for a church.
+comments:
+- 'Primary key for the Church entity. Stable and non-reassignable.
+
+  Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
+
+  '
+examples:
+- value: 9e1c2a7d-4c33-4b8b-9d7a-1a2b3c4d5e6f
+  description: Example church UUID.
 in_subset:
 - church_core
 - public

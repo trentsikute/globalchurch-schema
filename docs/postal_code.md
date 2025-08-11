@@ -3,7 +3,7 @@
 # Slot: postal_code 
 
 
-_Postal / ZIP code._
+_Postal code or ZIP code for the address._
 
 
 
@@ -18,6 +18,15 @@ Alias: postal_code
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
 
 
 ## Properties
@@ -25,6 +34,21 @@ Alias: postal_code
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| 62704 |
+| SW1A 2AA |
+
+## Comments
+
+* The postal (ZIP) code as assigned by the national postal authority.
+Use the correct format for the country (e.g., 12345 or 12345-6789 in the US, SW1A 2AA in the UK).
+Always include this value for postal addresses if available.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +82,21 @@ Alias: postal_code
 <details>
 ```yaml
 name: postal_code
-description: Postal / ZIP code.
+description: Postal code or ZIP code for the address.
+comments:
+- 'The postal (ZIP) code as assigned by the national postal authority.
+
+  Use the correct format for the country (e.g., 12345 or 12345-6789 in the US, SW1A
+  2AA in the UK).
+
+  Always include this value for postal addresses if available.
+
+  '
+examples:
+- value: '62704'
+  description: US ZIP code.
+- value: SW1A 2AA
+  description: UK postal code.
 in_subset:
 - church_core
 - public
@@ -67,6 +105,8 @@ exact_mappings:
 - schema:postalCode
 rank: 1000
 alias: postal_code
+domain_of:
+- Church
 range: string
 
 ```

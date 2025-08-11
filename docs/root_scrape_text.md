@@ -3,7 +3,7 @@
 # Slot: root_scrape_text 
 
 
-_Visible text scraped from the root page._
+_Visible text content scraped from the website root page._
 
 
 
@@ -36,6 +36,21 @@ Alias: root_scrape_text
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Welcome to Grace Community Church! Join us Sundays at 9am and 11am. Our mission is to serve Malibu and beyond... |
+
+## Comments
+
+* The full visible text extracted from the HTML body of the root URL of the church website.
+Used for downstream enrichment, NLP, and data extraction.
+Not intended for public display; may contain headers, footers, and navigation text.
+For structured content, see other enrichment slots.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +81,22 @@ Alias: root_scrape_text
 <details>
 ```yaml
 name: root_scrape_text
-description: Visible text scraped from the root page.
+description: Visible text content scraped from the website root page.
+comments:
+- 'The full visible text extracted from the HTML body of the root URL of the church
+  website.
+
+  Used for downstream enrichment, NLP, and data extraction.
+
+  Not intended for public display; may contain headers, footers, and navigation text.
+
+  For structured content, see other enrichment slots.
+
+  '
+examples:
+- value: Welcome to Grace Community Church! Join us Sundays at 9am and 11am. Our mission
+    is to serve Malibu and beyond...
+  description: Scraped homepage text sample.
 in_subset:
 - internal
 from_schema: https://global.church/schema

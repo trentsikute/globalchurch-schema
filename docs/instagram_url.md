@@ -36,6 +36,19 @@ Alias: instagram_url
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| https://www.instagram.com/gracechurch/ |
+
+## Comments
+
+* Prefer the canonical profile (not a hashtag or location page).
+Normalize to the https scheme.
+
+
 ## Identifier and Mapping Information
 
 
@@ -68,6 +81,15 @@ Alias: instagram_url
 ```yaml
 name: instagram_url
 description: Instagram profile URL.
+comments:
+- 'Prefer the canonical profile (not a hashtag or location page).
+
+  Normalize to the https scheme.
+
+  '
+examples:
+- value: https://www.instagram.com/gracechurch/
+  description: Canonical Instagram URL.
 in_subset:
 - public
 - enrichment

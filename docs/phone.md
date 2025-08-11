@@ -3,7 +3,7 @@
 # Slot: phone 
 
 
-_Church phone number._
+_Official phone number for the church._
 
 
 
@@ -25,6 +25,21 @@ Alias: phone
 * Range: [PhoneE164](PhoneE164.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| +13105551234 |
+| +442071838750 |
+
+## Comments
+
+* Store the main contact number for the church in E.164 format (e.g., +14155552671).
+Do not include user or staff personal numbers.
+Numbers should be validated for correct format and country code.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +73,20 @@ Alias: phone
 <details>
 ```yaml
 name: phone
-description: Church phone number.
+description: Official phone number for the church.
+comments:
+- 'Store the main contact number for the church in E.164 format (e.g., +14155552671).
+
+  Do not include user or staff personal numbers.
+
+  Numbers should be validated for correct format and country code.
+
+  '
+examples:
+- value: '+13105551234'
+  description: US church phone number.
+- value: '+442071838750'
+  description: UK church phone number.
 in_subset:
 - public
 - overture

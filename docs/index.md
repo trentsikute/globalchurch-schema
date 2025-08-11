@@ -1,5 +1,7 @@
 # GlobalChurch
 
+- See **[Subsets](Subsets.md)** for a full list of subset tags.
+
 
 
 URI: https://global.church/schema
@@ -24,55 +26,55 @@ Name: GlobalChurch
 
 | Slot | Description |
 | --- | --- |
-| [address](address.md) | Physical street address |
-| [alternate_church](alternate_church.md) | Optional FK → Church |
-| [alternate_name](alternate_name.md) | Alternate or colloquial church name |
+| [address](address.md) | Physical street address of the church or user |
+| [alternate_church](alternate_church.md) | Optional FK to a secondary/alternate Church |
+| [alternate_name](alternate_name.md) | Alternate, colloquial, or short name for the church |
 | [belief_type](belief_type.md) | Denomination / church type category |
-| [candidates_text_and_links](candidates_text_and_links.md) | Text and associated links for candidate pages |
-| [church_beliefs_url](church_beliefs_url.md) | URL of the statement of faith or similar statement of beliefs |
-| [church_id](church_id.md) | Primary key for Church; referenced by related tables |
-| [church_summary](church_summary.md) | Concise summary of the church, including key attributes and offerings |
-| [confidence](confidence.md) | Confidence score (0–1) |
-| [country](country.md) | ISO-3166 country code |
-| [description](description.md) | Long-form description of the church |
-| [email](email.md) | Main contact email |
-| [faith_journey](faith_journey.md) | Narrative text describing the user’s faith journey |
-| [family_name](family_name.md) | Last name |
-| [gers_id](gers_id.md) | ID from the Government/Ecclesiastical Registry System (if available) |
-| [given_name](given_name.md) | First name |
+| [candidates_text_and_links](candidates_text_and_links.md) | Text snippets and associated links for candidate pages |
+| [church_beliefs_url](church_beliefs_url.md) | URL for the church’s statement of beliefs/faith |
+| [church_id](church_id.md) | Global |
+| [church_summary](church_summary.md) | Concise public summary of the church |
+| [confidence](confidence.md) | Confidence score (0–1) from Overture |
+| [country](country.md) | Country code in ISO 3166-1 alpha-2 format |
+| [description](description.md) | Detailed narrative description of the church |
+| [email](email.md) | Primary contact email for the user |
+| [faith_journey](faith_journey.md) | Narrative of the user’s faith journey |
+| [family_name](family_name.md) | User’s last (family) name |
+| [gers_id](gers_id.md) | Government/Ecclesiastical Registry System identifier |
+| [given_name](given_name.md) | User’s first (given) name |
 | [instagram_url](instagram_url.md) | Instagram profile URL |
-| [interests](interests.md) | Free-text interests or ministry areas |
-| [keywords](keywords.md) | Comma-separated keywords or tags |
-| [latitude](latitude.md) | Geographic latitude (decimal degrees) |
-| [locality](locality.md) | City or locality of the church |
-| [longitude](longitude.md) | Geographic longitude (decimal degrees) |
+| [interests](interests.md) | User’s interests or ministry areas |
+| [keywords](keywords.md) | Keywords or tags describing the church |
+| [latitude](latitude.md) | Latitude in decimal degrees |
+| [locality](locality.md) | City or locality where the church is located |
+| [longitude](longitude.md) | Longitude in decimal degrees |
 | [name](name.md) | Official church name |
-| [opening_hours](opening_hours.md) | Opening hours information |
-| [phone](phone.md) | Church phone number |
-| [pipeline_status](pipeline_status.md) | Enrichment pipeline stage (e |
-| [postal_code](postal_code.md) | Postal / ZIP code |
-| [primary_church](primary_church.md) | FK → Church |
-| [programs_offered](programs_offered.md) | List of programs or ministries offered |
-| [region](region.md) | State, province, or region |
+| [opening_hours](opening_hours.md) | Church opening hours or service schedule |
+| [phone](phone.md) | Official phone number for the church |
+| [pipeline_status](pipeline_status.md) | Current enrichment pipeline stage |
+| [postal_code](postal_code.md) | Postal code or ZIP code for the address |
+| [primary_church](primary_church.md) | FK to the user’s primary Church |
+| [programs_offered](programs_offered.md) | Programs or ministries the church offers |
+| [region](region.md) | State, province, or administrative region |
 | [root_candidates](root_candidates.md) | Candidate URLs extracted from the root page |
-| [root_scrape_buttons](root_scrape_buttons.md) | Button texts captured on root page |
-| [root_scrape_check](root_scrape_check.md) | Checksum or status flag of the scrape |
-| [root_scrape_text](root_scrape_text.md) | Visible text scraped from the root page |
-| [scraped_address](scraped_address.md) | Postal address extracted from site |
-| [scraped_email](scraped_email.md) | Email address extracted from site |
-| [search_blob](search_blob.md) | Concatenated text blob used for full-text search |
+| [root_scrape_buttons](root_scrape_buttons.md) | Button texts captured on the root page |
+| [root_scrape_check](root_scrape_check.md) | Checksum or status flag indicating scrape state |
+| [root_scrape_text](root_scrape_text.md) | Visible text content scraped from the website root page |
+| [scraped_address](scraped_address.md) | Postal address extracted from the website |
+| [scraped_email](scraped_email.md) | Public email address extracted from the website |
+| [search_blob](search_blob.md) | Concatenated text of searchable fields for indexing |
 | [service_languages](service_languages.md) | Languages in which services are offered |
-| [service_times](service_times.md) | Service times (free text) |
-| [skills](skills.md) | Comma-separated list of user skills |
-| [social_media](social_media.md) | JSON or comma-separated social media handles |
-| [source](source.md) | Source label of the Overture record |
-| [source_release](source_release.md) | Overture release tag (e |
-| [telephone](telephone.md) | Phone number (international format recommended) |
-| [trinitarian_beliefs](trinitarian_beliefs.md) | True if church affirms classical Trinitarian doctrine |
-| [user_id](user_id.md) | Primary key for User (also referenced by other tables) |
-| [version](version.md) | Overture version number |
-| [website](website.md) | Full website URL |
-| [website_root](website_root.md) | Root URL (scheme + domain) |
+| [service_times](service_times.md) | Service times for public gatherings |
+| [skills](skills.md) | List of user skills |
+| [social_media](social_media.md) | List of social media handles or URLs associated with the church |
+| [source](source.md) | Source label from Overture Maps |
+| [source_release](source_release.md) | Overture release tag (YYYY-MM-DD) |
+| [telephone](telephone.md) | User’s phone number (E |
+| [trinitarian_beliefs](trinitarian_beliefs.md) | Whether the church affirms classical Trinitarian doctrine |
+| [user_id](user_id.md) | Unique ID for a registered platform user |
+| [version](version.md) | Overture dataset version number |
+| [website](website.md) | Full website URL for the church |
+| [website_root](website_root.md) | Root URL of the church website (scheme and domain only) |
 | [youtube_url](youtube_url.md) | YouTube channel URL |
 
 
@@ -80,7 +82,7 @@ Name: GlobalChurch
 
 | Enumeration | Description |
 | --- | --- |
-| [BeliefTypeEnum](BeliefTypeEnum.md) | Top-level Christian family grouping used by Global |
+| [BeliefTypeEnum](BeliefTypeEnum.html) | Top-level Christian family grouping used by Global |
 
 
 ## Types
@@ -97,6 +99,7 @@ Name: GlobalChurch
 | [Email](Email.md) | Email address (simplified RFC 5322) |
 | [Float](Float.md) | A real number that conforms to the xsd:float specification |
 | [Integer](Integer.md) | An integer |
+| [IsoCountryCode](IsoCountryCode.md) | ISO 3166-1 alpha-2 country code |
 | [Jsonpath](Jsonpath.md) | A string encoding a JSON Path |
 | [Jsonpointer](Jsonpointer.md) | A string encoding a JSON Pointer |
 | [Ncname](Ncname.md) | Prefix part of CURIE |
@@ -112,13 +115,12 @@ Name: GlobalChurch
 
 
 ## Subsets
-
 | Subset | Description |
 | --- | --- |
-| [ChurchCore](ChurchCore.md) | Minimal fields needed to represent a church |
-| [Enrichment](Enrichment.md) | Usually derived by AI or post-processing |
-| [Internal](Internal.md) | Operational/internal fields for Global |
-| [Overture](Overture.md) | Sourced from Overture Maps |
-| [Pii](Pii.md) | Potentially personally identifiable or sensitive |
-| [Public](Public.md) | Fields available for public consumption |
-| [UserCore](UserCore.md) | Minimal fields needed to represent a user |
+| church_core | Minimal fields needed to represent a church. |
+| enrichment | Usually derived by AI or post-processing. |
+| internal | Operational/internal fields for Global.Church. |
+| overture | Sourced from Overture Maps. |
+| pii | Potentially personally identifiable or sensitive. |
+| public | Fields available for public consumption. |
+| user_core | Minimal fields needed to represent a user. |

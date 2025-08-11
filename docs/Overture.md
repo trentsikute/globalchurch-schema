@@ -113,11 +113,11 @@ URI: [Overture](Overture.md)
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
-| [confidence](confidence.md) | 0..1 <br/> [Float](Float.md) | Confidence score (0–1)  |
-| [gers_id](gers_id.md) | 0..1 <br/> [String](String.md) | ID from the Government/Ecclesiastical Registry System (if available)  |
-| [source](source.md) | 0..1 <br/> [String](String.md) | Source label of the Overture record  |
-| [source_release](source_release.md) | 0..1 <br/> [String](String.md) | Overture release tag (e  |
-| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | Overture version number  |
+| [confidence](confidence.md) | 0..1 <br/> [Float](Float.md) | Confidence score (0–1) from Overture  |
+| [gers_id](gers_id.md) | 0..1 <br/> [String](String.md) | Government/Ecclesiastical Registry System identifier  |
+| [source](source.md) | 0..1 <br/> [String](String.md) | Source label from Overture Maps  |
+| [source_release](source_release.md) | 0..1 <br/> [String](String.md) | Overture release tag (YYYY-MM-DD)  |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | Overture dataset version number  |
 
 
 
@@ -126,12 +126,12 @@ URI: [Overture](Overture.md)
 
 | Slot | Description |
 | --- | --- |
-| [confidence](confidence.md) | Confidence score (0–1) |
-| [gers_id](gers_id.md) | ID from the Government/Ecclesiastical Registry System (if available) |
-| [phone](phone.md) | Church phone number |
-| [social_media](social_media.md) | JSON or comma-separated social media handles |
-| [source](source.md) | Source label of the Overture record |
-| [source_release](source_release.md) | Overture release tag (e |
-| [version](version.md) | Overture version number |
+| [confidence](confidence.md) | Confidence score (0–1) from Overture |
+| [gers_id](gers_id.md) | Government/Ecclesiastical Registry System identifier |
+| [phone](phone.md) | Official phone number for the church |
+| [social_media](social_media.md) | List of social media handles or URLs associated with the church |
+| [source](source.md) | Source label from Overture Maps |
+| [source_release](source_release.md) | Overture release tag (YYYY-MM-DD) |
+| [version](version.md) | Overture dataset version number |
 
 

@@ -22,7 +22,7 @@ Alias: name
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
 
 
 
@@ -34,6 +34,20 @@ Alias: name
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Grace Community Church |
+| Grace Church Malibu |
+
+## Comments
+
+* Use the legal or commonly recognized name (e.g., “Grace Community Church”).
+If there is a campus name or colloquial short name, store it in `alternate_name`.
 
 
 ## Identifier and Mapping Information
@@ -68,6 +82,17 @@ Alias: name
 ```yaml
 name: name
 description: Official church name.
+comments:
+- 'Use the legal or commonly recognized name (e.g., “Grace Community Church”).
+
+  If there is a campus name or colloquial short name, store it in `alternate_name`.
+
+  '
+examples:
+- value: Grace Community Church
+  description: Formal church name.
+- value: Grace Church Malibu
+  description: Name with locality qualifier.
 in_subset:
 - church_core
 - public

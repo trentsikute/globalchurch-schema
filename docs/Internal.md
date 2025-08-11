@@ -41,7 +41,6 @@ URI: [Internal](Internal.md)
 
 
 
-        
 
 
 
@@ -122,11 +121,11 @@ URI: [Internal](Internal.md)
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
-| [candidates_text_and_links](candidates_text_and_links.md) | 0..1 <br/> [String](String.md) | Text and associated links for candidate pages  |
-| [root_candidates](root_candidates.md) | 0..1 <br/> [String](String.md) | Candidate URLs extracted from the root page  |
-| [root_scrape_buttons](root_scrape_buttons.md) | 0..1 <br/> [String](String.md) | Button texts captured on root page  |
-| [root_scrape_check](root_scrape_check.md) | 0..1 <br/> [String](String.md) | Checksum or status flag of the scrape  |
-| [root_scrape_text](root_scrape_text.md) | 0..1 <br/> [String](String.md) | Visible text scraped from the root page  |
+| [candidates_text_and_links](candidates_text_and_links.md) | * <br/> [String](String.md) | Text snippets and associated links for candidate pages  |
+| [root_candidates](root_candidates.md) | * <br/> [String](String.md) | Candidate URLs extracted from the root page  |
+| [root_scrape_buttons](root_scrape_buttons.md) | 0..1 <br/> [String](String.md) | Button texts captured on the root page  |
+| [root_scrape_check](root_scrape_check.md) | 0..1 <br/> [String](String.md) | Checksum or status flag indicating scrape state  |
+| [root_scrape_text](root_scrape_text.md) | 0..1 <br/> [String](String.md) | Visible text content scraped from the website root page  |
 
 
 
@@ -135,21 +134,20 @@ URI: [Internal](Internal.md)
 
 | Slot | Description |
 | --- | --- |
-| [alternate_church](alternate_church.md) | Optional FK → Church |
-| [candidates_text_and_links](candidates_text_and_links.md) | Text and associated links for candidate pages |
-| [email](email.md) | Main contact email |
-| [faith_journey](faith_journey.md) | Narrative text describing the user’s faith journey |
-| [interests](interests.md) | Free-text interests or ministry areas |
-| [pipeline_status](pipeline_status.md) | Enrichment pipeline stage (e |
-| [primary_church](primary_church.md) | FK → Church |
+| [candidates_text_and_links](candidates_text_and_links.md) | Text snippets and associated links for candidate pages |
+| [email](email.md) | Primary contact email for the user |
+| [faith_journey](faith_journey.md) | Narrative of the user’s faith journey |
+| [interests](interests.md) | User’s interests or ministry areas |
+| [pipeline_status](pipeline_status.md) | Current enrichment pipeline stage |
+| [primary_church](primary_church.md) | FK to the user’s primary Church |
 | [root_candidates](root_candidates.md) | Candidate URLs extracted from the root page |
-| [root_scrape_buttons](root_scrape_buttons.md) | Button texts captured on root page |
-| [root_scrape_check](root_scrape_check.md) | Checksum or status flag of the scrape |
-| [root_scrape_text](root_scrape_text.md) | Visible text scraped from the root page |
-| [scraped_email](scraped_email.md) | Email address extracted from site |
-| [search_blob](search_blob.md) | Concatenated text blob used for full-text search |
-| [skills](skills.md) | Comma-separated list of user skills |
-| [telephone](telephone.md) | Phone number (international format recommended) |
-| [website_root](website_root.md) | Root URL (scheme + domain) |
+| [root_scrape_buttons](root_scrape_buttons.md) | Button texts captured on the root page |
+| [root_scrape_check](root_scrape_check.md) | Checksum or status flag indicating scrape state |
+| [root_scrape_text](root_scrape_text.md) | Visible text content scraped from the website root page |
+| [scraped_email](scraped_email.md) | Public email address extracted from the website |
+| [search_blob](search_blob.md) | Concatenated text of searchable fields for indexing |
+| [skills](skills.md) | List of user skills |
+| [telephone](telephone.md) | User’s phone number (E |
+| [website_root](website_root.md) | Root URL of the church website (scheme and domain only) |
 
 

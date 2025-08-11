@@ -3,7 +3,7 @@
 # Slot: scraped_email 
 
 
-_Email address extracted from site._
+_Public email address extracted from the website._
 
 
 
@@ -34,6 +34,20 @@ Alias: scraped_email
 * Range: [email](email.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| info@gracechurch.org |
+| office@stpauls-sydney.org.au |
+
+## Comments
+
+* Only store addresses published for church contact (office@, info@).
+Do not store personal staff emails unless explicitly public and necessary.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +81,18 @@ Alias: scraped_email
 <details>
 ```yaml
 name: scraped_email
-description: Email address extracted from site.
+description: Public email address extracted from the website.
+comments:
+- 'Only store addresses published for church contact (office@, info@).
+
+  Do not store personal staff emails unless explicitly public and necessary.
+
+  '
+examples:
+- value: info@gracechurch.org
+  description: Generic church inbox.
+- value: office@stpauls-sydney.org.au
+  description: Office contact.
 in_subset:
 - internal
 - pii

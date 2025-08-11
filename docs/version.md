@@ -3,7 +3,7 @@
 # Slot: version 
 
 
-_Overture version number._
+_Overture dataset version number._
 
 
 
@@ -36,6 +36,19 @@ Alias: version
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| 13 |
+
+## Comments
+
+* Integer version tag from the Overture Maps release metadata.
+Use with `source_release` when available.
+
+
 ## Identifier and Mapping Information
 
 
@@ -66,7 +79,16 @@ Alias: version
 <details>
 ```yaml
 name: version
-description: Overture version number.
+description: Overture dataset version number.
+comments:
+- 'Integer version tag from the Overture Maps release metadata.
+
+  Use with `source_release` when available.
+
+  '
+examples:
+- value: '13'
+  description: Example Overture version.
 in_subset:
 - overture
 from_schema: https://global.church/schema

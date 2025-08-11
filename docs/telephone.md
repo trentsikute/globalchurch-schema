@@ -3,7 +3,7 @@
 # Slot: telephone 
 
 
-_Phone number (international format recommended)._
+_User’s phone number (E.164)._
 
 
 
@@ -34,6 +34,20 @@ Alias: telephone
 * Range: [PhoneE164](PhoneE164.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| +13105551234 |
+| +442071838750 |
+
+## Comments
+
+* Store numbers in E.164 format (e.g., +14155552671). Country code is required.
+Do not include spaces, parentheses, or dashes. For church phone, use `phone` slot.
 
 
 ## Identifier and Mapping Information
@@ -67,7 +81,18 @@ Alias: telephone
 <details>
 ```yaml
 name: telephone
-description: Phone number (international format recommended).
+description: User’s phone number (E.164).
+comments:
+- 'Store numbers in E.164 format (e.g., +14155552671). Country code is required.
+
+  Do not include spaces, parentheses, or dashes. For church phone, use `phone` slot.
+
+  '
+examples:
+- value: '+13105551234'
+  description: US number in E.164 format.
+- value: '+442071838750'
+  description: UK number in E.164 format.
 in_subset:
 - internal
 - pii

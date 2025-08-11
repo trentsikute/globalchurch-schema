@@ -3,7 +3,7 @@
 # Slot: locality 
 
 
-_City or locality of the church._
+_City or locality where the church is located._
 
 
 
@@ -18,6 +18,15 @@ Alias: locality
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
 
 
 ## Properties
@@ -25,6 +34,22 @@ Alias: locality
 * Range: [String](String.md)
 
 
+
+
+
+## Examples
+
+| Value |
+| --- |
+| Springfield |
+| Sydney |
+
+## Comments
+
+* The city, town, or locality where the church's primary address is situated.
+Use the official or most commonly recognized municipality name.
+This value should match the locality as used by local postal authorities.
+For rural areas without a city, use the nearest recognized locality.
 
 
 ## Identifier and Mapping Information
@@ -58,7 +83,22 @@ Alias: locality
 <details>
 ```yaml
 name: locality
-description: City or locality of the church.
+description: City or locality where the church is located.
+comments:
+- 'The city, town, or locality where the church''s primary address is situated.
+
+  Use the official or most commonly recognized municipality name.
+
+  This value should match the locality as used by local postal authorities.
+
+  For rural areas without a city, use the nearest recognized locality.
+
+  '
+examples:
+- value: Springfield
+  description: US city.
+- value: Sydney
+  description: Major city in Australia.
 in_subset:
 - church_core
 - public
@@ -67,6 +107,8 @@ exact_mappings:
 - schema:addressLocality
 rank: 1000
 alias: locality
+domain_of:
+- Church
 range: string
 
 ```
