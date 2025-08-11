@@ -10,4 +10,5 @@ plugins:
 
 markdown: kramdown
 kramdown:
+  input: GFM
   toc_levels: 1..2

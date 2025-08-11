@@ -138,24 +138,91 @@ def write_subsets_page(rows):
     (DOCS_DIR / "Subsets.md").write_text("\n".join(page), encoding="utf-8")
 
 
-def ensure_index_link_to_subsets():
-    """Ensure index.md contains a link to the Subsets page near the top."""
-    if not INDEX_MD.exists():
-        return
-    text = INDEX_MD.read_text(encoding='utf-8')
-    # If a link already exists, do nothing
-    if "[Subsets](Subsets.md)" in text or "(Subsets.md)" in text:
-        return
-    # Insert after the first H1 or at top
-    lines = text.replace('\r\n', '\n').replace('\r', '\n').split('\n')
-    insert_at = 0
-    for i, line in enumerate(lines):
-        if line.startswith('# '):
-            insert_at = i + 1
-            break
-    lines.insert(insert_at, "")
-    lines.insert(insert_at + 1, "- See **[Subsets](Subsets.md)** for a full list of subset tags.")
-    INDEX_MD.write_text('\n'.join(lines), encoding='utf-8')
+# --- New helper functions for slot examples ---
+def load_examples_by_slot():
+    """Return a dict: slot_name -> list of {value, description} from the YAML schema."""
+    data = yaml.safe_load(SCHEMA.read_text(encoding="utf-8"))
+    slots = (data or {}).get("slots", {}) or {}
+    examples_by_slot = {}
+    for slot_name, slot_body in slots.items():
+        ex_list = (slot_body or {}).get("examples", []) or []
+        norm = []
+        for ex in ex_list:
+            if isinstance(ex, dict):
+                val = ex.get("value", "")
+                desc = ex.get("description", "")
+                # Ensure strings (generator expects strings in docs)
+                val = "" if val is None else str(val)
+                desc = "" if desc is None else str(desc)
+                norm.append({"value": val, "description": desc})
+            else:
+                # If example is a bare string, keep it, empty description
+                norm.append({"value": str(ex), "description": ""})
+        if norm:
+            examples_by_slot[slot_name] = norm
+    return examples_by_slot
+
+
+def build_examples_table(rows):
+    """Make a two-column Markdown table (Value | Description) from example rows."""
+    if not rows:
+        return ""
+    out = ["| Value | Description |", "| --- | --- |"]
+    for r in rows:
+        v = (r.get("value") or "").replace("|", r"\|")
+        d = (r.get("description") or "").replace("|", r"\|")
+        # Keep rows even if description is empty
+        out.append(f"| {v} | {d} |")
+    return "\n".join(out) + "\n\n"
+
+
+def rewrite_slot_examples_sections(examples_by_slot):
+    """For each docs/slot.*.md page, replace the Examples section body with a
+    two-column table built from YAML examples (Value | Description).
+    The function preserves the existing '## Examples' header and replaces only
+    the content until the next '## ' header (or EOF).
+    """
+    for md_path in DOCS_DIR.glob("slot.*.md"):
+        text = md_path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        # slot.<name>.md -> <name>
+        slot_name = md_path.stem.split(".", 1)[-1]
+        rows = examples_by_slot.get(slot_name)
+        if not rows:
+            # nothing to rewrite for this slot
+            continue
+        table = build_examples_table(rows)
+        if not table.strip():
+            continue
+        lines = text.split("\n")
+        # Find '## Examples' header
+        start = None
+        for i, ln in enumerate(lines):
+            if ln.strip().lower().startswith("## examples"):
+                start = i
+                break
+        if start is None:
+            # If no Examples header exists, append one at the end
+            if not text.endswith("\n"):
+                text += "\n"
+            text += "\n## Examples\n\n" + table
+            md_path.write_text(text, encoding="utf-8")
+            continue
+        # Find next section header after start
+        end = len(lines)
+        for j in range(start + 1, len(lines)):
+            if lines[j].startswith("## "):
+                end = j
+                break
+        # Rebuild: keep up to the header line, then header + blank + our table, then tail
+        head = "\n".join(lines[: start + 1])
+        tail = "\n".join(lines[end:])
+        if head and not head.endswith("\n"):
+            head += "\n"
+        if tail and not tail.startswith("\n"):
+            tail = "\n" + tail
+        new_text = head + "\n" + table + tail
+        if new_text != text:
+            md_path.write_text(new_text, encoding="utf-8")
 
 def main():
     ap = argparse.ArgumentParser()
@@ -188,9 +255,12 @@ def main():
     else:
         print("i No changes made (section already up to date).")
 
+    print("• Rewriting slot Examples sections with two-column tables…")
+    examples_by_slot = load_examples_by_slot()
+    rewrite_slot_examples_sections(examples_by_slot)
+
     # Always write a dedicated Subsets page and ensure index links to it
     write_subsets_page(rows)
-    ensure_index_link_to_subsets()
 
 if __name__ == "__main__":
     main()
