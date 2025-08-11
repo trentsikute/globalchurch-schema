@@ -111,8 +111,8 @@ Name: GlobalChurch
 | [Uriorcurie](Uriorcurie.md) | a URI or a CURIE |
 | [Uuid](Uuid.md) | Universally unique identifier (RFC 4122) |
 
-
 ## Subsets
+
 | Subset | Description |
 | --- | --- |
 | church_core | Minimal fields needed to represent a church. |
