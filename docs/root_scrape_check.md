@@ -67,6 +67,8 @@ Alias: root_scrape_check
 ```yaml
 name: root_scrape_check
 description: Checksum or status flag of the scrape.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: root_scrape_check

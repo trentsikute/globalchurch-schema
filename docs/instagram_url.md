@@ -68,6 +68,9 @@ Alias: instagram_url
 ```yaml
 name: instagram_url
 description: Instagram profile URL.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:sameAs

@@ -67,6 +67,9 @@ Alias: service_times
 ```yaml
 name: service_times
 description: Service times (free text).
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 rank: 1000
 alias: service_times

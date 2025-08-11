@@ -68,6 +68,9 @@ Alias: programs_offered
 ```yaml
 name: programs_offered
 description: List of programs or ministries offered.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:service

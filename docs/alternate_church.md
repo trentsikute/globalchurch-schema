@@ -67,6 +67,8 @@ Alias: alternate_church
 ```yaml
 name: alternate_church
 description: Optional FK → Church.church_id (secondary church).
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: alternate_church

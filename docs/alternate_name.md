@@ -1,28 +1,19 @@
 
 
-# Slot: name 
+# Slot: alternate_name 
 
 
-_Official church name._
+_Alternate or colloquial church name._
 
 
 
 
 
-URI: [gc:name](https://global.church/schema/name)
-Alias: name
+URI: [gc:alternate_name](https://global.church/schema/alternate_name)
+Alias: alternate_name
 
 <!-- no inheritance hierarchy -->
 
-
-
-
-
-## Applicable Classes
-
-| Name | Description | Modifies Slot |
-| --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
 
 
 
@@ -55,9 +46,9 @@ Alias: name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:name |
-| native | gc:name |
-| exact | schema:name |
+| self | gc:alternate_name |
+| native | gc:alternate_name |
+| exact | schema:alternateName |
 
 
 
@@ -66,18 +57,15 @@ Alias: name
 
 <details>
 ```yaml
-name: name
-description: Official church name.
+name: alternate_name
+description: Alternate or colloquial church name.
 in_subset:
-- church_core
 - public
 from_schema: https://global.church/schema
 exact_mappings:
-- schema:name
+- schema:alternateName
 rank: 1000
-alias: name
-domain_of:
-- Church
+alias: alternate_name
 range: string
 
 ```

@@ -68,6 +68,8 @@ Alias: skills
 ```yaml
 name: skills
 description: Comma-separated list of user skills.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:skills

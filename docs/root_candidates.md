@@ -67,6 +67,8 @@ Alias: root_candidates
 ```yaml
 name: root_candidates
 description: Candidate URLs extracted from the root page.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: root_candidates

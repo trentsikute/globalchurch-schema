@@ -21,6 +21,15 @@ URI: [gc:EnrichedData](https://global.church/schema/EnrichedData)
     click EnrichedData href "../EnrichedData/"
       EnrichedData : belief_type
         
+          
+    
+        
+        
+        EnrichedData --> "0..1" BeliefTypeEnum : belief_type
+        click BeliefTypeEnum href "../BeliefTypeEnum/"
+    
+
+        
       EnrichedData : church_beliefs_url
         
       EnrichedData : church_id
@@ -60,8 +69,8 @@ URI: [gc:EnrichedData](https://global.church/schema/EnrichedData)
 | [service_times](service_times.md) | 0..1 <br/> [String](String.md) | Service times (free text) | direct |
 | [church_beliefs_url](church_beliefs_url.md) | 0..1 <br/> [Uri](Uri.md) | URL of the statement of faith or similar statement of beliefs | direct |
 | [trinitarian_beliefs](trinitarian_beliefs.md) | 0..1 <br/> [Boolean](Boolean.md) | True if church affirms classical Trinitarian doctrine | direct |
-| [belief_type](belief_type.md) | 0..1 <br/> [String](String.md) | Denomination / church type category | direct |
-| [scraped_email](scraped_email.md) | 0..1 <br/> [String](String.md) | Email address extracted from site | direct |
+| [belief_type](belief_type.md) | 0..1 <br/> [BeliefTypeEnum](BeliefTypeEnum.md) | Denomination / church type category | direct |
+| [scraped_email](scraped_email.md) | 0..1 <br/> [email](email.md) | Email address extracted from site | direct |
 | [instagram_url](instagram_url.md) | 0..1 <br/> [Uri](Uri.md) | Instagram profile URL | direct |
 | [youtube_url](youtube_url.md) | 0..1 <br/> [Uri](Uri.md) | YouTube channel URL | direct |
 | [service_languages](service_languages.md) | 0..1 <br/> [String](String.md) | Languages in which services are offered | direct |
@@ -115,6 +124,9 @@ URI: [gc:EnrichedData](https://global.church/schema/EnrichedData)
 ```yaml
 name: EnrichedData
 description: AI-enriched attributes extracted from the church website and socials.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 slots:
 - church_id
@@ -139,11 +151,17 @@ slots:
 ```yaml
 name: EnrichedData
 description: AI-enriched attributes extracted from the church website and socials.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 attributes:
   church_id:
     name: church_id
-    description: Primary key for Church; referenced by related tables.
+    description: Primary key for Church; referenced by related tables. Issued by Global.Church.
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     rank: 1000
     identifier: true
@@ -158,6 +176,9 @@ attributes:
   service_times:
     name: service_times
     description: Service times (free text).
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     rank: 1000
     alias: service_times
@@ -168,6 +189,9 @@ attributes:
   church_beliefs_url:
     name: church_beliefs_url
     description: URL of the statement of faith or similar statement of beliefs.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     rank: 1000
     alias: church_beliefs_url
@@ -178,6 +202,9 @@ attributes:
   trinitarian_beliefs:
     name: trinitarian_beliefs
     description: True if church affirms classical Trinitarian doctrine.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     rank: 1000
     alias: trinitarian_beliefs
@@ -187,17 +214,27 @@ attributes:
     range: boolean
   belief_type:
     name: belief_type
-    description: Denomination / church type category.
+    description: "Denomination / church type category.  \nThis slot classifies a church\
+      \ into one of several top-level Christian family groupings\nas defined by the\
+      \ BeliefTypeEnum.  \nBased on the Harvest Information Standards (HIS) Registry\
+      \ of Religions.\n"
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     rank: 1000
     alias: belief_type
     owner: EnrichedData
     domain_of:
     - EnrichedData
-    range: string
+    range: BeliefTypeEnum
   scraped_email:
     name: scraped_email
     description: Email address extracted from site.
+    in_subset:
+    - internal
+    - pii
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:email
@@ -206,10 +243,13 @@ attributes:
     owner: EnrichedData
     domain_of:
     - EnrichedData
-    range: string
+    range: email
   instagram_url:
     name: instagram_url
     description: Instagram profile URL.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:sameAs
@@ -222,6 +262,9 @@ attributes:
   youtube_url:
     name: youtube_url
     description: YouTube channel URL.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:sameAs
@@ -234,6 +277,9 @@ attributes:
   service_languages:
     name: service_languages
     description: Languages in which services are offered.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:inLanguage
@@ -246,6 +292,9 @@ attributes:
   scraped_address:
     name: scraped_address
     description: Postal address extracted from site.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:address
@@ -258,6 +307,9 @@ attributes:
   programs_offered:
     name: programs_offered
     description: List of programs or ministries offered.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:service
@@ -270,6 +322,9 @@ attributes:
   church_summary:
     name: church_summary
     description: Concise summary of the church, including key attributes and offerings.
+    in_subset:
+    - public
+    - enrichment
     from_schema: https://global.church/schema
     rank: 1000
     alias: church_summary

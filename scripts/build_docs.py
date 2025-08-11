@@ -1,3 +1,7 @@
+# This script generates documentation for the Global.Church schema using LinkML,
+# extracts subset information, and updates the main index.md file with a table of subsets.
+# It also creates a dedicated Subsets.md page and ensures the index links to it.
+
 #!/usr/bin/env python3
 import re
 import subprocess
@@ -35,37 +39,69 @@ def replace_subsets_section(index_text: str, table_md: str) -> str:
     text = index_text.replace('\r\n', '\n').replace('\r', '\n')
     lines = text.split('\n')
 
-    # Find '## Subsets' header
-    start = None
+    # Find '## Subsets' header line
+    subsets_h = None
     for i, line in enumerate(lines):
         if line.strip().lower().startswith('## subsets'):
-            start = i
+            subsets_h = i
             break
 
-    # If not present, append a new section at end
-    if start is None:
+    # If no Subsets header exists, append a new section with header + table
+    if subsets_h is None:
         if not text.endswith('\n'):
             text += '\n'
         return text + '\n## Subsets\n\n' + table_md
 
-    # Find next section header starting with '## '
-    end = len(lines)
-    for j in range(start + 1, len(lines)):
+    # Within the Subsets section, locate the markdown table header
+    table_header_idx = None
+    for j in range(subsets_h + 1, len(lines)):
+        if lines[j].strip().startswith('| Subset |'):
+            table_header_idx = j
+            break
+        # stop if we hit the next header before finding a table
         if lines[j].startswith('## '):
-            end = j
+            table_header_idx = None
             break
 
-    head = '\n'.join(lines[:start])
-    tail = '\n'.join(lines[end:])
+    # Find the end of the Subsets section (next header or EOF)
+    next_header_idx = len(lines)
+    for k in range(subsets_h + 1, len(lines)):
+        if lines[k].startswith('## '):
+            next_header_idx = k
+            break
 
-    new_section = '## Subsets\n\n' + table_md.rstrip() + '\n'
+    # Build the new section body
+    new_section_body = []
+    if table_header_idx is None:
+        # No table existed – construct full section body
+        new_section_body.append('')  # ensure blank line after header
+        new_section_body.append(table_md.rstrip())
+        new_section_body.append('')
+    else:
+        # Keep the header line and the separator line, then replace the rest with our rows
+        sep_idx = table_header_idx + 1 if table_header_idx + 1 < len(lines) else table_header_idx
+        # Copy header + separator exactly as they are in the original file
+        header_line = lines[table_header_idx]
+        sep_line = lines[sep_idx]
+        new_section_body.extend([header_line, sep_line])
+        # Append our generated rows (without re-adding header/separator)
+        # Extract only the body rows from table_md by skipping the first two lines
+        gen_lines = table_md.strip('\n').split('\n')
+        body_rows = gen_lines[2:] if len(gen_lines) > 2 else []
+        new_section_body.extend(body_rows)
+        new_section_body.append('')
 
+    # Reassemble the document
+    head = '\n'.join(lines[:subsets_h + 1])  # include '## Subsets' line
+    tail = '\n'.join(lines[next_header_idx:])
+
+    # Ensure proper newlines around the section
     if head and not head.endswith('\n'):
         head += '\n'
     if tail and not tail.startswith('\n'):
         tail = '\n' + tail
 
-    return head + new_section + tail
+    return head + '\n'.join(new_section_body) + tail
 
 def build_table(rows):
     if not rows:

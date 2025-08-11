@@ -67,6 +67,8 @@ Alias: confidence
 ```yaml
 name: confidence
 description: Confidence score (0–1).
+in_subset:
+- overture
 from_schema: https://global.church/schema
 rank: 1000
 alias: confidence

@@ -67,6 +67,8 @@ Alias: version
 ```yaml
 name: version
 description: Overture version number.
+in_subset:
+- overture
 from_schema: https://global.church/schema
 rank: 1000
 alias: version

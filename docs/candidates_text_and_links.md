@@ -67,6 +67,8 @@ Alias: candidates_text_and_links
 ```yaml
 name: candidates_text_and_links
 description: Text and associated links for candidate pages.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: candidates_text_and_links

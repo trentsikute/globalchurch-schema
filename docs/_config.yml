@@ -1,0 +1,6 @@
+# To generate the documentation, run:  linkml generate doc globalchurch.yaml --directory docs
+markdown: kramdown
+kramdown:
+  toc_levels: 1..2
+
+theme: "just-the-docs"

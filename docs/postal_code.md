@@ -59,6 +59,9 @@ Alias: postal_code
 ```yaml
 name: postal_code
 description: Postal / ZIP code.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:postalCode

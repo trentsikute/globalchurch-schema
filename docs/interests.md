@@ -68,6 +68,8 @@ Alias: interests
 ```yaml
 name: interests
 description: Free-text interests or ministry areas.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:interest

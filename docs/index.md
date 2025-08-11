@@ -1,7 +1,5 @@
 # GlobalChurch
 
-- See **[Subsets](Subsets.md)** for a full list of subset tags.
-
 
 
 URI: https://global.church/schema
@@ -96,6 +94,7 @@ Name: GlobalChurch
 | [Datetime](Datetime.md) | The combination of a date and time |
 | [Decimal](Decimal.md) | A real number with arbitrary precision that conforms to the xsd:decimal speci... |
 | [Double](Double.md) | A real number that conforms to the xsd:double specification |
+| [Email](Email.md) | Email address (simplified RFC 5322) |
 | [Float](Float.md) | A real number that conforms to the xsd:float specification |
 | [Integer](Integer.md) | An integer |
 | [Jsonpath](Jsonpath.md) | A string encoding a JSON Path |
@@ -103,6 +102,7 @@ Name: GlobalChurch
 | [Ncname](Ncname.md) | Prefix part of CURIE |
 | [Nodeidentifier](Nodeidentifier.md) | A URI, CURIE or BNODE that represents a node in a model |
 | [Objectidentifier](Objectidentifier.md) | A URI or CURIE that represents an object in the model |
+| [PhoneE164](PhoneE164.md) | Telephone number in E |
 | [Sparqlpath](Sparqlpath.md) | A string encoding a SPARQL Property Path |
 | [String](String.md) | A character string |
 | [Time](Time.md) | A time object represents a (local) time of day, independent of any particular... |
@@ -110,13 +110,15 @@ Name: GlobalChurch
 | [Uriorcurie](Uriorcurie.md) | a URI or a CURIE |
 | [Uuid](Uuid.md) | Universally unique identifier (RFC 4122) |
 
+
 ## Subsets
 
 | Subset | Description |
 | --- | --- |
-| core | Minimal fields needed to represent a church. |
-| enrichment | Derived by AI or post-processing. |
-| internal | Operational/internal fields for Global.Church. |
-| overture | Sourced from Overture Maps. |
-| pii | Potentially personally identifiable or sensitive. |
-| public | Fields safe for public consumption. |
+| [ChurchCore](ChurchCore.md) | Minimal fields needed to represent a church |
+| [Enrichment](Enrichment.md) | Usually derived by AI or post-processing |
+| [Internal](Internal.md) | Operational/internal fields for Global |
+| [Overture](Overture.md) | Sourced from Overture Maps |
+| [Pii](Pii.md) | Potentially personally identifiable or sensitive |
+| [Public](Public.md) | Fields available for public consumption |
+| [UserCore](UserCore.md) | Minimal fields needed to represent a user |

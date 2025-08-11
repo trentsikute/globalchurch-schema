@@ -68,6 +68,9 @@ Alias: youtube_url
 ```yaml
 name: youtube_url
 description: YouTube channel URL.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:sameAs

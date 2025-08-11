@@ -68,6 +68,9 @@ Alias: service_languages
 ```yaml
 name: service_languages
 description: Languages in which services are offered.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:inLanguage

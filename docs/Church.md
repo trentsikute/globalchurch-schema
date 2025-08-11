@@ -101,6 +101,9 @@ URI: [gc:Church](https://global.church/schema/Church)
 ```yaml
 name: Church
 description: A distinct church congregation.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 mappings:
 - schema:Church
@@ -123,6 +126,9 @@ slots:
 ```yaml
 name: Church
 description: A distinct church congregation.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 mappings:
 - schema:Church
@@ -130,7 +136,10 @@ mappings:
 attributes:
   church_id:
     name: church_id
-    description: Primary key for Church; referenced by related tables.
+    description: Primary key for Church; referenced by related tables. Issued by Global.Church.
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     rank: 1000
     identifier: true
@@ -145,6 +154,9 @@ attributes:
   gers_id:
     name: gers_id
     description: ID from the Government/Ecclesiastical Registry System (if available).
+    in_subset:
+    - overture
+    - public
     from_schema: https://global.church/schema
     rank: 1000
     alias: gers_id
@@ -156,6 +168,9 @@ attributes:
   name:
     name: name
     description: Official church name.
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:name
@@ -168,6 +183,8 @@ attributes:
   pipeline_status:
     name: pipeline_status
     description: Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED).
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: pipeline_status
@@ -178,6 +195,9 @@ attributes:
   latitude:
     name: latitude
     description: Geographic latitude (decimal degrees).
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:latitude
@@ -190,6 +210,9 @@ attributes:
   longitude:
     name: longitude
     description: Geographic longitude (decimal degrees).
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:longitude
@@ -202,6 +225,9 @@ attributes:
   address:
     name: address
     description: Physical street address.
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:address

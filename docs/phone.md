@@ -22,7 +22,7 @@ Alias: phone
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [PhoneE164](PhoneE164.md)
 
 
 
@@ -59,12 +59,16 @@ Alias: phone
 ```yaml
 name: phone
 description: Church phone number.
+in_subset:
+- public
+- overture
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:telephone
 rank: 1000
 alias: phone
-range: string
+range: phone_e164
 
 ```
 </details>

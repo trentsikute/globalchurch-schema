@@ -67,6 +67,9 @@ Alias: church_beliefs_url
 ```yaml
 name: church_beliefs_url
 description: URL of the statement of faith or similar statement of beliefs.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 rank: 1000
 alias: church_beliefs_url

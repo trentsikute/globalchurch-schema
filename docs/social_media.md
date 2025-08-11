@@ -3,7 +3,7 @@
 # Slot: social_media 
 
 
-_JSON or comma-separated social media handles._
+_JSON or comma-separated social media handles. Provided by Overture Maps._
 
 
 
@@ -57,7 +57,11 @@ Alias: social_media
 <details>
 ```yaml
 name: social_media
-description: JSON or comma-separated social media handles.
+description: JSON or comma-separated social media handles. Provided by Overture Maps.
+in_subset:
+- public
+- overture
+- enrichment
 from_schema: https://global.church/schema
 rank: 1000
 alias: social_media

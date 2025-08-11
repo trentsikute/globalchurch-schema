@@ -67,6 +67,8 @@ Alias: root_scrape_buttons
 ```yaml
 name: root_scrape_buttons
 description: Button texts captured on root page.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: root_scrape_buttons

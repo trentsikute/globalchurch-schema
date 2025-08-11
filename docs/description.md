@@ -59,6 +59,9 @@ Alias: description
 ```yaml
 name: description
 description: Long-form description of the church.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:description

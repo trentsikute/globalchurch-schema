@@ -68,6 +68,9 @@ Alias: family_name
 ```yaml
 name: family_name
 description: Last name.
+in_subset:
+- user_core
+- pii
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:familyName

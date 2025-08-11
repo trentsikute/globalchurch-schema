@@ -59,6 +59,9 @@ Alias: country
 ```yaml
 name: country
 description: ISO-3166 country code.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:addressCountry

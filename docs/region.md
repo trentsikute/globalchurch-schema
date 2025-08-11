@@ -59,6 +59,9 @@ Alias: region
 ```yaml
 name: region
 description: State, province, or region.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:addressRegion

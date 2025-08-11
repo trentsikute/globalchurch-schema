@@ -67,6 +67,9 @@ Alias: church_summary
 ```yaml
 name: church_summary
 description: Concise summary of the church, including key attributes and offerings.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 rank: 1000
 alias: church_summary

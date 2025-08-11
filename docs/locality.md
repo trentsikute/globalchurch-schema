@@ -59,6 +59,9 @@ Alias: locality
 ```yaml
 name: locality
 description: City or locality of the church.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:addressLocality

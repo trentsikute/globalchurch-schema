@@ -67,6 +67,8 @@ Alias: root_scrape_text
 ```yaml
 name: root_scrape_text
 description: Visible text scraped from the root page.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: root_scrape_text

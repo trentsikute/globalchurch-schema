@@ -67,6 +67,8 @@ Alias: primary_church
 ```yaml
 name: primary_church
 description: FK → Church.church_id (the user’s primary church).
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: primary_church

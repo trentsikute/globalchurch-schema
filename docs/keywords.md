@@ -59,6 +59,8 @@ Alias: keywords
 ```yaml
 name: keywords
 description: Comma-separated keywords or tags.
+in_subset:
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:keywords

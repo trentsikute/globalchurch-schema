@@ -1,0 +1,109 @@
+# Subset: Core 
+
+
+_Minimal fields needed to represent a church._
+
+
+
+URI: [Core](Core.md)
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://global.church/schema
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Classes in subset
+
+| Class | Description |
+| --- | --- |
+| [Church](Church.md) | A distinct church congregation |
+
+
+
+
+
+
+

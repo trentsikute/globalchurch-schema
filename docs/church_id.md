@@ -3,7 +3,7 @@
 # Slot: church_id 
 
 
-_Primary key for Church; referenced by related tables._
+_Primary key for Church; referenced by related tables. Issued by Global.Church._
 
 
 
@@ -22,9 +22,9 @@ Alias: church_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 | [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
 | [Church](Church.md) | A distinct church congregation |  no  |
+| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 
 
 
@@ -70,7 +70,10 @@ Alias: church_id
 <details>
 ```yaml
 name: church_id
-description: Primary key for Church; referenced by related tables.
+description: Primary key for Church; referenced by related tables. Issued by Global.Church.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 rank: 1000
 identifier: true

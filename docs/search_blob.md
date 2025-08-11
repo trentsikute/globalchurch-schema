@@ -58,6 +58,8 @@ Alias: search_blob
 ```yaml
 name: search_blob
 description: Concatenated text blob used for full-text search.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: search_blob

@@ -97,6 +97,8 @@ URI: [gc:ChurchWebsite](https://global.church/schema/ChurchWebsite)
 ```yaml
 name: ChurchWebsite
 description: Raw scrape artifacts captured from the church root URL.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 slots:
 - church_id
@@ -115,11 +117,16 @@ slots:
 ```yaml
 name: ChurchWebsite
 description: Raw scrape artifacts captured from the church root URL.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 attributes:
   church_id:
     name: church_id
-    description: Primary key for Church; referenced by related tables.
+    description: Primary key for Church; referenced by related tables. Issued by Global.Church.
+    in_subset:
+    - church_core
+    - public
     from_schema: https://global.church/schema
     rank: 1000
     identifier: true
@@ -134,6 +141,8 @@ attributes:
   root_scrape_text:
     name: root_scrape_text
     description: Visible text scraped from the root page.
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: root_scrape_text
@@ -144,6 +153,8 @@ attributes:
   root_scrape_buttons:
     name: root_scrape_buttons
     description: Button texts captured on root page.
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: root_scrape_buttons
@@ -154,6 +165,8 @@ attributes:
   root_scrape_check:
     name: root_scrape_check
     description: Checksum or status flag of the scrape.
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: root_scrape_check
@@ -164,6 +177,8 @@ attributes:
   root_candidates:
     name: root_candidates
     description: Candidate URLs extracted from the root page.
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: root_candidates
@@ -174,6 +189,8 @@ attributes:
   candidates_text_and_links:
     name: candidates_text_and_links
     description: Text and associated links for candidate pages.
+    in_subset:
+    - internal
     from_schema: https://global.church/schema
     rank: 1000
     alias: candidates_text_and_links

@@ -31,7 +31,7 @@ Alias: scraped_email
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [email](email.md)
 
 
 
@@ -68,6 +68,10 @@ Alias: scraped_email
 ```yaml
 name: scraped_email
 description: Email address extracted from site.
+in_subset:
+- internal
+- pii
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:email
@@ -75,7 +79,7 @@ rank: 1000
 alias: scraped_email
 domain_of:
 - EnrichedData
-range: string
+range: email
 
 ```
 </details>

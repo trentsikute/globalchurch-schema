@@ -1,28 +1,19 @@
 
 
-# Slot: name 
+# Slot: opening_hours 
 
 
-_Official church name._
+_Opening hours information._
 
 
 
 
 
-URI: [gc:name](https://global.church/schema/name)
-Alias: name
+URI: [gc:opening_hours](https://global.church/schema/opening_hours)
+Alias: opening_hours
 
 <!-- no inheritance hierarchy -->
 
-
-
-
-
-## Applicable Classes
-
-| Name | Description | Modifies Slot |
-| --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
 
 
 
@@ -55,9 +46,9 @@ Alias: name
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | gc:name |
-| native | gc:name |
-| exact | schema:name |
+| self | gc:opening_hours |
+| native | gc:opening_hours |
+| exact | schema:openingHours, schema:openingHoursSpecification |
 
 
 
@@ -66,18 +57,16 @@ Alias: name
 
 <details>
 ```yaml
-name: name
-description: Official church name.
+name: opening_hours
+description: Opening hours information.
 in_subset:
-- church_core
 - public
 from_schema: https://global.church/schema
 exact_mappings:
-- schema:name
+- schema:openingHours
+- schema:openingHoursSpecification
 rank: 1000
-alias: name
-domain_of:
-- Church
+alias: opening_hours
 range: string
 
 ```

@@ -68,6 +68,9 @@ Alias: address
 ```yaml
 name: address
 description: Physical street address.
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:address

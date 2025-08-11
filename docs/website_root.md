@@ -58,6 +58,8 @@ Alias: website_root
 ```yaml
 name: website_root
 description: Root URL (scheme + domain).
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: website_root

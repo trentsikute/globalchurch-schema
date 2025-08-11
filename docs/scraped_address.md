@@ -68,6 +68,9 @@ Alias: scraped_address
 ```yaml
 name: scraped_address
 description: Postal address extracted from site.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:address

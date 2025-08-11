@@ -67,6 +67,9 @@ Alias: trinitarian_beliefs
 ```yaml
 name: trinitarian_beliefs
 description: True if church affirms classical Trinitarian doctrine.
+in_subset:
+- public
+- enrichment
 from_schema: https://global.church/schema
 rank: 1000
 alias: trinitarian_beliefs

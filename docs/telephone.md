@@ -31,7 +31,7 @@ Alias: telephone
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [PhoneE164](PhoneE164.md)
 
 
 
@@ -68,6 +68,9 @@ Alias: telephone
 ```yaml
 name: telephone
 description: Phone number (international format recommended).
+in_subset:
+- internal
+- pii
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:telephone
@@ -75,7 +78,7 @@ rank: 1000
 alias: telephone
 domain_of:
 - User
-range: string
+range: phone_e164
 
 ```
 </details>

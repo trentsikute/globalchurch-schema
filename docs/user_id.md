@@ -70,6 +70,9 @@ Alias: user_id
 ```yaml
 name: user_id
 description: Primary key for User (also referenced by other tables).
+in_subset:
+- public
+- user_core
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:identifier

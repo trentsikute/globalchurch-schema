@@ -22,8 +22,8 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
 | [Church](Church.md) | A distinct church congregation |  no  |
+| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
 
 
 
@@ -68,6 +68,9 @@ Alias: gers_id
 ```yaml
 name: gers_id
 description: ID from the Government/Ecclesiastical Registry System (if available).
+in_subset:
+- overture
+- public
 from_schema: https://global.church/schema
 rank: 1000
 alias: gers_id

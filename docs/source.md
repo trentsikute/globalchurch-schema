@@ -67,6 +67,8 @@ Alias: source
 ```yaml
 name: source
 description: Source label of the Overture record.
+in_subset:
+- overture
 from_schema: https://global.church/schema
 rank: 1000
 alias: source

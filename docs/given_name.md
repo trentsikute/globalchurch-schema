@@ -68,6 +68,9 @@ Alias: given_name
 ```yaml
 name: given_name
 description: First name.
+in_subset:
+- user_core
+- pii
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:givenName

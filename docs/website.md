@@ -59,6 +59,8 @@ Alias: website
 ```yaml
 name: website
 description: Full website URL.
+in_subset:
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:url

@@ -67,6 +67,8 @@ Alias: faith_journey
 ```yaml
 name: faith_journey
 description: Narrative text describing the user’s faith journey.
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: faith_journey

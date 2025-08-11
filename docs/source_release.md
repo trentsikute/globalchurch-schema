@@ -67,6 +67,8 @@ Alias: source_release
 ```yaml
 name: source_release
 description: Overture release tag (e.g., 2024-05-15).
+in_subset:
+- overture
 from_schema: https://global.church/schema
 rank: 1000
 alias: source_release

@@ -67,6 +67,8 @@ Alias: pipeline_status
 ```yaml
 name: pipeline_status
 description: Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED).
+in_subset:
+- internal
 from_schema: https://global.church/schema
 rank: 1000
 alias: pipeline_status

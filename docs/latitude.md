@@ -68,6 +68,9 @@ Alias: latitude
 ```yaml
 name: latitude
 description: Geographic latitude (decimal degrees).
+in_subset:
+- church_core
+- public
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:latitude
