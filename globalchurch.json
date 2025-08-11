@@ -1,40 +1,66 @@
 {
     "$defs": {
+        "BeliefTypeEnum": {
+            "description": "Top-level Christian family grouping used by Global.Church. Based on Harvest Information Standards (HIS) Registry of Religions. https://hisregistries.org/ror/",
+            "enum": [
+                "orthodox",
+                "roman_catholic",
+                "protestant",
+                "anglican",
+                "other",
+                "unknown"
+            ],
+            "title": "BeliefTypeEnum",
+            "type": "string"
+        },
         "Church": {
             "additionalProperties": false,
             "description": "A distinct church congregation.",
             "properties": {
                 "address": {
-                    "description": "Physical street address.",
+                    "description": "Physical street address of the church or user.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "church_id": {
-                    "description": "Primary key for Church; referenced by related tables.",
+                    "description": "Global.Church-issued ID for a church.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
+                },
+                "country": {
+                    "description": "Country code in ISO 3166-1 alpha-2 format.",
+                    "pattern": "^[A-Z]{2}$",
+                    "type": "string"
                 },
                 "gers_id": {
-                    "description": "ID from the Government/Ecclesiastical Registry System (if available).",
+                    "description": "Government/Ecclesiastical Registry System identifier.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "latitude": {
-                    "description": "Geographic latitude (decimal degrees).",
+                    "description": "Latitude in decimal degrees.",
+                    "maximum": 90,
+                    "minimum": -90,
                     "type": [
                         "number",
                         "null"
                     ]
                 },
+                "locality": {
+                    "description": "City or locality where the church is located.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "longitude": {
-                    "description": "Geographic longitude (decimal degrees).",
+                    "description": "Longitude in decimal degrees.",
+                    "maximum": 180,
+                    "minimum": -180,
                     "type": [
                         "number",
                         "null"
@@ -42,13 +68,24 @@
                 },
                 "name": {
                     "description": "Official church name.",
+                    "type": "string"
+                },
+                "pipeline_status": {
+                    "description": "Current enrichment pipeline stage.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "pipeline_status": {
-                    "description": "Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED).",
+                "postal_code": {
+                    "description": "Postal code or ZIP code for the address.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "region": {
+                    "description": "State, province, or administrative region.",
                     "type": [
                         "string",
                         "null"
@@ -56,7 +93,9 @@
                 }
             },
             "required": [
-                "church_id"
+                "church_id",
+                "name",
+                "country"
             ],
             "title": "Church",
             "type": "object"
@@ -66,40 +105,46 @@
             "description": "Raw scrape artifacts captured from the church root URL.",
             "properties": {
                 "candidates_text_and_links": {
-                    "description": "Text and associated links for candidate pages.",
+                    "description": "Text snippets and associated links for candidate pages.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "church_id": {
-                    "description": "Primary key for Church; referenced by related tables.",
+                    "description": "Global.Church-issued ID for a church.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                     "type": "string"
                 },
                 "root_candidates": {
                     "description": "Candidate URLs extracted from the root page.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "root_scrape_buttons": {
-                    "description": "Button texts captured on root page.",
+                    "description": "Button texts captured on the root page.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "root_scrape_check": {
-                    "description": "Checksum or status flag of the scrape.",
+                    "description": "Checksum or status flag indicating scrape state.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "root_scrape_text": {
-                    "description": "Visible text scraped from the root page.",
+                    "description": "Visible text content scraped from the website root page.",
                     "type": [
                         "string",
                         "null"
@@ -117,16 +162,27 @@
             "description": "AI-enriched attributes extracted from the church website and socials.",
             "properties": {
                 "belief_type": {
-                    "description": "Denomination / church type category.",
+                    "$ref": "#/$defs/BeliefTypeEnum",
+                    "description": "Denomination / church type category.\nClassifies the church into a top-level Christian family as defined by BeliefTypeEnum.\nBased on the Harvest Information Standards (HIS) Registry of Religions.\n"
+                },
+                "church_beliefs_url": {
+                    "description": "URL for the church\u2019s statement of beliefs/faith.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "church_id": {
-                    "description": "Primary key for Church; referenced by related tables.",
+                    "description": "Global.Church-issued ID for a church.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                     "type": "string"
+                },
+                "church_summary": {
+                    "description": "Concise public summary of the church.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "instagram_url": {
                     "description": "Instagram profile URL.",
@@ -136,21 +192,25 @@
                     ]
                 },
                 "programs_offered": {
-                    "description": "List of programs or ministries offered.",
+                    "description": "Programs or ministries the church offers.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "scraped_address": {
-                    "description": "Postal address extracted from site.",
+                    "description": "Postal address extracted from the website.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "scraped_email": {
-                    "description": "Email address extracted from site.",
+                    "description": "Public email address extracted from the website.",
+                    "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
                     "type": [
                         "string",
                         "null"
@@ -158,27 +218,23 @@
                 },
                 "service_languages": {
                     "description": "Languages in which services are offered.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "service_times": {
-                    "description": "Service times (free text).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "statement_of_faith": {
-                    "description": "URL or text of the statement of faith.",
+                    "description": "Service times for public gatherings.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "trinitarian_beliefs": {
-                    "description": "True if church affirms classical Trinitarian doctrine.",
+                    "description": "Whether the church affirms classical Trinitarian doctrine.",
                     "type": [
                         "boolean",
                         "null"
@@ -203,35 +259,35 @@
             "description": "Original place record as supplied by Overture Maps.",
             "properties": {
                 "confidence": {
-                    "description": "Confidence score (0\u20131).",
+                    "description": "Confidence score (0\u20131) from Overture.",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "gers_id": {
-                    "description": "ID from the Government/Ecclesiastical Registry System (if available).",
+                    "description": "Government/Ecclesiastical Registry System identifier.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "source": {
-                    "description": "Source label of the Overture record.",
+                    "description": "Source label from Overture Maps.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "source_release": {
-                    "description": "Overture release tag (e.g., 2024-05-15).",
+                    "description": "Overture release tag (YYYY-MM-DD).",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "version": {
-                    "description": "Overture version number.",
+                    "description": "Overture dataset version number.",
                     "type": [
                         "integer",
                         "null"
@@ -246,50 +302,50 @@
             "description": "A registered platform user.",
             "properties": {
                 "alternate_church": {
-                    "description": "Optional FK \u2192 Church.church_id (secondary church).",
-                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                    "description": "Optional FK to a secondary/alternate Church.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "email": {
-                    "description": "Main contact email.",
+                    "description": "Primary contact email for the user.",
+                    "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "faith_journey": {
-                    "description": "Narrative text describing the user\u2019s faith journey.",
+                    "description": "Narrative of the user\u2019s faith journey.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "family_name": {
-                    "description": "Last name.",
+                    "description": "User\u2019s last (family) name.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "given_name": {
-                    "description": "First name.",
+                    "description": "User\u2019s first (given) name.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "interests": {
-                    "description": "Free-text interests or ministry areas.",
+                    "description": "User\u2019s interests or ministry areas.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "primary_church": {
-                    "description": "FK \u2192 Church.church_id (the user\u2019s primary church).",
+                    "description": "FK to the user\u2019s primary Church.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                     "type": [
                         "string",
@@ -297,21 +353,25 @@
                     ]
                 },
                 "skills": {
-                    "description": "Comma-separated list of user skills.",
+                    "description": "List of user skills.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "telephone": {
-                    "description": "Phone number (international format recommended).",
+                    "description": "User\u2019s phone number (E.164).",
+                    "pattern": "^\\+?[1-9]\\d{1,14}$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "user_id": {
-                    "description": "Primary key for User (also referenced by other tables).",
+                    "description": "Unique ID for a registered platform user.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                     "type": [
                         "string",

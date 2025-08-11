@@ -7,8 +7,10 @@
 id: https://global.church/schema
 name: GlobalChurch
 
+
 imports:
   - linkml:types
+
 
 types:
   uuid:
@@ -30,11 +32,19 @@ types:
     description: "Telephone number in E.164 format with optional leading +."
     # e.g., +14155552671 (max 15 digits)
     pattern: '^\+?[1-9]\d{1,14}$'
+  
+  iso_country_code:
+    base: str
+    uri: xsd:string
+    description: "ISO 3166-1 alpha-2 country code."
+    pattern: '^[A-Z]{2}$'
+
 
 prefixes:
   linkml: https://w3id.org/linkml/
   gc: https://global.church/schema/
   schema: http://schema.org/
+
 
 subsets:
   church_core:
@@ -52,8 +62,10 @@ subsets:
   pii:
     description: "Potentially personally identifiable or sensitive."
 
+
 default_prefix: gc
 default_range: string
+
 
 classes:
   User:
@@ -77,6 +89,13 @@ classes:
     mappings:
       - schema:Church            # The physical worship place
       - schema:Organization      # The entity that runs it
+    slot_usage:
+      church_id:
+        required: true
+      name:
+        required: true
+      country:
+        required: true
     slots:
       - church_id
       - gers_id
@@ -85,7 +104,12 @@ classes:
       - latitude
       - longitude
       - address
+      - locality
+      - region
+      - postal_code
+      - country
     in_subset: [church_core, public]
+
   
   ChurchWebsite:
     description: "Raw scrape artifacts captured from the church root URL."
@@ -125,261 +149,703 @@ classes:
       - source_release
     in_subset: [overture]
 
+
 slots:
   user_id:
     identifier: true
     exact_mappings: [schema:identifier]
     range: uuid
-    description: "Primary key for User (also referenced by other tables)."
-    in_subset: [public, user_core]
+    description: "Unique ID for a registered platform user."
+    comments:
+      - |
+        This is the stable, system-issued identifier for a user.
+        It is used as the primary key and as the target of foreign keys in related tables.
+        Must be a valid UUID (v4 recommended). Never reuse or recycle a user_id.
+    examples:
+      - value: "550e8400-e29b-41d4-a716-446655440000"
+        description: "Example UUID for a user record."
+      - value: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        description: "Another valid UUID."
 
   given_name:
     exact_mappings: [schema:givenName]
-    description: "First name."
+    description: "User’s first (given) name."
     in_subset: [user_core, pii]
+    comments:
+      - |
+        Use the person’s preferred first name. Do not include middle names or initials here.
+        For organizations or teams, this slot should be left empty.
+    examples:
+      - value: "Ava"
+        description: "Simple given name."
+      - value: "Jean-Luc"
+        description: "Hyphenated given name."
 
   family_name:
     exact_mappings: [schema:familyName]
-    description: "Last name."
+    description: "User’s last (family) name."
     in_subset: [user_core, pii]
+    comments:
+      - |
+        Store the surname only. Do not include suffixes (e.g., Jr., III) or prefixes (e.g., Dr.).
+        If the person has a single name, leave this blank and use given_name only.
+    examples:
+      - value: "Sikute"
+        description: "Standard family name."
+      - value: "O'Neil"
+        description: "Family name with punctuation."
 
   email:
     exact_mappings: [schema:email]
     range: email
-    description: "Main contact email."
+    description: "Primary contact email for the user."
     in_subset: [user_core, internal, pii]
+    comments:
+      - |
+        Must satisfy the `email` scalar pattern (simplified RFC 5322).
+        Use the address the user prefers for platform communication.
+        For church emails discovered via scraping, use `scraped_email` on EnrichedData instead.
+    examples:
+      - value: "trent@example.org"
+        description: "Typical user email."
+      - value: "ava.smith+globalchurch@gmail.com"
+        description: "Address with plus-tag."
 
   telephone:
     exact_mappings: [schema:telephone]
     range: phone_e164
-    description: "Phone number (international format recommended)."
+    description: "User’s phone number (E.164)."
     in_subset: [internal, pii]
+    comments:
+      - |
+        Store numbers in E.164 format (e.g., +14155552671). Country code is required.
+        Do not include spaces, parentheses, or dashes. For church phone, use `phone` slot.
+    examples:
+      - value: "+13105551234"
+        description: "US number in E.164 format."
+      - value: "+442071838750"
+        description: "UK number in E.164 format."
 
   skills:
-    exact_mappings: [schema:skills] 
-    description: "Comma-separated list of user skills."
+    exact_mappings: [schema:skills]
+    description: "List of user skills."
     in_subset: [internal]
+    multivalued: true
+    comments:
+      - |
+        Use a controlled list where possible (e.g., “photography”, “youth_ministry”, “python”).
+        This slot is multivalued—store each skill as a separate list item.
+    examples:
+      - value: "[\"photography\", \"youth_ministry\", \"python\"]"
+        description: "Three discrete skills as a JSON array string."
 
   primary_church:
     range: uuid
-    description: "FK → Church.church_id (the user’s primary church)."
+    description: "FK to the user’s primary Church."
     in_subset: [internal]
+    comments:
+      - |
+        Points to `Church.church_id`. Use when a user affiliates with a single congregation.
+        If the user participates at multiple churches, consider also setting `alternate_church`.
+    examples:
+      - value: "a4b7b3a1-2c6e-4b0a-8c0a-2d6e5c9a2f11"
+        description: "UUID of the primary church."
 
   alternate_church:
-    range: uuid
-    description: "Optional FK → Church.church_id (secondary church)."
-    in_subset: [internal]
+    description: "Optional FK to a secondary/alternate Church."
+    comments:
+      - |
+        Points to `Church.church_id`. Use when a user has a secondary affiliation
+        (e.g., a campus they visit occasionally). Leave empty if not applicable.
+    examples:
+      - value: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        description: "UUID of an alternate church."
+      - value: "00000000-0000-0000-0000-000000000000"
+        description: "Empty/placeholder not valid—use null instead."
 
   interests:
     exact_mappings: [schema:interest]
-    description: "Free-text interests or ministry areas."
+    description: "User’s interests or ministry areas."
     in_subset: [internal]
+    comments:
+      - |
+        Free text or tags describing ministry passions (e.g., “missions”, “children”, “tech”).
+        Prefer consistent tagging conventions to improve searchability.
+    examples:
+      - value: "missions, photography, discipleship"
+        description: "Comma-separated input that will be normalized."
+      - value: "youth_ministry"
+        description: "Single interest term."
 
   faith_journey:
-    description: "Narrative text describing the user’s faith journey."
+    description: "Narrative of the user’s faith journey."
     in_subset: [internal]
+    comments:
+      - |
+        Long-form text. May include testimony, baptism date, or ministry milestones.
+        Avoid storing sensitive counseling notes in this field.
+    examples:
+      - value: "Came to faith in 2016; baptized in 2017; serving in college ministry."
+        description: "Concise narrative."
+      - value: "Exploring faith; interested in Alpha course."
+        description: "Short current-state note."
 
   church_id:
     identifier: true
     range: uuid
-    description: "Primary key for Church; referenced by related tables. Issued by Global.Church."
+    description: "Global.Church-issued ID for a church."
     in_subset: [church_core, public]
+    comments:
+      - |
+        Primary key for the Church entity. Stable and non-reassignable.
+        Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
+    examples:
+      - value: "9e1c2a7d-4c33-4b8b-9d7a-1a2b3c4d5e6f"
+        description: "Example church UUID."
 
   name:
     exact_mappings: [schema:name]
     description: "Official church name."
     in_subset: [church_core, public]
+    comments:
+      - |
+        Use the legal or commonly recognized name (e.g., “Grace Community Church”).
+        If there is a campus name or colloquial short name, store it in `alternate_name`.
+    examples:
+      - value: "Grace Community Church"
+        description: "Formal church name."
+      - value: "Grace Church Malibu"
+        description: "Name with locality qualifier."
 
   pipeline_status:
     range: string
-    description: "Enrichment pipeline stage (e.g., RAW, CLEAN, ENRICHED, VALIDATED)."
+    description: "Current enrichment pipeline stage."
     in_subset: [internal]
+    comments:
+      - |
+        Suggested stages: RAW → CLEAN → ENRICHED → VALIDATED.
+        RAW: ingested with minimal checks.
+        CLEAN: deduplicated & normalized.
+        ENRICHED: scraped/AI fields added.
+        VALIDATED: human-reviewed.
+    examples:
+      - value: "RAW"
+        description: "Fresh intake from a seed source."
+      - value: "VALIDATED"
+        description: "Reviewed and approved record."
 
   latitude:
     range: float
+    minimum_value: -90
+    maximum_value: 90
     exact_mappings: [schema:latitude]
-    description: "Geographic latitude (decimal degrees)."
+    description: "Latitude in decimal degrees."
     in_subset: [church_core, public]
+    comments:
+      - |
+        Use WGS84 decimal degrees. South is negative.
+        Precision of 5–6 decimal places is typically sufficient (~1–10 meters).
+    examples:
+      - value: "34.0259"
+        description: "Approximate latitude for Malibu, CA."
+      - value: "-33.8688"
+        description: "Southern hemisphere example (Sydney)."
 
   longitude:
     range: float
+    minimum_value: -180
+    maximum_value: 180
     exact_mappings: [schema:longitude]
-    description: "Geographic longitude (decimal degrees)."
+    description: "Longitude in decimal degrees."
     in_subset: [church_core, public]
+    comments:
+      - |
+        Use WGS84 decimal degrees. West is negative.
+        Keep latitude/longitude pairs from the same source to avoid mismatch.
+    examples:
+      - value: "-118.7798"
+        description: "Approximate longitude for Malibu, CA."
+      - value: "151.2093"
+        description: "Eastern hemisphere example (Sydney)."
 
   address:
-    range: string
-    exact_mappings: [schema:address]
-    description: "Physical street address."
+    description: "Physical street address of the church or user."
     in_subset: [church_core, public]
+    comments:
+      - |
+        This is the official mailing or street address, suitable for postal delivery and mapping.
+        Always include street number, street name, and any suite or apartment details if applicable.
+        Follow the local postal format for the country (e.g., street before city in the US).
+        Avoid using P.O. boxes unless it is the only available mailing address for the entity.
+        For international addresses, include all relevant locality and region information.
+        Use this slot for the canonical address, not for addresses scraped from websites (see `scraped_address`).
+    examples:
+      - value: "123 Main St, Springfield, IL 62704"
+        description: "Standard U.S. street address."
+      - value: "10 Downing St, London SW1A 2AA"
+        description: "UK address with postal code."
 
   locality:
     exact_mappings: [schema:addressLocality]
-    description: "City or locality of the church."
+    description: "City or locality where the church is located."
     in_subset: [church_core, public]
+    comments:
+      - |
+        The city, town, or locality where the church's primary address is situated.
+        Use the official or most commonly recognized municipality name.
+        This value should match the locality as used by local postal authorities.
+        For rural areas without a city, use the nearest recognized locality.
+    examples:
+      - value: "Springfield"
+        description: "US city."
+      - value: "Sydney"
+        description: "Major city in Australia."
 
   region:
     exact_mappings: [schema:addressRegion]
-    description: "State, province, or region."
+    description: "State, province, or administrative region."
     in_subset: [church_core, public]
+    comments:
+      - |
+        The primary administrative subdivision for the locality, such as state (US), province (Canada), or region (EU).
+        Use the full name or standard abbreviation as appropriate for the country.
+        For countries without such subdivisions, leave this slot empty.
+    examples:
+      - value: "CA"
+        description: "California (US state abbreviation)."
+      - value: "New South Wales"
+        description: "Australian state."
 
   postal_code:
     exact_mappings: [schema:postalCode]
-    description: "Postal / ZIP code."
+    description: "Postal code or ZIP code for the address."
     in_subset: [church_core, public]
+    comments:
+      - |
+        The postal (ZIP) code as assigned by the national postal authority.
+        Use the correct format for the country (e.g., 12345 or 12345-6789 in the US, SW1A 2AA in the UK).
+        Always include this value for postal addresses if available.
+    examples:
+      - value: "62704"
+        description: "US ZIP code."
+      - value: "SW1A 2AA"
+        description: "UK postal code."
 
   country:
     exact_mappings: [schema:addressCountry]
-    description: "ISO-3166 country code."
+    description: "Country code in ISO 3166-1 alpha-2 format."
+    range: iso_country_code
     in_subset: [church_core, public]
+    comments:
+      - |
+        Use the two-letter ISO 3166-1 alpha-2 code (e.g., US, GB, AU).
+        This field is required for all church records.
+        Do not use full country names or three-letter codes.
+    examples:
+      - value: "US"
+        description: "United States."
+      - value: "NG"
+        description: "Nigeria."
 
   website:
     exact_mappings: [schema:url]
     range: uri
-    description: "Full website URL."
+    description: "Full website URL for the church."
     in_subset: [public]
+    comments:
+      - |
+        Provide the complete URL, including scheme (http/https).
+        Use the main public-facing website for the church.
+        Exclude social media links (see `instagram_url`, `youtube_url`).
+    examples:
+      - value: "https://gracechurch.org"
+        description: "Church homepage."
+      - value: "https://stpauls-sydney.org.au"
+        description: "Australian church website."
 
   website_root:
     range: uri
-    description: "Root URL (scheme + domain)."
+    description: "Root URL of the church website (scheme and domain only)."
     in_subset: [internal]
+    comments:
+      - |
+        The canonical root domain for the church website, e.g., https://example.org.
+        Used for web scraping and deduplication.
+        Exclude any path, query, or fragment components.
+    examples:
+      - value: "https://gracechurch.org"
+        description: "Root domain for scraping."
+      - value: "https://stpauls-sydney.org.au"
+        description: "Australian church root domain."
 
   search_blob:
-    description: "Concatenated text blob used for full-text search."
+    description: "Concatenated text of searchable fields for indexing."
     in_subset: [internal]
+    comments:
+      - |
+        This slot is used internally to store a combined string of key fields
+        (e.g., name, address, keywords) for full-text search indexing.
+        Not intended for direct display or export.
+    examples:
+      - value: "Grace Community Church 123 Main St Springfield CA 62704 US"
+        description: "Combined fields for search."
 
   opening_hours:
     exact_mappings: [schema:openingHours, schema:openingHoursSpecification]
-    description: "Opening hours information."
+    description: "Church opening hours or service schedule."
     in_subset: [public]
+    comments:
+      - |
+        Use either free text or a structured format to describe when the church is open or services are held.
+        For structured data, use the schema.org OpeningHours format (e.g., "Mo-Fr 09:00-17:00").
+        May include special service times or holiday exceptions.
+    examples:
+      - value: "Sun 09:00-11:00, Wed 19:00-20:30"
+        description: "Typical service times."
+      - value: "Mo-Fr 09:00-17:00"
+        description: "Weekday opening hours."
 
   keywords:
     exact_mappings: [schema:keywords]
-    description: "Comma-separated keywords or tags."
+    description: "Keywords or tags describing the church."
     in_subset: [public]
+    multivalued: true
+    comments:
+      - |
+        NOTE: It has not yet been decided what values (if any) will be used in this slot.
+        This field was added because it matches the schema.org schema.
+        
+        Comma-separated or list of keywords that describe the church, its ministries, or focus areas.
+        Use consistent tagging to enable filtering and search.
+        Examples: "baptist, youth, outreach, contemporary worship"
+    examples:
+      - value: "[\"baptist\", \"youth\", \"outreach\"]"
+        description: "Multiple ministry keywords."
 
   alternate_name:
     exact_mappings: [schema:alternateName]
-    description: "Alternate or colloquial church name."
+    description: "Alternate, colloquial, or short name for the church."
     in_subset: [public]
+    comments:
+      - |
+        Use for commonly used nicknames, abbreviations, or campus-specific names.
+        Leave blank if the church is only known by its official name.
+    examples:
+      - value: "Grace Church"
+        description: "Shortened version of official name."
+      - value: "GCC Malibu"
+        description: "Colloquial campus name."
 
   description:
     exact_mappings: [schema:description]
-    description: "Long-form description of the church."
+    description: "Detailed narrative description of the church."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        A long-form text providing background, mission, history, or unique attributes of the church.
+        This may be sourced from the church website, directories, or written by staff.
+        Useful for display on profiles and for enrichment purposes.
+    examples:
+      - value: "Grace Community Church is a vibrant, multi-generational congregation serving the Malibu area since 1952."
+        description: "Brief narrative profile."
 
   social_media:
-    description: "JSON or comma-separated social media handles. Provided by Overture Maps."
+    description: "List of social media handles or URLs associated with the church."
     in_subset: [public, overture, enrichment]
+    multivalued: true
+    comments:
+      - |
+        May be a JSON object or a list of URLs/usernames for platforms such as Facebook, Twitter, Instagram, etc.
+        Provided by Overture Maps or extracted from the church website.
+        Use platform-specific slots (e.g., `instagram_url`) when available.
+    examples:
+      - value: "[\"https://facebook.com/gracechurch\", \"@gracechurchmalibu\"]"
+        description: "Facebook URL and Twitter handle as a JSON array string."
 
   phone:
     exact_mappings: [schema:telephone]
     range: phone_e164
-    description: "Church phone number."
+    description: "Official phone number for the church."
     in_subset: [public, overture, enrichment]
+    comments:
+      - |
+        Store the main contact number for the church in E.164 format (e.g., +14155552671).
+        Do not include user or staff personal numbers.
+        Numbers should be validated for correct format and country code.
+    examples:
+      - value: "+13105551234"
+        description: "US church phone number."
+      - value: "+442071838750"
+        description: "UK church phone number."
 
   root_scrape_text:
-    description: "Visible text scraped from the root page."
+    description: "Visible text content scraped from the website root page."
     in_subset: [internal]
+    comments:
+      - |
+        The full visible text extracted from the HTML body of the root URL of the church website.
+        Used for downstream enrichment, NLP, and data extraction.
+        Not intended for public display; may contain headers, footers, and navigation text.
+        For structured content, see other enrichment slots.
+    examples:
+      - value: "Welcome to Grace Community Church! Join us Sundays at 9am and 11am. Our mission is to serve Malibu and beyond..."
+        description: "Scraped homepage text sample."
 
   root_scrape_buttons:
-    description: "Button texts captured on root page."
+    description: "Button texts captured on the root page."
     in_subset: [internal]
+    comments:
+      - |
+        Capture the visible labels of clickable buttons/links from the root URL
+        (e.g., “Plan a Visit”, “Give”, “Watch Live”). Useful for enrichment heuristics.
+        This is raw scrape output and may include navigation or repeated items.
+    examples:
+      - value: "[\"Plan a Visit\", \"Watch Live\", \"Give\"]"
+        description: "Common calls-to-action from a church homepage as a JSON array string."
 
   root_scrape_check:
-    description: "Checksum or status flag of the scrape."
+    description: "Checksum or status flag indicating scrape state."
     in_subset: [internal]
+    comments:
+      - |
+        Use for lightweight integrity checks (e.g., a hash of the DOM or a status string
+        like “ok”, “blocked”, “timeout”). Helps detect page changes between scrapes.
+    examples:
+      - value: "sha256:3b2d9f3a…"
+        description: "Digest of the normalized page content."
+      - value: "timeout"
+        description: "Network timeout recorded during scraping."
 
   root_candidates:
     description: "Candidate URLs extracted from the root page."
     in_subset: [internal]
+    multivalued: true
+    comments:
+      - |
+        Potential internal links to pages like “Beliefs”, “Ministries”, “Visit”, etc.
+        Feed these into downstream enrichment for targeted scraping.
+        Store fully qualified URLs when possible.
+    examples:
+      - value: "[\"https://gracechurch.org/beliefs\", \"https://gracechurch.org/ministries\"]"
+        description: "Two high-value candidate pages as a JSON array string."
 
   candidates_text_and_links:
-    description: "Text and associated links for candidate pages."
+    description: "Text snippets and associated links for candidate pages."
     in_subset: [internal]
+    multivalued: true
+    comments:
+      - |
+        Use a consistent representation (e.g., JSON strings) pairing anchor text with href.
+        Example object shape: {"text": "Beliefs", "url": "https://…/beliefs"}.
+        Helps prioritize which candidate links are most relevant.
+    examples:
+      - value: "[\"{\\\"text\\\": \\\"Beliefs\\\", \\\"url\\\": \\\"https://gracechurch.org/beliefs\\\"}\", \"{\\\"text\\\": \\\"Plan a Visit\\\", \\\"url\\\": \\\"https://gracechurch.org/visit\\\"}\"]"
+        description: "Two text–link pairs serialized as a JSON array of JSON objects."
 
   service_times:
-    description: "Service times (free text)."
+    description: "Service times for public gatherings."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Free text or structured patterns (e.g., “Sun 9:00 & 11:00; Wed 19:00”).
+        If multiple campuses or languages differ, note this in `service_languages` and
+        `programs_offered` where appropriate.
+    examples:
+      - value: "Sundays 9:00 & 11:00; Wednesdays 7:00"
+        description: "Weekly cadence."
+      - value: "Sat 18:00 (Español), Sun 10:00 (English)"
+        description: "Bilingual schedule."
 
   church_beliefs_url:
     range: uri
-    description: "URL of the statement of faith or similar statement of beliefs."
+    description: "URL for the church’s statement of beliefs/faith."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Prefer the canonical “Beliefs” page for doctrinal summaries.
+        If multiple pages exist, choose the most comprehensive source.
+    examples:
+      - value: "https://gracechurch.org/beliefs"
+        description: "Canonical beliefs page."
 
   trinitarian_beliefs:
     range: boolean
-    description: "True if church affirms classical Trinitarian doctrine."
+    description: "Whether the church affirms classical Trinitarian doctrine."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Boolean derived from site language (e.g., statements referencing Father, Son, Holy Spirit).
+        When unknown or ambiguous, leave unset rather than guessing.
+    examples:
+      - value: "true"
+        description: "Affirmed on the Beliefs page."
+      - value: "false"
+        description: "Explicitly non-Trinitarian statement."
 
   belief_type:
     range: BeliefTypeEnum
     description: |
-      Denomination / church type category.  
-      This slot classifies a church into one of several top-level Christian family groupings
-      as defined by the BeliefTypeEnum.  
+      Denomination / church type category.
+      Classifies the church into a top-level Christian family as defined by BeliefTypeEnum.
       Based on the Harvest Information Standards (HIS) Registry of Religions.
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Use the controlled values in BeliefTypeEnum. When unclear, set `unknown`.
+        You may revise this after human review.
+    examples:
+      - value: "protestant"
+        description: "Derived from the site’s denomination statement."
+      - value: "unknown"
+        description: "Insufficient info to classify."
 
   scraped_email:
     exact_mappings: [schema:email]
     range: email
-    description: "Email address extracted from site."
+    description: "Public email address extracted from the website."
     in_subset: [internal, pii, enrichment]
+    comments:
+      - |
+        Only store addresses published for church contact (office@, info@).
+        Do not store personal staff emails unless explicitly public and necessary.
+    examples:
+      - value: "info@gracechurch.org"
+        description: "Generic church inbox."
+      - value: "office@stpauls-sydney.org.au"
+        description: "Office contact."
 
   instagram_url:
     exact_mappings: [schema:sameAs]
     range: uri
     description: "Instagram profile URL."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Prefer the canonical profile (not a hashtag or location page).
+        Normalize to the https scheme.
+    examples:
+      - value: "https://www.instagram.com/gracechurch/"
+        description: "Canonical Instagram URL."
 
   youtube_url:
     exact_mappings: [schema:sameAs]
     range: uri
     description: "YouTube channel URL."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Prefer the canonical channel or handle URL (not individual video URLs).
+        Normalize to https and include trailing slash when appropriate.
+    examples:
+      - value: "https://www.youtube.com/@GraceChurch"
+        description: "Channel handle URL."
 
   service_languages:
     exact_mappings: [schema:inLanguage]
     description: "Languages in which services are offered."
     in_subset: [public, enrichment]
+    multivalued: true
+    comments:
+      - |
+        Use ISO 639 language names or tags where possible (e.g., “en”, “es” or “English”, “Spanish”).
+        Include multiple entries for multilingual services/campuses.
+    examples:
+      - value: "[\"English\", \"Spanish\"]"
+        description: "Bilingual services as a JSON array string."
 
   scraped_address:
     exact_mappings: [schema:address]
-    description: "Postal address extracted from site."
+    description: "Postal address extracted from the website."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        Use when the canonical `address` is not available or differs from the site.
+        This value may be noisy and should be normalized or validated before publishing.
+    examples:
+      - value: "456 Ocean Ave, Malibu, CA 90265"
+        description: "Address parsed from the footer."
 
   programs_offered:
-    exact_mappings: [schema:service]
-    description: "List of programs or ministries offered."
+    exact_mappings: [schema:service]   # keep as-is per your current file
+    description: "Programs or ministries the church offers."
     in_subset: [public, enrichment]
+    multivalued: true
+    comments:
+      - |
+        List distinct program names (e.g., “Youth”, “Alpha”, “Food Pantry”).
+        Prefer stable, human-readable labels; avoid internal codes in public data.
+    examples:
+      - value: "[\"Youth Ministry\", \"Food Pantry\", \"Alpha Course\"]"
+        description: "Three public-facing programs as a JSON array string."
 
   church_summary:
-    description: "Concise summary of the church, including key attributes and offerings."
+    description: "Concise public summary of the church."
     in_subset: [public, enrichment]
+    comments:
+      - |
+        1–3 sentences describing the congregation, location, service style, and distinctives.
+        Intended for profile cards or search results. Keep under ~300 characters.
+    examples:
+      - value: "Multi-generational church serving Malibu with Sunday services at 9 & 11am and active youth and outreach programs."
+        description: "Short profile blurb."
 
   # --- Overture slots ---
   version:
     range: integer
-    description: "Overture version number."
+    description: "Overture dataset version number."
     in_subset: [overture]
+    comments:
+      - |
+        Integer version tag from the Overture Maps release metadata.
+        Use with `source_release` when available.
+    examples:
+      - value: "13"
+        description: "Example Overture version."
 
   source:
-    description: "Source label of the Overture record."
+    description: "Source label from Overture Maps."
     in_subset: [overture]
+    comments:
+      - |
+        The upstream source name (e.g., “overture_places”, “overture_poi”).
+        Helps with lineage and debugging.
+    examples:
+      - value: "overture_places"
+        description: "Upstream dataset label."
 
   confidence:
     range: float
-    description: "Confidence score (0–1)."
+    description: "Confidence score (0–1) from Overture."
     in_subset: [overture]
+    comments:
+      - |
+        A numeric score indicating confidence in the match or attribution.
+        If absent upstream, leave empty rather than inventing a value.
+    examples:
+      - value: "0.92"
+        description: "High-confidence attribution."
 
   source_release:
-    description: "Overture release tag (e.g., 2024-05-15)."
+    description: "Overture release tag (YYYY-MM-DD)."
     in_subset: [overture]
+    comments:
+      - |
+        The official release date string from Overture (e.g., 2024-05-15).
+        Use ISO 8601 date format.
+    examples:
+      - value: "2024-05-15"
+        description: "Release date."
 
   gers_id:
-    description: "ID from the Government/Ecclesiastical Registry System (if available)."
+    description: "Government/Ecclesiastical Registry System identifier."
     in_subset: [overture, public]
+    comments:
+      - |
+        External registry identifier used for cross-referencing with official listings.
+        May not exist for all churches.
+    examples:
+      - value: "GERS-CA-00012345"
+        description: "Sample registry ID."
 
 
 enums:
