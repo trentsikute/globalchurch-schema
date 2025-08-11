@@ -1,5 +1,7 @@
 # GlobalChurch
 
+- See **[Subsets](Subsets.md)** for a full list of subset tags.
+
 
 
 URI: https://global.church/schema
@@ -26,7 +28,7 @@ Name: GlobalChurch
 | --- | --- |
 | [address](address.md) | Physical street address |
 | [alternate_church](alternate_church.md) | Optional FK → Church |
-| [alternateName](alternateName.md) | Alternate or colloquial church name |
+| [alternate_name](alternate_name.md) | Alternate or colloquial church name |
 | [belief_type](belief_type.md) | Denomination / church type category |
 | [candidates_text_and_links](candidates_text_and_links.md) | Text and associated links for candidate pages |
 | [church_beliefs_url](church_beliefs_url.md) | URL of the statement of faith or similar statement of beliefs |
@@ -47,7 +49,7 @@ Name: GlobalChurch
 | [locality](locality.md) | City or locality of the church |
 | [longitude](longitude.md) | Geographic longitude (decimal degrees) |
 | [name](name.md) | Official church name |
-| [openingHours](openingHours.md) | Opening hours information |
+| [opening_hours](opening_hours.md) | Opening hours information |
 | [phone](phone.md) | Church phone number |
 | [pipeline_status](pipeline_status.md) | Enrichment pipeline stage (e |
 | [postal_code](postal_code.md) | Postal / ZIP code |
@@ -80,6 +82,7 @@ Name: GlobalChurch
 
 | Enumeration | Description |
 | --- | --- |
+| [BeliefTypeEnum](BeliefTypeEnum.md) | Top-level Christian family grouping used by Global |
 
 
 ## Types
@@ -107,8 +110,13 @@ Name: GlobalChurch
 | [Uriorcurie](Uriorcurie.md) | a URI or a CURIE |
 | [Uuid](Uuid.md) | Universally unique identifier (RFC 4122) |
 
-
 ## Subsets
 
 | Subset | Description |
 | --- | --- |
+| core | Minimal fields needed to represent a church. |
+| enrichment | Derived by AI or post-processing. |
+| internal | Operational/internal fields for Global.Church. |
+| overture | Sourced from Overture Maps. |
+| pii | Potentially personally identifiable or sensitive. |
+| public | Fields safe for public consumption. |
