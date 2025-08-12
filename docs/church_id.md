@@ -22,8 +22,8 @@ Alias: church_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  yes  |
 | [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
 
 
 

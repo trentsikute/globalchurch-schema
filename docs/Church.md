@@ -42,7 +42,6 @@ URI: [gc:Church](https://global.church/schema/Church)
 | [website](website.md) | 0..1 <br/> [Uri](Uri.md) | Full website URL for the church | direct |
 | [website_root](website_root.md) | 0..1 <br/> [Uri](Uri.md) | Root URL of the church website (scheme and domain only) | direct |
 | [search_blob](search_blob.md) | 0..1 <br/> [String](String.md) | Concatenated text of searchable fields for indexing | direct |
-| [opening_hours](opening_hours.md) | 0..1 <br/> [String](String.md) | Church hours of public access | direct |
 | [service_times](service_times.md) | 0..1 <br/> [String](String.md) | Service times for public gatherings | direct |
 | [church_beliefs_url](church_beliefs_url.md) | 0..1 <br/> [Uri](Uri.md) | URL for the church’s statement of beliefs/faith | direct |
 | [trinitarian_beliefs](trinitarian_beliefs.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the church affirms classical Trinitarian doctrine | direct |
@@ -104,7 +103,6 @@ URI: [gc:Church](https://global.church/schema/Church)
 name: Church
 description: A distinct church congregation.
 in_subset:
-- church_core
 - public
 from_schema: https://global.church/schema
 mappings:
@@ -126,7 +124,6 @@ slots:
 - website
 - website_root
 - search_blob
-- opening_hours
 - service_times
 - church_beliefs_url
 - trinitarian_beliefs
@@ -180,7 +177,6 @@ slot_usage:
 name: Church
 description: A distinct church congregation.
 in_subset:
-- church_core
 - public
 from_schema: https://global.church/schema
 mappings:
@@ -313,10 +309,10 @@ attributes:
 
       '
     examples:
-    - value: RAW
-      description: Fresh intake from a seed source.
-    - value: VALIDATED
-      description: Reviewed and approved record.
+    - value: approved_for_gc_db
+      description: Approved for Global.Church database.
+    - value: no_website
+      description: Entity lacks a website.
     in_subset:
     - internal
     from_schema: https://global.church/schema
@@ -614,35 +610,6 @@ attributes:
     from_schema: https://global.church/schema
     rank: 1000
     alias: search_blob
-    owner: Church
-    domain_of:
-    - Church
-    range: string
-  opening_hours:
-    name: opening_hours
-    description: Church hours of public access. Distinct from service_times.
-    comments:
-    - 'Use either free text or a structured format to describe when the church is
-      open or services are held.
-
-      For structured data, use the schema.org OpeningHours format (e.g., "Mo-Fr 09:00-17:00").
-
-      May include special service times or holiday exceptions.
-
-      '
-    examples:
-    - value: Sun 09:00-11:00, Wed 19:00-20:30
-      description: Typical service times.
-    - value: Mo-Fr 09:00-17:00
-      description: Weekday opening hours.
-    in_subset:
-    - public
-    from_schema: https://global.church/schema
-    exact_mappings:
-    - schema:openingHours
-    - schema:openingHoursSpecification
-    rank: 1000
-    alias: opening_hours
     owner: Church
     domain_of:
     - Church

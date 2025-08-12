@@ -93,7 +93,7 @@ examples:
 - value: a4b7b3a1-2c6e-4b0a-8c0a-2d6e5c9a2f11
   description: UUID of the primary church.
 in_subset:
-- internal
+- private
 from_schema: https://global.church/schema
 rank: 1000
 alias: primary_church

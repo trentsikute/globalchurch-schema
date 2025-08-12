@@ -917,7 +917,7 @@ enums:
       ai_non_trinitarian:
         aliases: ["AI Non-Trinitarian"]
         description: "AI determined the entity is non-Trinitarian."
-      non_Christian_terms:
+      non_christian_terms:
         aliases: ["Non-Christian Terms"]
         description: "Entity uses terms not typically associated with Christian churches."
       gers_id_already_in_db:

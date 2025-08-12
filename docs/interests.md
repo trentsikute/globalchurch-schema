@@ -97,7 +97,7 @@ examples:
 - value: youth_ministry
   description: Single interest term.
 in_subset:
-- internal
+- private
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:interest

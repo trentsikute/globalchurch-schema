@@ -3,7 +3,7 @@
 # Class: ChurchWebsiteText 
 
 
-_Raw scrape artifacts captured from the church root URL._
+_Raw scrape artifacts captured from the church root URL. Not intended for general public use._
 
 
 
@@ -81,9 +81,11 @@ URI: [gc:ChurchWebsiteText](https://global.church/schema/ChurchWebsiteText)
 <details>
 ```yaml
 name: ChurchWebsiteText
-description: Raw scrape artifacts captured from the church root URL.
+description: Raw scrape artifacts captured from the church root URL. Not intended
+  for general public use.
 in_subset:
 - internal
+- private
 from_schema: https://global.church/schema
 rank: 1000
 slots:
@@ -102,9 +104,11 @@ slots:
 <details>
 ```yaml
 name: ChurchWebsiteText
-description: Raw scrape artifacts captured from the church root URL.
+description: Raw scrape artifacts captured from the church root URL. Not intended
+  for general public use.
 in_subset:
 - internal
+- private
 from_schema: https://global.church/schema
 rank: 1000
 attributes:

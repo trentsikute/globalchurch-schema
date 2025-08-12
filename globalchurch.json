@@ -83,13 +83,6 @@
                     "description": "Official church name.",
                     "type": "string"
                 },
-                "opening_hours": {
-                    "description": "Church hours of public access. Distinct from service_times.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "pipeline_status": {
                     "description": "Current enrichment pipeline stage.",
                     "type": "string"
@@ -197,7 +190,7 @@
         },
         "ChurchWebsiteText": {
             "additionalProperties": false,
-            "description": "Raw scrape artifacts captured from the church root URL.",
+            "description": "Raw scrape artifacts captured from the church root URL. Not intended for general public use.",
             "properties": {
                 "candidates_text_and_links": {
                     "description": "Text snippets and associated links for candidate pages.",
@@ -295,6 +288,27 @@
             ],
             "title": "Overture",
             "type": "object"
+        },
+        "PipelineStatusEnum": {
+            "description": "Stages in the enrichment pipeline for church data.",
+            "enum": [
+                "approved_for_gc_db",
+                "no_website",
+                "playwright_fail",
+                "explicitly_non_church",
+                "dns_fail",
+                "ai_scrape_failed",
+                "non_trinitarian_filter",
+                "ai_church_network",
+                "explicitly_non_trinitarian",
+                "parachurch_filter",
+                "ai_manual_review",
+                "ai_non_trinitarian",
+                "non_christian_terms",
+                "gers_id_already_in_db"
+            ],
+            "title": "PipelineStatusEnum",
+            "type": "string"
         },
         "User": {
             "additionalProperties": false,

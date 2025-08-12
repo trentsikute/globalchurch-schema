@@ -22,8 +22,8 @@ Alias: gers_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
 | [Church](Church.md) | A distinct church congregation |  no  |
+| [Overture](Overture.md) | Original place record as supplied by Overture Maps |  no  |
 
 
 

@@ -95,6 +95,8 @@ examples:
   description: UUID of an alternate church.
 - value: 00000000-0000-0000-0000-000000000000
   description: Empty/placeholder not valid—use null instead.
+in_subset:
+- private
 from_schema: https://global.church/schema
 rank: 1000
 alias: alternate_church

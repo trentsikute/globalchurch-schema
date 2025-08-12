@@ -99,6 +99,7 @@ examples:
   description: Family name with punctuation.
 in_subset:
 - user_core
+- private
 - pii
 from_schema: https://global.church/schema
 exact_mappings:

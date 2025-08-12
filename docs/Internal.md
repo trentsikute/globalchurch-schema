@@ -37,29 +37,6 @@ URI: [Internal](Internal.md)
 
         
 
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-
-        
-
-
-
-
-
         
 
 
@@ -71,7 +48,26 @@ URI: [Internal](Internal.md)
         
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
+
+
 
 
 
@@ -90,7 +86,6 @@ URI: [Internal](Internal.md)
 
 
 
-        
 
 
 
@@ -102,6 +97,7 @@ URI: [Internal](Internal.md)
 
 
         
+
 
 
 
@@ -114,6 +110,7 @@ URI: [Internal](Internal.md)
 | Class | Description |
 | --- | --- |
 | [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |
+| [Overture](Overture.md) | Original place record as supplied by Overture Maps |
 
 
 ### Slots from [ChurchWebsiteText](ChurchWebsiteText.md) also in _internal_
@@ -130,23 +127,19 @@ URI: [Internal](Internal.md)
 
 
 
+
 ## Slots in subset
 
 | Slot | Description |
 | --- | --- |
 | [candidates_text_and_links](candidates_text_and_links.md) | Text snippets and associated links for candidate pages |
-| [email](email.md) | Primary contact email for the user |
-| [faith_journey](faith_journey.md) | Narrative of the user’s faith journey |
-| [interests](interests.md) | User’s interests or ministry areas |
 | [pipeline_status](pipeline_status.md) | Current enrichment pipeline stage |
-| [primary_church](primary_church.md) | FK to the user’s primary Church |
 | [root_candidates](root_candidates.md) | Candidate URLs extracted from the root page |
 | [root_scrape_buttons](root_scrape_buttons.md) | Button texts captured on the root page |
 | [root_scrape_check](root_scrape_check.md) | Checksum or status flag indicating scrape state |
 | [root_scrape_text](root_scrape_text.md) | Visible text content scraped from the website root page |
 | [scraped_email](scraped_email.md) | Public email address extracted from the website |
 | [search_blob](search_blob.md) | Concatenated text of searchable fields for indexing |
-| [skills](skills.md) | List of user skills |
 | [telephone](telephone.md) | User’s phone number (E |
 | [website_root](website_root.md) | Root URL of the church website (scheme and domain only) |
 

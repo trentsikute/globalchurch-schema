@@ -37,26 +37,6 @@ URI: [Public](Public.md)
         
 
 
-
-        
-
-
-
-        
-
-
-        
-
-
-        
-
-        
-
-        
-
-
-        
-
         
 
 
@@ -74,32 +54,8 @@ URI: [Public](Public.md)
 
         
 
-        
 
         
-
-        
-
-
-        
-
-
-        
-
-        
-
-
-
-
-
-        
-
-
-
-        
-
-        
-
 
         
 
@@ -109,11 +65,54 @@ URI: [Public](Public.md)
         
 
 
+        
+
+
+        
+
+        
+
+        
+
+        
 
         
 
 
         
+
+
+        
+
+        
+
+
+
+
+
+        
+
+
+
+        
+
+        
+
+
+        
+
+
+
+
+        
+
+
+
+        
+
+
+        
+
 
 
 
@@ -125,7 +124,7 @@ URI: [Public](Public.md)
 | Class | Description |
 | --- | --- |
 | [Church](Church.md) | A distinct church congregation |
-| [User](User.md) | A registered platform user |
+| [Overture](Overture.md) | Original place record as supplied by Overture Maps |
 
 
 ### Slots from [Church](Church.md) also in _public_
@@ -144,7 +143,6 @@ URI: [Public](Public.md)
 | [locality](locality.md) | 1 <br/> [String](String.md) | City or locality where the church is located  |
 | [longitude](longitude.md) | 1 <br/> [Float](Float.md) | Longitude in decimal degrees  |
 | [name](name.md) | 1 <br/> [String](String.md) | Official church name  |
-| [opening_hours](opening_hours.md) | 0..1 <br/> [String](String.md) | Church hours of public access  |
 | [postal_code](postal_code.md) | 1 <br/> [String](String.md) | Postal code or ZIP code for the address  |
 | [programs_offered](programs_offered.md) | * <br/> [String](String.md) | Programs or ministries the church offers  |
 | [region](region.md) | 1 <br/> [String](String.md) | State, province, or administrative region  |
@@ -155,6 +153,11 @@ URI: [Public](Public.md)
 | [website](website.md) | 0..1 <br/> [Uri](Uri.md) | Full website URL for the church  |
 | [youtube_url](youtube_url.md) | 0..1 <br/> [Uri](Uri.md) | YouTube channel URL  |
 
+### Slots from [Overture](Overture.md) also in _public_
+
+| Name | Cardinality and Range | Description |
+| ---  | ---  | --- |
+| [gers_id](gers_id.md) | 1 <br/> [String](String.md) | Government/Ecclesiastical Registry System identifier **identifier** |
 
 
 
@@ -177,7 +180,6 @@ URI: [Public](Public.md)
 | [locality](locality.md) | City or locality where the church is located |
 | [longitude](longitude.md) | Longitude in decimal degrees |
 | [name](name.md) | Official church name |
-| [opening_hours](opening_hours.md) | Church hours of public access |
 | [phone](phone.md) | Official phone number for the church |
 | [postal_code](postal_code.md) | Postal code or ZIP code for the address |
 | [programs_offered](programs_offered.md) | Programs or ministries the church offers |

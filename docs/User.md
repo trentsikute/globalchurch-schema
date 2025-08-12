@@ -88,8 +88,8 @@ URI: [gc:User](https://global.church/schema/User)
 name: User
 description: A registered platform user.
 in_subset:
-- user_core
-- public
+- private
+- pii
 from_schema: https://global.church/schema
 mappings:
 - schema:Person
@@ -116,8 +116,8 @@ slots:
 name: User
 description: A registered platform user.
 in_subset:
-- user_core
-- public
+- private
+- pii
 from_schema: https://global.church/schema
 mappings:
 - schema:Person
@@ -139,6 +139,10 @@ attributes:
       description: Example UUID for a user record.
     - value: 3fa85f64-5717-4562-b3fc-2c963f66afa6
       description: Another valid UUID.
+    in_subset:
+    - user_core
+    - private
+    - pii
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:identifier
@@ -166,6 +170,7 @@ attributes:
       description: Hyphenated given name.
     in_subset:
     - user_core
+    - private
     - pii
     from_schema: https://global.church/schema
     exact_mappings:
@@ -193,6 +198,7 @@ attributes:
       description: Family name with punctuation.
     in_subset:
     - user_core
+    - private
     - pii
     from_schema: https://global.church/schema
     exact_mappings:
@@ -222,7 +228,7 @@ attributes:
       description: Address with plus-tag.
     in_subset:
     - user_core
-    - internal
+    - private
     - pii
     from_schema: https://global.church/schema
     exact_mappings:
@@ -250,6 +256,7 @@ attributes:
       description: UK number in E.164 format.
     in_subset:
     - internal
+    - private
     - pii
     from_schema: https://global.church/schema
     exact_mappings:
@@ -274,7 +281,7 @@ attributes:
     - value: '["photography", "youth_ministry", "python"]'
       description: Three discrete skills as a JSON array string.
     in_subset:
-    - internal
+    - private
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:skills
@@ -298,7 +305,7 @@ attributes:
     - value: a4b7b3a1-2c6e-4b0a-8c0a-2d6e5c9a2f11
       description: UUID of the primary church.
     in_subset:
-    - internal
+    - private
     from_schema: https://global.church/schema
     rank: 1000
     alias: primary_church
@@ -320,6 +327,8 @@ attributes:
       description: UUID of an alternate church.
     - value: 00000000-0000-0000-0000-000000000000
       description: Empty/placeholder not valid—use null instead.
+    in_subset:
+    - private
     from_schema: https://global.church/schema
     rank: 1000
     alias: alternate_church
@@ -343,7 +352,7 @@ attributes:
     - value: youth_ministry
       description: Single interest term.
     in_subset:
-    - internal
+    - private
     from_schema: https://global.church/schema
     exact_mappings:
     - schema:interest
@@ -368,7 +377,7 @@ attributes:
     - value: Exploring faith; interested in Alpha course.
       description: Short current-state note.
     in_subset:
-    - internal
+    - private
     from_schema: https://global.church/schema
     rank: 1000
     alias: faith_journey

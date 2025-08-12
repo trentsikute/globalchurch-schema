@@ -101,6 +101,10 @@ examples:
   description: Example UUID for a user record.
 - value: 3fa85f64-5717-4562-b3fc-2c963f66afa6
   description: Another valid UUID.
+in_subset:
+- user_core
+- private
+- pii
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:identifier

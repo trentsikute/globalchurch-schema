@@ -43,8 +43,8 @@ Alias: pipeline_status
 
 | Value |
 | --- |
-| RAW |
-| VALIDATED |
+| approved_for_gc_db |
+| no_website |
 
 ## Comments
 
@@ -100,10 +100,10 @@ comments:
 
   '
 examples:
-- value: RAW
-  description: Fresh intake from a seed source.
-- value: VALIDATED
-  description: Reviewed and approved record.
+- value: approved_for_gc_db
+  description: Approved for Global.Church database.
+- value: no_website
+  description: Entity lacks a website.
 in_subset:
 - internal
 from_schema: https://global.church/schema

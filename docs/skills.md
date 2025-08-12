@@ -96,7 +96,7 @@ examples:
 - value: '["photography", "youth_ministry", "python"]'
   description: Three discrete skills as a JSON array string.
 in_subset:
-- internal
+- private
 from_schema: https://global.church/schema
 exact_mappings:
 - schema:skills

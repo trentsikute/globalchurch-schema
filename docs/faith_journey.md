@@ -96,7 +96,7 @@ examples:
 - value: Exploring faith; interested in Alpha course.
   description: Short current-state note.
 in_subset:
-- internal
+- private
 from_schema: https://global.church/schema
 rank: 1000
 alias: faith_journey

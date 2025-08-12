@@ -99,6 +99,7 @@ examples:
   description: Hyphenated given name.
 in_subset:
 - user_core
+- private
 - pii
 from_schema: https://global.church/schema
 exact_mappings:

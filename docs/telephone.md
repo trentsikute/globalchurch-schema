@@ -98,6 +98,7 @@ examples:
   description: UK number in E.164 format.
 in_subset:
 - internal
+- private
 - pii
 from_schema: https://global.church/schema
 exact_mappings:
