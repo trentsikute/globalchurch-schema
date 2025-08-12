@@ -61,12 +61,12 @@ subsets:
     description: "Minimal fields needed to represent a user."
   public:
     description: "Fields available for public consumption."
+  private:
+    description: "Fields available with proper permissions."
   internal:
     description: "Operational/internal fields for Global.Church."
   enrichment:
     description: "Usually derived by AI or post-processing."
-  overture:
-    description: "Sourced from Overture Maps."
   pii:
     description: "Potentially personally identifiable or sensitive."
 
@@ -90,7 +90,7 @@ classes:
       - alternate_church
       - interests
       - faith_journey
-    in_subset: [user_core, public]
+    in_subset: [private, pii]
     
   Church:
     description: "A distinct church congregation."
@@ -133,7 +133,6 @@ classes:
       - website
       - website_root
       - search_blob
-      - opening_hours
       - service_times
       - church_beliefs_url
       - trinitarian_beliefs
@@ -145,12 +144,11 @@ classes:
       - scraped_address
       - programs_offered
       - church_summary
-
-    in_subset: [church_core, public]
+    in_subset: [public]
 
   
   ChurchWebsiteText:
-    description: "Raw scrape artifacts captured from the church root URL."
+    description: "Raw scrape artifacts captured from the church root URL. Not intended for general public use."
     slots:
       - church_id
       - root_scrape_text
@@ -158,7 +156,7 @@ classes:
       - root_scrape_check
       - root_candidates
       - candidates_text_and_links
-    in_subset: [internal]
+    in_subset: [internal, private]
 
   Overture:
     description: "Original place record as supplied by Overture Maps."
@@ -168,7 +166,7 @@ classes:
       - source
       - confidence
       - source_release
-    in_subset: [overture]
+    in_subset: [overture, internal, public]
 
 
 
@@ -194,6 +192,7 @@ slots:
     identifier: true
     exact_mappings: [schema:identifier]
     range: uuid
+    in_subset: [user_core, private, pii]
     description: "Unique ID for a registered platform user."
     comments:
       - |
@@ -209,7 +208,7 @@ slots:
   given_name:
     exact_mappings: [schema:givenName]
     description: "User’s first (given) name."
-    in_subset: [user_core, pii]
+    in_subset: [user_core, private, pii]
     comments:
       - |
         Use the person’s preferred first name. Do not include middle names or initials here.
@@ -223,7 +222,7 @@ slots:
   family_name:
     exact_mappings: [schema:familyName]
     description: "User’s last (family) name."
-    in_subset: [user_core, pii]
+    in_subset: [user_core, private, pii]
     comments:
       - |
         Store the surname only. Do not include suffixes (e.g., Jr., III) or prefixes (e.g., Dr.).
@@ -238,7 +237,7 @@ slots:
     exact_mappings: [schema:email]
     range: email
     description: "Primary contact email for the user."
-    in_subset: [user_core, internal, pii]
+    in_subset: [user_core, private, pii]
     comments:
       - |
         Must satisfy the `email` scalar pattern (simplified RFC 5322).
@@ -254,7 +253,7 @@ slots:
     exact_mappings: [schema:telephone]
     range: phone_e164
     description: "User’s phone number (E.164)."
-    in_subset: [internal, pii]
+    in_subset: [internal, private,pii]
     comments:
       - |
         Store numbers in E.164 format (e.g., +14155552671). Country code is required.
@@ -268,7 +267,7 @@ slots:
   skills:
     exact_mappings: [schema:skills]
     description: "List of user skills."
-    in_subset: [internal]
+    in_subset: [private]
     multivalued: true
     comments:
       - |
@@ -281,7 +280,7 @@ slots:
   primary_church:
     range: uuid
     description: "FK to the user’s primary Church."
-    in_subset: [internal]
+    in_subset: [private]
     comments:
       - |
         Points to `Church.church_id`. Use when a user affiliates with a single congregation.
@@ -292,6 +291,7 @@ slots:
 
   alternate_church:
     description: "Optional FK to a secondary/alternate Church."
+    in_subset: [private]
     comments:
       - |
         Points to `Church.church_id`. Use when a user has a secondary affiliation
@@ -305,7 +305,7 @@ slots:
   interests:
     exact_mappings: [schema:interest]
     description: "User’s interests or ministry areas."
-    in_subset: [internal]
+    in_subset: [private]
     comments:
       - |
         Free text or tags describing ministry passions (e.g., “missions”, “children”, “tech”).
@@ -318,7 +318,7 @@ slots:
 
   faith_journey:
     description: "Narrative of the user’s faith journey."
-    in_subset: [internal]
+    in_subset: [private]
     comments:
       - |
         Long-form text. May include testimony, baptism date, or ministry milestones.
@@ -368,10 +368,10 @@ slots:
         ENRICHED: scraped/AI fields added.
         VALIDATED: human-reviewed.
     examples:
-      - value: "RAW"
-        description: "Fresh intake from a seed source."
-      - value: "VALIDATED"
-        description: "Reviewed and approved record."
+      - value: "approved_for_gc_db"
+        description: "Approved for Global.Church database."
+      - value: "no_website"
+        description: "Entity lacks a website."
 
   latitude:
     range: float
@@ -528,21 +528,6 @@ slots:
     examples:
       - value: "Grace Community Church 123 Main St Springfield CA 62704 US"
         description: "Combined fields for search."
-
-  opening_hours:
-    exact_mappings: [schema:openingHours, schema:openingHoursSpecification]
-    description: "Church hours of public access. Distinct from service_times."
-    in_subset: [public]
-    comments:
-      - |
-        Use either free text or a structured format to describe when the church is open or services are held.
-        For structured data, use the schema.org OpeningHours format (e.g., "Mo-Fr 09:00-17:00").
-        May include special service times or holiday exceptions.
-    examples:
-      - value: "Sun 09:00-11:00, Wed 19:00-20:30"
-        description: "Typical service times."
-      - value: "Mo-Fr 09:00-17:00"
-        description: "Weekday opening hours."
 
   description:
     exact_mappings: [schema:description]
@@ -797,7 +782,6 @@ slots:
       - value: "Multi-generational church serving Malibu with Sunday services at 9 & 11am and active youth and outreach programs."
         description: "Short profile blurb."
 
-  # --- Overture slots ---
   version:
     range: integer
     description: "Overture dataset version number."
@@ -893,3 +877,49 @@ enums:
       unknown:
         aliases: ["Unknown"]
         description: "Belief type has not been determined."
+      
+  PipelineStatusEnum:
+    description: "Stages in the enrichment pipeline for church data."
+    permissible_values:
+      approved_for_gc_db:
+        aliases: ["Approved"]
+        description: "Data has been reviewed and approved for inclusion in the Global.Church database."
+      no_website:
+        aliases: ["No Website"]
+        description: "Church has no website or web presence."
+      playwright_fail:
+        aliases: ["Playwright Fail"]
+        description: "Failed to scrape the church website using Playwright."
+      explicitly_non_church:
+        aliases: ["Explicitly Non-Church"]
+        description: "Entity is explicitly not a church (e.g., secular organization)."
+      dns_fail:
+        aliases: ["DNS Fail"]
+        description: "Failed to resolve the church's domain name."
+      ai_scrape_failed:
+        aliases: ["AI Scrape Failed"]
+        description: "Failed to scrape the church website using AI methods."
+      non_trinitarian_filter:
+        aliases: ["Non-Trinitarian Filter"]
+        description: "Entity uses common non-Trinitarian terminology."
+      ai_church_network:
+        aliases: ["AI Church Network"]
+        description: "AI determined the entity's associated website belongs to a church network."
+      explicitly_non_trinitarian:
+        aliases: ["Explicitly Non-Trinitarian"]
+        description: "Entity is explicitly non-Trinitarian (e.g., Unitarian, Jehovah's Witness)."
+      parachurch_filter:
+        aliases: ["Parachurch Filter"]
+        description: "Entity is a parachurch organization, not a church."
+      ai_manual_review:
+        aliases: ["AI Manual Review"]
+        description: "Data requires manual review after AI processing."
+      ai_non_trinitarian:
+        aliases: ["AI Non-Trinitarian"]
+        description: "AI determined the entity is non-Trinitarian."
+      non_Christian_terms:
+        aliases: ["Non-Christian Terms"]
+        description: "Entity uses terms not typically associated with Christian churches."
+      gers_id_already_in_db:
+        aliases: ["GERS ID Already in DB"]
+        description: "The GERS ID already exists in the Global.Church database."
