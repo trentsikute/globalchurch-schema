@@ -15,24 +15,7 @@ URI: [gc:ChurchWebsite](https://global.church/schema/ChurchWebsite)
 
 
 
-```mermaid
- classDiagram
-    class ChurchWebsite
-    click ChurchWebsite href "../ChurchWebsite/"
-      ChurchWebsite : candidates_text_and_links
-        
-      ChurchWebsite : church_id
-        
-      ChurchWebsite : root_candidates
-        
-      ChurchWebsite : root_scrape_buttons
-        
-      ChurchWebsite : root_scrape_check
-        
-      ChurchWebsite : root_scrape_text
-        
-      
-```
+
 
 
 

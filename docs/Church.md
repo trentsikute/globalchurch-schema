@@ -15,34 +15,7 @@ URI: [gc:Church](https://global.church/schema/Church)
 
 
 
-```mermaid
- classDiagram
-    class Church
-    click Church href "../Church/"
-      Church : address
-        
-      Church : church_id
-        
-      Church : country
-        
-      Church : gers_id
-        
-      Church : latitude
-        
-      Church : locality
-        
-      Church : longitude
-        
-      Church : name
-        
-      Church : pipeline_status
-        
-      Church : postal_code
-        
-      Church : region
-        
-      
-```
+
 
 
 

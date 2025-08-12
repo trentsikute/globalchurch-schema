@@ -129,6 +129,35 @@ def fix_enum_links(index_text: str, to_html: bool) -> str:
         pattern = re.compile(r"\]\(([A-Z][A-Za-z0-9]*Enum)\.html\)")
         return pattern.sub(r"](\1.md)", index_text)
 
+
+# --- Remove Mermaid diagrams from generated docs ---
+def strip_mermaid_diagrams(text: str) -> str:
+    """
+    Remove Mermaid class diagrams from generated Markdown.
+    We strip any fenced code block that starts with ```mermaid and contains 'classDiagram'.
+    This is idempotent and safe to run multiple times.
+    """
+    # Normalize newlines
+    t = text.replace("\r\n", "\n").replace("\r", "\n")
+    # Pattern for fenced mermaid blocks (non-greedy)
+    import re as _re
+    pattern = _re.compile(r"```mermaid\s+.*?classDiagram.*?```", _re.DOTALL | _re.IGNORECASE)
+    t = pattern.sub("", t)
+    return t
+
+
+def remove_diagrams_from_docs():
+    """
+    Iterate over generated Markdown files and remove Mermaid class diagrams.
+    We target class pages primarily (e.g., 'User.md', 'Church.md'), but it's safe
+    to process all .md files.
+    """
+    for md_path in DOCS_DIR.glob("*.md"):
+        text = md_path.read_text(encoding="utf-8")
+        new_text = strip_mermaid_diagrams(text)
+        if new_text != text:
+            md_path.write_text(new_text, encoding="utf-8")
+
 def build_table(rows):
     if not rows:
         return "| Subset | Description |\n| --- | --- |\n| _None defined_ | |\n\n"
@@ -245,6 +274,8 @@ def main():
 
     print("• Generating docs with LinkML…")
     run_linkml_docs()
+    print("• Removing Mermaid class diagrams from generated pages…")
+    remove_diagrams_from_docs()
 
     print("• Loading subsets from YAML…")
     rows = load_subsets()

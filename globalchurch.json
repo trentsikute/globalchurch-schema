@@ -391,8 +391,8 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "title": "GlobalChurch",
+    "title": "GlobalChurch-schema",
     "type": "object",
-    "version": null
+    "version": "0.1.0"
 }
 

@@ -15,45 +15,7 @@ URI: [gc:EnrichedData](https://global.church/schema/EnrichedData)
 
 
 
-```mermaid
- classDiagram
-    class EnrichedData
-    click EnrichedData href "../EnrichedData/"
-      EnrichedData : belief_type
-        
-          
-    
-        
-        
-        EnrichedData --> "0..1" BeliefTypeEnum : belief_type
-        click BeliefTypeEnum href "../BeliefTypeEnum/"
-    
 
-        
-      EnrichedData : church_beliefs_url
-        
-      EnrichedData : church_id
-        
-      EnrichedData : church_summary
-        
-      EnrichedData : instagram_url
-        
-      EnrichedData : programs_offered
-        
-      EnrichedData : scraped_address
-        
-      EnrichedData : scraped_email
-        
-      EnrichedData : service_languages
-        
-      EnrichedData : service_times
-        
-      EnrichedData : trinitarian_beliefs
-        
-      EnrichedData : youtube_url
-        
-      
-```
 
 
 

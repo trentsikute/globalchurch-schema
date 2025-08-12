@@ -5,7 +5,15 @@
 
 
 id: https://global.church/schema
-name: GlobalChurch
+name: GlobalChurch-schema
+title: Global Church Schema
+description: >
+  The shared data model for Global.Church and partner projects, defining core
+  classes (Church, User) and slots for ingestion, enrichment, and publishing.
+version: 0.1.0
+license: https://creativecommons.org/licenses/by/4.0/
+see_also:
+  - https://global.church/schema
 
 
 imports:

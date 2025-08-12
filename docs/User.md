@@ -15,32 +15,7 @@ URI: [gc:User](https://global.church/schema/User)
 
 
 
-```mermaid
- classDiagram
-    class User
-    click User href "../User/"
-      User : alternate_church
-        
-      User : email
-        
-      User : faith_journey
-        
-      User : family_name
-        
-      User : given_name
-        
-      User : interests
-        
-      User : primary_church
-        
-      User : skills
-        
-      User : telephone
-        
-      User : user_id
-        
-      
-```
+
 
 
 
