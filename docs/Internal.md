@@ -1,4 +1,4 @@
-# Subset: Internal 
+# Subset: internal 
 
 
 _Operational/internal fields for Global.Church._

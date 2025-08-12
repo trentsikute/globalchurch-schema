@@ -120,6 +120,7 @@ from_schema: https://global.church/schema
 mappings:
 - schema:Church
 - schema:Organization
+rank: 1000
 slots:
 - church_id
 - gers_id
@@ -159,6 +160,7 @@ from_schema: https://global.church/schema
 mappings:
 - schema:Church
 - schema:Organization
+rank: 1000
 slot_usage:
   church_id:
     name: church_id

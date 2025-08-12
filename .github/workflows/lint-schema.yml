@@ -23,5 +23,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install linkml
-      - name: Lint
-        run: linkml lint --fail-level error globalchurch.yaml
+      - name: Lint (no fail on warnings)
+        run: |
+          linkml lint --config .linkmllint.yaml --validate --ignore-warnings globalchurch.yaml

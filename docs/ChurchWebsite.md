@@ -100,6 +100,7 @@ description: Raw scrape artifacts captured from the church root URL.
 in_subset:
 - internal
 from_schema: https://global.church/schema
+rank: 1000
 slots:
 - church_id
 - root_scrape_text
@@ -120,6 +121,7 @@ description: Raw scrape artifacts captured from the church root URL.
 in_subset:
 - internal
 from_schema: https://global.church/schema
+rank: 1000
 attributes:
   church_id:
     name: church_id

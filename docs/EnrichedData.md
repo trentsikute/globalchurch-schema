@@ -128,6 +128,7 @@ in_subset:
 - public
 - enrichment
 from_schema: https://global.church/schema
+rank: 1000
 slots:
 - church_id
 - service_times
@@ -155,6 +156,7 @@ in_subset:
 - public
 - enrichment
 from_schema: https://global.church/schema
+rank: 1000
 attributes:
   church_id:
     name: church_id

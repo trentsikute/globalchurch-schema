@@ -44,6 +44,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   gc: https://global.church/schema/
   schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
 
 
 subsets:
@@ -827,6 +828,7 @@ slots:
 
   source_release:
     description: "Overture release tag (YYYY-MM-DD)."
+    range: date
     in_subset: [overture]
     comments:
       - |

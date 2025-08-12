@@ -9,6 +9,11 @@ import argparse
 from pathlib import Path
 import sys
 
+# --- LinkML doc generator overrides ---
+from linkml.generators.docgen import DocGenerator
+from linkml_runtime.linkml_model.meta import SubsetDefinition
+from linkml_runtime.utils.formatutils import underscore
+
 try:
     import yaml  # PyYAML
 except ImportError:
@@ -20,10 +25,38 @@ SCHEMA = ROOT / "globalchurch.yaml"
 DOCS_DIR = ROOT / "docs"
 INDEX_MD = DOCS_DIR / "index.md"
 
+
+# --- Custom DocGenerator to force subset pages to snake_case ---
+class SnakeCaseSubsetDocGen(DocGenerator):
+    """
+    Override DocGenerator.name() so SubsetDefinition pages/links are snake_case
+    (e.g., 'church_core.html' instead of 'ChurchCore.html').
+    """
+    def name(self, element):
+        if isinstance(element, SubsetDefinition):
+            return underscore(element.name)
+        return super().name(element)
+
 def run_linkml_docs():
+    """
+    Generate docs with a custom DocGenerator so that subset pages are snake_case.
+    This replaces the 'linkml generate doc' subprocess call.
+    """
     DOCS_DIR.mkdir(exist_ok=True)
-    cmd = ["linkml", "generate", "doc", str(SCHEMA), "--directory", str(DOCS_DIR)]
-    subprocess.check_call(cmd)
+    # Some LinkML versions don't accept 'yamlfile='; pass schema path positionally.
+    try:
+        gen = SnakeCaseSubsetDocGen(
+            str(SCHEMA),                 # positional path to schema file
+            directory=str(DOCS_DIR),
+            index_name="index",
+        )
+    except TypeError:
+        # Fallback for older/newer API variants that lack 'index_name' or differ slightly
+        gen = SnakeCaseSubsetDocGen(
+            str(SCHEMA),
+            directory=str(DOCS_DIR),
+        )
+    gen.serialize()
 
 def load_subsets():
     data = yaml.safe_load(SCHEMA.read_text(encoding="utf-8"))

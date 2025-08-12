@@ -31,7 +31,7 @@ Alias: source_release
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [Date](Date.md)
 
 
 
@@ -96,7 +96,7 @@ rank: 1000
 alias: source_release
 domain_of:
 - Overture
-range: string
+range: date
 
 ```
 </details>

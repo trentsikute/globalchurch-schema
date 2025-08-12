@@ -116,6 +116,7 @@ in_subset:
 from_schema: https://global.church/schema
 mappings:
 - schema:Person
+rank: 1000
 slots:
 - user_id
 - given_name
@@ -143,6 +144,7 @@ in_subset:
 from_schema: https://global.church/schema
 mappings:
 - schema:Person
+rank: 1000
 attributes:
   user_id:
     name: user_id
