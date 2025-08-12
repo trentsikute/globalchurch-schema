@@ -29,11 +29,13 @@ Alias: user_id
 
 
 
+
 ## Properties
 
 * Range: [Uuid](Uuid.md)
 
 * Required: True
+
 
 
 
@@ -54,6 +56,7 @@ Must be a valid UUID (v4 recommended). Never reuse or recycle a user_id.
 
 
 ## Identifier and Mapping Information
+
 
 
 

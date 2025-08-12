@@ -29,11 +29,13 @@ Alias: skills
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -52,6 +54,7 @@ This slot is multivalued—store each skill as a separate list item.
 
 
 ## Identifier and Mapping Information
+
 
 
 

@@ -29,9 +29,11 @@ Alias: name
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ If there is a campus name or colloquial short name, store it in `alternate_name`
 
 
 ## Identifier and Mapping Information
+
 
 
 

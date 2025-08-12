@@ -29,9 +29,11 @@ Alias: telephone
 
 
 
+
 ## Properties
 
 * Range: [PhoneE164](PhoneE164.md)
+
 
 
 
@@ -51,6 +53,7 @@ Do not include spaces, parentheses, or dashes. For church phone, use `phone` slo
 
 
 ## Identifier and Mapping Information
+
 
 
 

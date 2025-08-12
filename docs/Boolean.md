@@ -21,7 +21,9 @@ URI: [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -43,5 +45,6 @@ URI: [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
 | self | xsd:boolean |
 | native | gc:boolean |
 | exact | schema:Boolean |
+
 
 

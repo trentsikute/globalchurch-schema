@@ -20,9 +20,11 @@ Alias: description
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -42,6 +44,7 @@ Useful for display on profiles and for enrichment purposes.
 
 
 ## Identifier and Mapping Information
+
 
 
 

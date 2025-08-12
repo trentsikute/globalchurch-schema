@@ -29,9 +29,11 @@ Alias: version
 
 
 
+
 ## Properties
 
 * Range: [Integer](Integer.md)
+
 
 
 
@@ -50,6 +52,7 @@ Use with `source_release` when available.
 
 
 ## Identifier and Mapping Information
+
 
 
 

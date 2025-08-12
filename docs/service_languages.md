@@ -22,7 +22,8 @@ Alias: service_languages
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -34,6 +35,7 @@ Alias: service_languages
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -52,6 +54,7 @@ Include multiple entries for multilingual services/campuses.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -102,7 +105,7 @@ exact_mappings:
 rank: 1000
 alias: service_languages
 domain_of:
-- EnrichedData
+- Church
 range: string
 multivalued: true
 

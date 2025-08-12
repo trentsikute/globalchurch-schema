@@ -3,7 +3,7 @@
 # Slot: opening_hours 
 
 
-_Church opening hours or service schedule._
+_Church hours of public access. Distinct from service_times._
 
 
 
@@ -18,11 +18,22 @@ Alias: opening_hours
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
+
 
 
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -43,6 +54,7 @@ May include special service times or holiday exceptions.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -73,7 +85,7 @@ May include special service times or holiday exceptions.
 <details>
 ```yaml
 name: opening_hours
-description: Church opening hours or service schedule.
+description: Church hours of public access. Distinct from service_times.
 comments:
 - 'Use either free text or a structured format to describe when the church is open
   or services are held.
@@ -96,6 +108,8 @@ exact_mappings:
 - schema:openingHoursSpecification
 rank: 1000
 alias: opening_hours
+domain_of:
+- Church
 range: string
 
 ```

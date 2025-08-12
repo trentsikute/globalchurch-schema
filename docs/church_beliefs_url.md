@@ -22,7 +22,8 @@ Alias: church_beliefs_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: church_beliefs_url
 ## Properties
 
 * Range: [Uri](Uri.md)
+
 
 
 
@@ -50,6 +52,7 @@ If multiple pages exist, choose the most comprehensive source.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -96,7 +99,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: church_beliefs_url
 domain_of:
-- EnrichedData
+- Church
 range: uri
 
 ```

@@ -29,9 +29,11 @@ Alias: alternate_church
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ Alias: alternate_church
 
 
 ## Identifier and Mapping Information
+
 
 
 

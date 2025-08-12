@@ -18,11 +18,22 @@ Alias: website_root
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
+
 
 
 ## Properties
 
 * Range: [Uri](Uri.md)
+
 
 
 
@@ -43,6 +54,7 @@ Exclude any path, query, or fragment components.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -91,6 +103,8 @@ in_subset:
 from_schema: https://global.church/schema
 rank: 1000
 alias: website_root
+domain_of:
+- Church
 range: uri
 
 ```

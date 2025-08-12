@@ -29,9 +29,11 @@ Alias: interests
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ Prefer consistent tagging conventions to improve searchability.
 
 
 ## Identifier and Mapping Information
+
 
 
 

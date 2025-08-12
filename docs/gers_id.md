@@ -30,9 +30,13 @@ Alias: gers_id
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
+* Required: True
+
 
 
 
@@ -51,6 +55,7 @@ May not exist for all churches.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -95,11 +100,13 @@ in_subset:
 - public
 from_schema: https://global.church/schema
 rank: 1000
+identifier: true
 alias: gers_id
 domain_of:
 - Church
 - Overture
 range: string
+required: true
 
 ```
 </details>

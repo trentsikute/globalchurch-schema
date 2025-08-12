@@ -22,7 +22,8 @@ Alias: church_summary
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: church_summary
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -50,6 +52,7 @@ Intended for profile cards or search results. Keep under ~300 characters.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -97,7 +100,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: church_summary
 domain_of:
-- EnrichedData
+- Church
 range: string
 
 ```

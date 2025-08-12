@@ -9,7 +9,9 @@ URI: [UserCore](UserCore.md)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -35,9 +37,7 @@ URI: [UserCore](UserCore.md)
 
 
 
-
         
-
 
 
 
@@ -58,7 +58,6 @@ URI: [UserCore](UserCore.md)
 
 
         
-
 
 
 
@@ -116,6 +115,7 @@ URI: [UserCore](UserCore.md)
 
 
 
+
 ## Slots in subset
 
 | Slot | Description |
@@ -123,5 +123,6 @@ URI: [UserCore](UserCore.md)
 | [email](email.md) | Primary contact email for the user |
 | [family_name](family_name.md) | User’s last (family) name |
 | [given_name](given_name.md) | User’s first (given) name |
+
 
 

@@ -22,7 +22,8 @@ Alias: youtube_url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: youtube_url
 ## Properties
 
 * Range: [Uri](Uri.md)
+
 
 
 
@@ -50,6 +52,7 @@ Normalize to https and include trailing slash when appropriate.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -99,7 +102,7 @@ exact_mappings:
 rank: 1000
 alias: youtube_url
 domain_of:
-- EnrichedData
+- Church
 range: uri
 
 ```

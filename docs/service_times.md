@@ -22,7 +22,8 @@ Alias: service_times
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: service_times
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -52,6 +54,7 @@ If multiple campuses or languages differ, note this in `service_languages` and
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -102,7 +105,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: service_times
 domain_of:
-- EnrichedData
+- Church
 range: string
 
 ```

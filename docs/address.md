@@ -22,7 +22,8 @@ Alias: address
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: address
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -55,6 +57,7 @@ Use this slot for the canonical address, not for addresses scraped from websites
 
 
 ## Identifier and Mapping Information
+
 
 
 

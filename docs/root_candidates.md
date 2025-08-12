@@ -22,7 +22,8 @@ Alias: root_candidates
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
+| [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |  no  |
+
 
 
 
@@ -34,6 +35,7 @@ Alias: root_candidates
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -53,6 +55,7 @@ Store fully qualified URLs when possible.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -100,7 +103,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: root_candidates
 domain_of:
-- ChurchWebsite
+- ChurchWebsiteText
 range: string
 multivalued: true
 

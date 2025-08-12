@@ -29,9 +29,11 @@ Alias: country
 
 
 
+
 ## Properties
 
 * Range: [IsoCountryCode](IsoCountryCode.md)
+
 
 
 
@@ -52,6 +54,7 @@ Do not use full country names or three-letter codes.
 
 
 ## Identifier and Mapping Information
+
 
 
 

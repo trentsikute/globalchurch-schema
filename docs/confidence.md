@@ -29,9 +29,11 @@ Alias: confidence
 
 
 
+
 ## Properties
 
 * Range: [Float](Float.md)
+
 
 
 
@@ -50,6 +52,7 @@ If absent upstream, leave empty rather than inventing a value.
 
 
 ## Identifier and Mapping Information
+
 
 
 

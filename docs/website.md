@@ -18,11 +18,22 @@ Alias: website
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
+
 
 
 ## Properties
 
 * Range: [Uri](Uri.md)
+
 
 
 
@@ -43,6 +54,7 @@ Exclude social media links (see `instagram_url`, `youtube_url`).
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -94,6 +106,8 @@ exact_mappings:
 - schema:url
 rank: 1000
 alias: website
+domain_of:
+- Church
 range: uri
 
 ```

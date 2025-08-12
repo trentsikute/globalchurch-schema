@@ -22,7 +22,8 @@ Alias: scraped_email
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: scraped_email
 ## Properties
 
 * Range: [email](email.md)
+
 
 
 
@@ -51,6 +53,7 @@ Do not store personal staff emails unless explicitly public and necessary.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -103,7 +106,7 @@ exact_mappings:
 rank: 1000
 alias: scraped_email
 domain_of:
-- EnrichedData
+- Church
 range: email
 
 ```

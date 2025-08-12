@@ -5,8 +5,8 @@
 
 
 id: https://global.church/schema
-name: GlobalChurch-schema
-title: Global Church Schema
+name: Global.Church-schema
+title: Global.Church Schema
 description: >
   The shared data model for Global.Church and partner projects, defining core
   classes (Church, User) and slots for ingestion, enrichment, and publishing.
@@ -14,7 +14,6 @@ version: 0.1.0
 license: https://creativecommons.org/licenses/by/4.0/
 see_also:
   - https://global.church/schema
-
 
 imports:
   - linkml:types
@@ -103,6 +102,20 @@ classes:
         required: true
       name:
         required: true
+      pipeline_status:
+        required: true
+      latitude:
+        required: true
+      longitude:
+        required: true
+      address:
+        required: true
+      locality:
+        required: true
+      region:
+        required: true
+      postal_code:
+        required: true
       country:
         required: true
     slots:
@@ -117,24 +130,10 @@ classes:
       - region
       - postal_code
       - country
-    in_subset: [church_core, public]
-
-  
-  ChurchWebsite:
-    description: "Raw scrape artifacts captured from the church root URL."
-    slots:
-      - church_id
-      - root_scrape_text
-      - root_scrape_buttons
-      - root_scrape_check
-      - root_candidates
-      - candidates_text_and_links
-    in_subset: [internal]
-
-  EnrichedData:
-    description: "AI-enriched attributes extracted from the church website and socials."
-    slots:
-      - church_id
+      - website
+      - website_root
+      - search_blob
+      - opening_hours
       - service_times
       - church_beliefs_url
       - trinitarian_beliefs
@@ -146,7 +145,20 @@ classes:
       - scraped_address
       - programs_offered
       - church_summary
-    in_subset: [public, enrichment]
+
+    in_subset: [church_core, public]
+
+  
+  ChurchWebsiteText:
+    description: "Raw scrape artifacts captured from the church root URL."
+    slots:
+      - church_id
+      - root_scrape_text
+      - root_scrape_buttons
+      - root_scrape_check
+      - root_candidates
+      - candidates_text_and_links
+    in_subset: [internal]
 
   Overture:
     description: "Original place record as supplied by Overture Maps."
@@ -158,6 +170,24 @@ classes:
       - source_release
     in_subset: [overture]
 
+
+
+# ---------- Slots ----------
+
+# This section defines the fields (slots) for all classes.
+# Example slot:
+#   example_slot:
+#     range: string
+#     description: "A brief description of the slot."
+#     comments:
+#       - |
+#         Comments provide additional context or usage notes.
+#     examples:
+#       - value: "Example value"
+#         description: "A brief description of the example." # The description currently doesn't display, but it may someday! 
+#     in_subset: [public, internal]
+
+# ----------------------------------
 
 slots:
   user_id:
@@ -307,7 +337,7 @@ slots:
     comments:
       - |
         Primary key for the Church entity. Stable and non-reassignable.
-        Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
+        Used as the foreign key for ChurchWebsiteText, EnrichedData, and other related records.
     examples:
       - value: "9e1c2a7d-4c33-4b8b-9d7a-1a2b3c4d5e6f"
         description: "Example church UUID."
@@ -501,7 +531,7 @@ slots:
 
   opening_hours:
     exact_mappings: [schema:openingHours, schema:openingHoursSpecification]
-    description: "Church opening hours or service schedule."
+    description: "Church hours of public access. Distinct from service_times."
     in_subset: [public]
     comments:
       - |
@@ -513,37 +543,6 @@ slots:
         description: "Typical service times."
       - value: "Mo-Fr 09:00-17:00"
         description: "Weekday opening hours."
-
-  keywords:
-    exact_mappings: [schema:keywords]
-    description: "Keywords or tags describing the church."
-    in_subset: [public]
-    multivalued: true
-    comments:
-      - |
-        NOTE: It has not yet been decided what values (if any) will be used in this slot.
-        This field was added because it matches the schema.org schema.
-        
-        Comma-separated or list of keywords that describe the church, its ministries, or focus areas.
-        Use consistent tagging to enable filtering and search.
-        Examples: "baptist, youth, outreach, contemporary worship"
-    examples:
-      - value: "[\"baptist\", \"youth\", \"outreach\"]"
-        description: "Multiple ministry keywords."
-
-  alternate_name:
-    exact_mappings: [schema:alternateName]
-    description: "Alternate, colloquial, or short name for the church."
-    in_subset: [public]
-    comments:
-      - |
-        Use for commonly used nicknames, abbreviations, or campus-specific names.
-        Leave blank if the church is only known by its official name.
-    examples:
-      - value: "Grace Church"
-        description: "Shortened version of official name."
-      - value: "GCC Malibu"
-        description: "Colloquial campus name."
 
   description:
     exact_mappings: [schema:description]
@@ -847,6 +846,8 @@ slots:
         description: "Release date."
 
   gers_id:
+    identifier: true
+    range: string
     description: "Government/Ecclesiastical Registry System identifier."
     in_subset: [overture, public]
     comments:
@@ -858,6 +859,16 @@ slots:
         description: "Sample registry ID."
 
 
+
+
+
+# ---------- Enumerations ----------
+
+# This section defines controlled vocabularies for specific slots.
+# These enumerations help standardize values across the schema.
+# They are used to ensure consistent classification and categorization of data.
+
+# ----------------------------------
 enums:
   BeliefTypeEnum:
     description: "Top-level Christian family grouping used by Global.Church. 

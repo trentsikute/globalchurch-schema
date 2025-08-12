@@ -18,11 +18,22 @@ Alias: search_blob
 
 
 
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
+
+
+
+
 
 
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -42,6 +53,7 @@ Not intended for direct display or export.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -88,6 +100,8 @@ in_subset:
 from_schema: https://global.church/schema
 rank: 1000
 alias: search_blob
+domain_of:
+- Church
 range: string
 
 ```

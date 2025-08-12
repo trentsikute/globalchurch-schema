@@ -22,7 +22,8 @@ Alias: candidates_text_and_links
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
+| [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |  no  |
+
 
 
 
@@ -34,6 +35,7 @@ Alias: candidates_text_and_links
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -53,6 +55,7 @@ Helps prioritize which candidate links are most relevant.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -101,7 +104,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: candidates_text_and_links
 domain_of:
-- ChurchWebsite
+- ChurchWebsiteText
 range: string
 multivalued: true
 

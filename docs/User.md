@@ -20,6 +20,7 @@ URI: [gc:User](https://global.church/schema/User)
 
 
 
+
 <!-- no inheritance hierarchy -->
 
 
@@ -46,8 +47,8 @@ URI: [gc:User](https://global.church/schema/User)
 
 
 
-
 ## Identifier and Mapping Information
+
 
 
 
@@ -69,6 +70,7 @@ URI: [gc:User](https://global.church/schema/User)
 | self | gc:User |
 | native | gc:User |
 | undefined | schema:Person |
+
 
 
 

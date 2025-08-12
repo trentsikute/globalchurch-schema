@@ -9,7 +9,9 @@ URI: [Overture](Overture.md)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -34,9 +36,7 @@ URI: [Overture](Overture.md)
 
 
 
-
         
-
 
 
 
@@ -56,7 +56,6 @@ URI: [Overture](Overture.md)
 
 
         
-
 
 
 
@@ -114,10 +113,11 @@ URI: [Overture](Overture.md)
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
 | [confidence](confidence.md) | 0..1 <br/> [Float](Float.md) | Confidence score (0–1) from Overture  |
-| [gers_id](gers_id.md) | 0..1 <br/> [String](String.md) | Government/Ecclesiastical Registry System identifier  |
+| [gers_id](gers_id.md) | 1 <br/> [String](String.md) | Government/Ecclesiastical Registry System identifier **identifier** |
 | [source](source.md) | 0..1 <br/> [String](String.md) | Source label from Overture Maps  |
 | [source_release](source_release.md) | 0..1 <br/> [Date](Date.md) | Overture release tag (YYYY-MM-DD)  |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | Overture dataset version number  |
+
 
 
 
@@ -133,5 +133,6 @@ URI: [Overture](Overture.md)
 | [source](source.md) | Source label from Overture Maps |
 | [source_release](source_release.md) | Overture release tag (YYYY-MM-DD) |
 | [version](version.md) | Overture dataset version number |
+
 
 

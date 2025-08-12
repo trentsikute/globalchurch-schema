@@ -22,7 +22,8 @@ Alias: pipeline_status
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: pipeline_status
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -54,6 +56,7 @@ VALIDATED: human-reviewed.
 
 
 ## Identifier and Mapping Information
+
 
 
 

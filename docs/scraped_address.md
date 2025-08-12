@@ -22,7 +22,8 @@ Alias: scraped_address
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: scraped_address
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -50,6 +52,7 @@ This value may be noisy and should be normalized or validated before publishing.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -99,7 +102,7 @@ exact_mappings:
 rank: 1000
 alias: scraped_address
 domain_of:
-- EnrichedData
+- Church
 range: string
 
 ```

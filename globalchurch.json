@@ -19,6 +19,14 @@
             "properties": {
                 "address": {
                     "description": "Physical street address of the church or user.",
+                    "type": "string"
+                },
+                "belief_type": {
+                    "$ref": "#/$defs/BeliefTypeEnum",
+                    "description": "Denomination / church type category.\nClassifies the church into a top-level Christian family as defined by BeliefTypeEnum.\nBased on the Harvest Information Standards (HIS) Registry of Religions.\n"
+                },
+                "church_beliefs_url": {
+                    "description": "URL for the church\u2019s statement of beliefs/faith.",
                     "type": [
                         "string",
                         "null"
@@ -28,6 +36,13 @@
                     "description": "Global.Church-issued ID for a church.",
                     "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                     "type": "string"
+                },
+                "church_summary": {
+                    "description": "Concise public summary of the church.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "country": {
                     "description": "Country code in ISO 3166-1 alpha-2 format.",
@@ -41,51 +56,124 @@
                         "null"
                     ]
                 },
-                "latitude": {
-                    "description": "Latitude in decimal degrees.",
-                    "maximum": 90,
-                    "minimum": -90,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "locality": {
-                    "description": "City or locality where the church is located.",
+                "instagram_url": {
+                    "description": "Instagram profile URL.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "latitude": {
+                    "description": "Latitude in decimal degrees.",
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                },
+                "locality": {
+                    "description": "City or locality where the church is located.",
+                    "type": "string"
                 },
                 "longitude": {
                     "description": "Longitude in decimal degrees.",
                     "maximum": 180,
                     "minimum": -180,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "type": "number"
                 },
                 "name": {
                     "description": "Official church name.",
                     "type": "string"
                 },
-                "pipeline_status": {
-                    "description": "Current enrichment pipeline stage.",
+                "opening_hours": {
+                    "description": "Church hours of public access. Distinct from service_times.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
+                "pipeline_status": {
+                    "description": "Current enrichment pipeline stage.",
+                    "type": "string"
+                },
                 "postal_code": {
                     "description": "Postal code or ZIP code for the address.",
+                    "type": "string"
+                },
+                "programs_offered": {
+                    "description": "Programs or ministries the church offers.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "region": {
                     "description": "State, province, or administrative region.",
+                    "type": "string"
+                },
+                "scraped_address": {
+                    "description": "Postal address extracted from the website.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "scraped_email": {
+                    "description": "Public email address extracted from the website.",
+                    "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "search_blob": {
+                    "description": "Concatenated text of searchable fields for indexing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "service_languages": {
+                    "description": "Languages in which services are offered.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "service_times": {
+                    "description": "Service times for public gatherings.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "trinitarian_beliefs": {
+                    "description": "Whether the church affirms classical Trinitarian doctrine.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "website": {
+                    "description": "Full website URL for the church.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "website_root": {
+                    "description": "Root URL of the church website (scheme and domain only).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "youtube_url": {
+                    "description": "YouTube channel URL.",
                     "type": [
                         "string",
                         "null"
@@ -95,12 +183,19 @@
             "required": [
                 "church_id",
                 "name",
+                "pipeline_status",
+                "latitude",
+                "longitude",
+                "address",
+                "locality",
+                "region",
+                "postal_code",
                 "country"
             ],
             "title": "Church",
             "type": "object"
         },
-        "ChurchWebsite": {
+        "ChurchWebsiteText": {
             "additionalProperties": false,
             "description": "Raw scrape artifacts captured from the church root URL.",
             "properties": {
@@ -154,104 +249,7 @@
             "required": [
                 "church_id"
             ],
-            "title": "ChurchWebsite",
-            "type": "object"
-        },
-        "EnrichedData": {
-            "additionalProperties": false,
-            "description": "AI-enriched attributes extracted from the church website and socials.",
-            "properties": {
-                "belief_type": {
-                    "$ref": "#/$defs/BeliefTypeEnum",
-                    "description": "Denomination / church type category.\nClassifies the church into a top-level Christian family as defined by BeliefTypeEnum.\nBased on the Harvest Information Standards (HIS) Registry of Religions.\n"
-                },
-                "church_beliefs_url": {
-                    "description": "URL for the church\u2019s statement of beliefs/faith.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "church_id": {
-                    "description": "Global.Church-issued ID for a church.",
-                    "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-                    "type": "string"
-                },
-                "church_summary": {
-                    "description": "Concise public summary of the church.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "instagram_url": {
-                    "description": "Instagram profile URL.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "programs_offered": {
-                    "description": "Programs or ministries the church offers.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "scraped_address": {
-                    "description": "Postal address extracted from the website.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "scraped_email": {
-                    "description": "Public email address extracted from the website.",
-                    "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "service_languages": {
-                    "description": "Languages in which services are offered.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "service_times": {
-                    "description": "Service times for public gatherings.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "trinitarian_beliefs": {
-                    "description": "Whether the church affirms classical Trinitarian doctrine.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "youtube_url": {
-                    "description": "YouTube channel URL.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "church_id"
-            ],
-            "title": "EnrichedData",
+            "title": "ChurchWebsiteText",
             "type": "object"
         },
         "Overture": {
@@ -267,10 +265,7 @@
                 },
                 "gers_id": {
                     "description": "Government/Ecclesiastical Registry System identifier.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "source": {
                     "description": "Source label from Overture Maps.",
@@ -295,6 +290,9 @@
                     ]
                 }
             },
+            "required": [
+                "gers_id"
+            ],
             "title": "Overture",
             "type": "object"
         },
@@ -391,8 +389,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "title": "GlobalChurch-schema",
+    "title": "Global.Church-schema",
     "type": "object",
     "version": "0.1.0"
 }
-

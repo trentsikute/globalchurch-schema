@@ -29,9 +29,11 @@ Alias: source_release
 
 
 
+
 ## Properties
 
 * Range: [Date](Date.md)
+
 
 
 
@@ -50,6 +52,7 @@ Use ISO 8601 date format.
 
 
 ## Identifier and Mapping Information
+
 
 
 

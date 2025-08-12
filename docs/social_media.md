@@ -20,11 +20,13 @@ Alias: social_media
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -44,6 +46,7 @@ Use platform-specific slots (e.g., `instagram_url`) when available.
 
 
 ## Identifier and Mapping Information
+
 
 
 

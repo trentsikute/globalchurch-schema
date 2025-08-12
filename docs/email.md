@@ -21,7 +21,9 @@ URI: [xsd:string](http://www.w3.org/2001/XMLSchema#string)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -43,5 +45,6 @@ URI: [xsd:string](http://www.w3.org/2001/XMLSchema#string)
 | self | gc:email |
 | native | gc:email |
 | exact | schema:email |
+
 
 

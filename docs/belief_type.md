@@ -28,7 +28,8 @@ Alias: belief_type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -38,6 +39,7 @@ Alias: belief_type
 ## Properties
 
 * Range: [BeliefTypeEnum](BeliefTypeEnum.md)
+
 
 
 
@@ -57,6 +59,7 @@ You may revise this after human review.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -111,7 +114,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: belief_type
 domain_of:
-- EnrichedData
+- Church
 range: BeliefTypeEnum
 
 ```

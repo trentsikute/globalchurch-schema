@@ -22,7 +22,8 @@ Alias: postal_code
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: postal_code
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -52,6 +54,7 @@ Always include this value for postal addresses if available.
 
 
 ## Identifier and Mapping Information
+
 
 
 

@@ -9,7 +9,9 @@ URI: [ChurchCore](ChurchCore.md)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -39,9 +41,7 @@ URI: [ChurchCore](ChurchCore.md)
 
 
 
-
         
-
 
 
 
@@ -52,7 +52,6 @@ URI: [ChurchCore](ChurchCore.md)
 
 
         
-
 
 
 
@@ -115,15 +114,16 @@ URI: [ChurchCore](ChurchCore.md)
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
-| [address](address.md) | 0..1 <br/> [String](String.md) | Physical street address of the church or user  |
+| [address](address.md) | 1 <br/> [String](String.md) | Physical street address of the church or user  |
 | [church_id](church_id.md) | 1 <br/> [Uuid](Uuid.md) | Global **identifier** |
 | [country](country.md) | 1 <br/> [IsoCountryCode](IsoCountryCode.md) | Country code in ISO 3166-1 alpha-2 format  |
-| [latitude](latitude.md) | 0..1 <br/> [Float](Float.md) | Latitude in decimal degrees  |
-| [locality](locality.md) | 0..1 <br/> [String](String.md) | City or locality where the church is located  |
-| [longitude](longitude.md) | 0..1 <br/> [Float](Float.md) | Longitude in decimal degrees  |
+| [latitude](latitude.md) | 1 <br/> [Float](Float.md) | Latitude in decimal degrees  |
+| [locality](locality.md) | 1 <br/> [String](String.md) | City or locality where the church is located  |
+| [longitude](longitude.md) | 1 <br/> [Float](Float.md) | Longitude in decimal degrees  |
 | [name](name.md) | 1 <br/> [String](String.md) | Official church name  |
-| [postal_code](postal_code.md) | 0..1 <br/> [String](String.md) | Postal code or ZIP code for the address  |
-| [region](region.md) | 0..1 <br/> [String](String.md) | State, province, or administrative region  |
+| [postal_code](postal_code.md) | 1 <br/> [String](String.md) | Postal code or ZIP code for the address  |
+| [region](region.md) | 1 <br/> [String](String.md) | State, province, or administrative region  |
+
 
 
 
@@ -141,5 +141,6 @@ URI: [ChurchCore](ChurchCore.md)
 | [name](name.md) | Official church name |
 | [postal_code](postal_code.md) | Postal code or ZIP code for the address |
 | [region](region.md) | State, province, or administrative region |
+
 
 

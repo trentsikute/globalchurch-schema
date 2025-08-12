@@ -22,7 +22,8 @@ Alias: latitude
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -36,6 +37,7 @@ Alias: latitude
 * Minimum Value: -90
 
 * Maximum Value: 90
+
 
 
 
@@ -55,6 +57,7 @@ Precision of 5–6 decimal places is typically sufficient (~1–10 meters).
 
 
 ## Identifier and Mapping Information
+
 
 
 

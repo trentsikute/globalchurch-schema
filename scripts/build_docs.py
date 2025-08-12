@@ -114,6 +114,32 @@ def replace_subsets_section(index_text: str, table_md: str) -> str:
 
     return head + section + tail
 
+def strip_sections_from_index(sections_to_remove):
+    """
+    Remove specified H2 sections from docs/index.md.
+    sections_to_remove: list of lowercase section names (e.g., ['slots', 'enumerations'])
+    """
+    index_path = INDEX_MD
+    if not index_path.exists():
+        return
+    text = index_path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    lines = text.split("\n")
+
+    new_lines = []
+    skip_mode = False
+    for i, line in enumerate(lines):
+        if line.startswith("## "):
+            header_name = line[3:].strip().lower()
+            if header_name in sections_to_remove:
+                skip_mode = True
+                continue
+            else:
+                skip_mode = False
+        if not skip_mode:
+            new_lines.append(line)
+
+    index_path.write_text("\n".join(new_lines), encoding="utf-8")
+
 def fix_enum_links(index_text: str, to_html: bool) -> str:
     """
     Convert enum links between .md <-> .html depending on target.
@@ -274,6 +300,8 @@ def main():
 
     print("• Generating docs with LinkML…")
     run_linkml_docs()
+    print("• Removing Slots and Enumerations from home page…")
+    strip_sections_from_index(['slots', 'enumerations'])
     print("• Removing Mermaid class diagrams from generated pages…")
     remove_diagrams_from_docs()
 

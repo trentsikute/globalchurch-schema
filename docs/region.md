@@ -22,7 +22,8 @@ Alias: region
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: region
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -52,6 +54,7 @@ For countries without such subdivisions, leave this slot empty.
 
 
 ## Identifier and Mapping Information
+
 
 
 

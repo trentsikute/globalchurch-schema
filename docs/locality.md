@@ -22,7 +22,8 @@ Alias: locality
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: locality
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -53,6 +55,7 @@ For rural areas without a city, use the nearest recognized locality.
 
 
 ## Identifier and Mapping Information
+
 
 
 

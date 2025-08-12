@@ -22,9 +22,9 @@ Alias: church_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
 | [Church](Church.md) | A distinct church congregation |  yes  |
+| [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |  no  |
+
 
 
 
@@ -41,6 +41,7 @@ Alias: church_id
 
 
 
+
 ## Examples
 
 | Value |
@@ -50,10 +51,11 @@ Alias: church_id
 ## Comments
 
 * Primary key for the Church entity. Stable and non-reassignable.
-Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
+Used as the foreign key for ChurchWebsiteText, EnrichedData, and other related records.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -87,7 +89,7 @@ description: Global.Church-issued ID for a church.
 comments:
 - 'Primary key for the Church entity. Stable and non-reassignable.
 
-  Used as the foreign key for ChurchWebsite, EnrichedData, and other related records.
+  Used as the foreign key for ChurchWebsiteText, EnrichedData, and other related records.
 
   '
 examples:
@@ -102,8 +104,7 @@ identifier: true
 alias: church_id
 domain_of:
 - Church
-- ChurchWebsite
-- EnrichedData
+- ChurchWebsiteText
 range: uuid
 required: true
 

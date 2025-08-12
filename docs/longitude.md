@@ -22,7 +22,8 @@ Alias: longitude
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Church](Church.md) | A distinct church congregation |  no  |
+| [Church](Church.md) | A distinct church congregation |  yes  |
+
 
 
 
@@ -36,6 +37,7 @@ Alias: longitude
 * Minimum Value: -180
 
 * Maximum Value: 180
+
 
 
 
@@ -55,6 +57,7 @@ Keep latitude/longitude pairs from the same source to avoid mismatch.
 
 
 ## Identifier and Mapping Information
+
 
 
 

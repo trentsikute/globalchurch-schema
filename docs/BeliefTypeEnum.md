@@ -7,7 +7,7 @@ _Top-level Christian family grouping used by Global.Church. Based on Harvest Inf
 
 
 
-URI: [gc:BeliefTypeEnum](https://global.church/schema/BeliefTypeEnum)
+URI: [BeliefTypeEnum](BeliefTypeEnum.md)
 
 ## Permissible Values
 
@@ -33,7 +33,9 @@ URI: [gc:BeliefTypeEnum](https://global.church/schema/BeliefTypeEnum)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 

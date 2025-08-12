@@ -29,9 +29,11 @@ Alias: primary_church
 
 
 
+
 ## Properties
 
 * Range: [Uuid](Uuid.md)
+
 
 
 
@@ -50,6 +52,7 @@ If the user participates at multiple churches, consider also setting `alternate_
 
 
 ## Identifier and Mapping Information
+
 
 
 

@@ -29,9 +29,11 @@ Alias: faith_journey
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ Avoid storing sensitive counseling notes in this field.
 
 
 ## Identifier and Mapping Information
+
 
 
 

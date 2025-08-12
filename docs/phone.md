@@ -20,9 +20,11 @@ Alias: phone
 
 
 
+
 ## Properties
 
 * Range: [PhoneE164](PhoneE164.md)
+
 
 
 
@@ -43,6 +45,7 @@ Numbers should be validated for correct format and country code.
 
 
 ## Identifier and Mapping Information
+
 
 
 

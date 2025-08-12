@@ -9,7 +9,9 @@ URI: [Internal](Internal.md)
 
 
 
+
 ## Identifier and Mapping Information
+
 
 
 
@@ -42,8 +44,6 @@ URI: [Internal](Internal.md)
 
 
 
-
-
         
 
 
@@ -61,7 +61,6 @@ URI: [Internal](Internal.md)
 
 
         
-
 
 
 
@@ -114,10 +113,10 @@ URI: [Internal](Internal.md)
 
 | Class | Description |
 | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |
+| [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |
 
 
-### Slots from [ChurchWebsite](ChurchWebsite.md) also in _internal_
+### Slots from [ChurchWebsiteText](ChurchWebsiteText.md) also in _internal_
 
 | Name | Cardinality and Range | Description |
 | ---  | ---  | --- |
@@ -126,6 +125,7 @@ URI: [Internal](Internal.md)
 | [root_scrape_buttons](root_scrape_buttons.md) | 0..1 <br/> [String](String.md) | Button texts captured on the root page  |
 | [root_scrape_check](root_scrape_check.md) | 0..1 <br/> [String](String.md) | Checksum or status flag indicating scrape state  |
 | [root_scrape_text](root_scrape_text.md) | 0..1 <br/> [String](String.md) | Visible text content scraped from the website root page  |
+
 
 
 
@@ -149,5 +149,6 @@ URI: [Internal](Internal.md)
 | [skills](skills.md) | List of user skills |
 | [telephone](telephone.md) | User’s phone number (E |
 | [website_root](website_root.md) | Root URL of the church website (scheme and domain only) |
+
 
 

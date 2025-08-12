@@ -29,9 +29,11 @@ Alias: family_name
 
 
 
+
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ If the person has a single name, leave this blank and use given_name only.
 
 
 ## Identifier and Mapping Information
+
 
 
 

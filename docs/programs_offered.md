@@ -22,7 +22,8 @@ Alias: programs_offered
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnrichedData](EnrichedData.md) | AI-enriched attributes extracted from the church website and socials |  no  |
+| [Church](Church.md) | A distinct church congregation |  no  |
+
 
 
 
@@ -34,6 +35,7 @@ Alias: programs_offered
 * Range: [String](String.md)
 
 * Multivalued: True
+
 
 
 
@@ -52,6 +54,7 @@ Prefer stable, human-readable labels; avoid internal codes in public data.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -101,7 +104,7 @@ exact_mappings:
 rank: 1000
 alias: programs_offered
 domain_of:
-- EnrichedData
+- Church
 range: string
 multivalued: true
 

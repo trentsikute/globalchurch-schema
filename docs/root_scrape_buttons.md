@@ -22,7 +22,8 @@ Alias: root_scrape_buttons
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ChurchWebsite](ChurchWebsite.md) | Raw scrape artifacts captured from the church root URL |  no  |
+| [ChurchWebsiteText](ChurchWebsiteText.md) | Raw scrape artifacts captured from the church root URL |  no  |
+
 
 
 
@@ -32,6 +33,7 @@ Alias: root_scrape_buttons
 ## Properties
 
 * Range: [String](String.md)
+
 
 
 
@@ -51,6 +53,7 @@ This is raw scrape output and may include navigation or repeated items.
 
 
 ## Identifier and Mapping Information
+
 
 
 
@@ -98,7 +101,7 @@ from_schema: https://global.church/schema
 rank: 1000
 alias: root_scrape_buttons
 domain_of:
-- ChurchWebsite
+- ChurchWebsiteText
 range: string
 
 ```
